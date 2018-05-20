@@ -10,7 +10,13 @@ class NewsletterController extends Controller
 
   public function index()
   {
-  return view('newsletter');
+    $newsletter = Newsletter::all();
+    return view('newsletter.newsletter')->with('newsletter',$newsletter);
+  }
+
+  public function create()
+  {
+  return view('newsletter.newsletterCreate');
   }
 
   public function store(Request $request)
@@ -50,6 +56,12 @@ class NewsletterController extends Controller
     $newsletter->cover_image  = $fileNameToStore;
     $newsletter->save();
     return redirect('/newsletter')->with('success', 'Newsletter is submitted.');
+  }
+
+    public function show($id)
+  {
+    $newsletter = Newsletter::find($id);
+    return view('newsletter.newsletterShow')->with('newsletter', $newsletter);
   }
 
 }

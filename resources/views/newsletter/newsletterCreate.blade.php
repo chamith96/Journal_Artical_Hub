@@ -9,7 +9,7 @@
     <div class="container">
       <h1>Newsletter</h1> <br>
       @include('messages')
-    <form action="{{url('newsletter')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{url('newsletters')}}" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
     <div class="form-group">
       <label for="exampleFormControlInput1">Full Name</label>
