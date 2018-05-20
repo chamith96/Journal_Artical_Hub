@@ -19,3 +19,5 @@ Route::get('/newsletters', 'NewsletterController@index');
 Route::get('/newsletters/create', 'NewsletterController@create');
 Route::get('/newsletters/{id}', 'NewsletterController@show');
 Route::post('/newsletters', 'NewsletterController@store');
+
+Route::get('/downloadPDF/{id}','NewsletterController@downloadPDF')->name('pdfShow');

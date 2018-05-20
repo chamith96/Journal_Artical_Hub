@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Newsletter;
+use PDF;
 
 class NewsletterController extends Controller
 {
@@ -43,7 +44,7 @@ class NewsletterController extends Controller
       $fileNameToStore = $filename.'_'.time().'.'.$extension;
       //upload images
       $path = $request->file('images')->storeAs('public/Newsletter_images', $fileNameToStore);
-    }
+      }
 
     //save data to database
     $newsletter = new Newsletter;
@@ -56,12 +57,21 @@ class NewsletterController extends Controller
     $newsletter->cover_image  = $fileNameToStore;
     $newsletter->save();
     return redirect('/newsletter')->with('success', 'Newsletter is submitted.');
-  }
+    }
 
     public function show($id)
-  {
+    {
     $newsletter = Newsletter::find($id);
     return view('newsletter.newsletterShow')->with('newsletter', $newsletter);
-  }
+    }
+
+    //download note pdf file
+    public function downloadPDF($id)
+    {
+      $newsletter = Newsletter::find($id);
+      $pdf = PDF::loadView('newsletter.pdf', compact('newsletter'));
+      $newsletterName = $newsletter->title;
+      return $pdf->download("$newsletterName.pdf");
+    }
 
 }
