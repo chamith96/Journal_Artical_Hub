@@ -20,7 +20,7 @@
         @else
           <div class="col-md-8 col-md-offset-2">
             <div class="panel-heading"><h3>Don't have any Newsletters yet.</h3>
-            <a href="newsletter/create" class="btn btn-primary">create now</a>
+            <a href="newsletters/create" class="btn btn-primary">create now</a>
             </div>
           </div>
       @endif

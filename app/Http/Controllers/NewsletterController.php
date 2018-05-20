@@ -56,7 +56,7 @@ class NewsletterController extends Controller
     $newsletter->body = $request->input('body');
     $newsletter->cover_image  = $fileNameToStore;
     $newsletter->save();
-    return redirect('/newsletter')->with('success', 'Newsletter is submitted.');
+    return redirect('/newsletters')->with('success', 'Newsletter is submitted.');
     }
 
     public function show($id)
