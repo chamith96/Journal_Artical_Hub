@@ -73,7 +73,7 @@
     </div>
 
     <div class="form-group">
-      <input type="file" name="images">
+      <input type="file" name="images[]" multiple/>
     </div>
 
     <input type="submit" value="Submit" class="btn btn-primary">

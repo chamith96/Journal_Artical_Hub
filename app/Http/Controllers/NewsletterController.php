@@ -33,7 +33,22 @@ class NewsletterController extends Controller
     ]);
 
     //handle file upload
-    if ($request->hasFile('images')) {
+    $files = $request->file('images');
+
+    //If the array is not empty
+    if ($files[0] != '') {
+      foreach($files as $file) {
+        // Set the destination path
+        $destinationPath = 'uploads';
+        // Get the orginal filname or create the filename of your choice
+        $filename = $file->getClientOriginalName();
+        // Copy the file in our upload folder
+        $file->move($destinationPath, $filename);
+      }
+    }
+
+/*single file handle
+     if ($request->hasFile('images')) {
       //get file name with extension
       $file = $request->file('images')->getClientOriginalName();
       //get just file name
@@ -44,7 +59,7 @@ class NewsletterController extends Controller
       $fileNameToStore = $filename.'_'.time().'.'.$extension;
       //upload images
       $path = $request->file('images')->storeAs('public/Newsletter_images', $fileNameToStore);
-      }
+      }*/
 
     //save data to database
     $newsletter = new Newsletter;
@@ -54,7 +69,7 @@ class NewsletterController extends Controller
     $newsletter->department  = $request->input('deparment');
     $newsletter->title = $request->input('title');
     $newsletter->body = $request->input('body');
-    $newsletter->cover_image  = $fileNameToStore;
+    $newsletter->cover_image  = $filename;
     $newsletter->save();
     return redirect('/newsletters')->with('success', 'Newsletter is submitted.');
     }
