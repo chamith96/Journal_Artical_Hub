@@ -34,24 +34,21 @@ class NewsletterController extends Controller
     ]);
 
     //handle file upload
-    $files = $request->file('images');
+    $file = $request->file('images');
 
     //If the array is not empty
-    if ($files[0] != '') {
-      foreach($files as $file) {
-        // Set the destination path
-        $destinationPath = 'uploads';
-        // Get the orginal filname or create the filename of your choice
-        $filename = $file->getClientOriginalName();
+    if ($file[0] != '') {
+      foreach($file as $files) {
+        //get file name with extension
+        $takeFile = $files->getClientOriginalName();
         //get just file name
-        $filenames = pathinfo($filename, PATHINFO_FILENAME);
+        $filename = pathinfo($takeFile, PATHINFO_FILENAME);
         //get just extension
-        $extension = $file->getClientOriginalExtension();
+        $extension = $files->getClientOriginalExtension();
         //file name to store
-        $fileNameToStore = $filenames.'_'.time().'.'.$extension;
-        // Copy the file in our upload folder
-        $path = $file->storeAs("public/".$request->input('regno'), $fileNameToStore);
-        //$file->move($destinationPath, $fileNameToStore);
+        $fileNameToStore = $filename.'_'.time().'.'.$extension;
+        //upload images
+        $path = $files->storeAs("public/".$request->input('regno'), $fileNameToStore);
       }
     }
 
