@@ -29,7 +29,8 @@ class NewsletterController extends Controller
       'deparment' => 'required',
       'title' => 'required|string|max:30',
       'body' => 'required|string|max:50',
-      'images' => 'required|image|max:1999'
+      'images' => 'required',
+      'images.*' => 'image|max:1999',
     ]);
 
     //handle file upload
@@ -42,24 +43,17 @@ class NewsletterController extends Controller
         $destinationPath = 'uploads';
         // Get the orginal filname or create the filename of your choice
         $filename = $file->getClientOriginalName();
+        //get just file name
+        $filenames = pathinfo($filename, PATHINFO_FILENAME);
+        //get just extension
+        $extension = $file->getClientOriginalExtension();
+        //file name to store
+        $fileNameToStore = $filenames.'_'.time().'.'.$extension;
         // Copy the file in our upload folder
-        $file->move($destinationPath, $filename);
+        $path = $file->storeAs('public/Newsletter_images', $fileNameToStore);
+        //$file->move($destinationPath, $fileNameToStore);
       }
     }
-
-/*single file handle
-     if ($request->hasFile('images')) {
-      //get file name with extension
-      $file = $request->file('images')->getClientOriginalName();
-      //get just file name
-      $filename = pathinfo($file, PATHINFO_FILENAME);
-      //get just extension
-      $extension = $request->file('images')->getClientOriginalExtension();
-      //file name to store
-      $fileNameToStore = $filename.'_'.time().'.'.$extension;
-      //upload images
-      $path = $request->file('images')->storeAs('public/Newsletter_images', $fileNameToStore);
-      }*/
 
     //save data to database
     $newsletter = new Newsletter;
@@ -69,7 +63,7 @@ class NewsletterController extends Controller
     $newsletter->department  = $request->input('deparment');
     $newsletter->title = $request->input('title');
     $newsletter->body = $request->input('body');
-    $newsletter->cover_image  = $filename;
+    $newsletter->cover_image  = $fileNameToStore;
     $newsletter->save();
     return redirect('/newsletters')->with('success', 'Newsletter is submitted.');
     }
