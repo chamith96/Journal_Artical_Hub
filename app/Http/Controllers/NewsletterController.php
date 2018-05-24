@@ -50,7 +50,7 @@ class NewsletterController extends Controller
         //file name to store
         $fileNameToStore = $filenames.'_'.time().'.'.$extension;
         // Copy the file in our upload folder
-        $path = $file->storeAs('public/Newsletter_images', $fileNameToStore);
+        $path = $file->storeAs("public/".$request->input('regno'), $fileNameToStore);
         //$file->move($destinationPath, $fileNameToStore);
       }
     }
