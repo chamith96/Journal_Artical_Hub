@@ -6,4 +6,5 @@
     <li><b>Register Number:</b> {{$newsletter->register_num}}</li>
     <li><b>Title:</b> {{$newsletter->title}}</li>
     <li><b>Content:</b> {{$newsletter->body}}</li>
+    <img src="storage/{{$newsletter->register_num}}/{{$newsletter->image1}}" style="width:100%">
   </ul>

@@ -29,16 +29,16 @@ class NewsletterController extends Controller
       'deparment' => 'required',
       'title' => 'required|string|max:30',
       'body' => 'required|string|max:50',
-      'images' => 'required',
-      'images.*' => 'image|max:1999',
+      'image1.*' => 'required|image|max:1999',
+      'image2.*' => 'required|image|max:1999',
     ]);
 
-    //handle file upload
-    $file = $request->file('images');
+    //handle file1 upload
+    $file1 = $request->file('image1');
 
     //If the array is not empty
-    if ($file[0] != '') {
-      foreach($file as $files) {
+    if ($file1[0] != '') {
+      foreach($file1 as $files) {
         //get file name with extension
         $takeFile = $files->getClientOriginalName();
         //get just file name
@@ -46,9 +46,28 @@ class NewsletterController extends Controller
         //get just extension
         $extension = $files->getClientOriginalExtension();
         //file name to store
-        $fileNameToStore = $filename.'_'.time().'.'.$extension;
+        $fileNameToStore1 = $filename.'_'.time().'.'.$extension;
         //upload images
-        $path = $files->storeAs("public/".$request->input('regno'), $fileNameToStore);
+        $path = $files->storeAs("public/".$request->input('regno'), $fileNameToStore1);
+      }
+    }
+
+    //handle file2 upload
+    $file2 = $request->file('image2');
+
+    //If the array is not empty
+    if ($file2[1] != '') {
+      foreach($file2 as $files) {
+        //get file name with extension
+        $takeFile = $files->getClientOriginalName();
+        //get just file name
+        $filename = pathinfo($takeFile, PATHINFO_FILENAME);
+        //get just extension
+        $extension = $files->getClientOriginalExtension();
+        //file name to store
+        $fileNameToStore2 = $filename.'_'.time().'.'.$extension;
+        //upload images
+        $path = $files->storeAs("public/".$request->input('regno'), $fileNameToStore2);
       }
     }
 
@@ -60,7 +79,8 @@ class NewsletterController extends Controller
     $newsletter->department  = $request->input('deparment');
     $newsletter->title = $request->input('title');
     $newsletter->body = $request->input('body');
-    $newsletter->cover_image  = $fileNameToStore;
+    $newsletter->image1  = $fileNameToStore1;
+    $newsletter->image2  = $fileNameToStore2;
     $newsletter->save();
     return redirect('/newsletters')->with('success', 'Newsletter is submitted.');
     }
