@@ -17,6 +17,7 @@
                     You are logged in as Admin!
                 </div>
             </div>
+                <a href="newsletters">Newsletters</a>
         </div>
     </div>
 </div>

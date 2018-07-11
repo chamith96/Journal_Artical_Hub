@@ -14,15 +14,13 @@ class CreateNewslettersTable extends Migration
     public function up()
     {
         Schema::create('newsletters', function (Blueprint $table) {
-          $table->increments('id');
-          $table->string('name');
-          $table->string('register_num');
-          $table->string('faculty');
-          $table->string('department');
-          $table->string('title');
-          $table->string('body');
-          $table->string('cover_image');
-          $table->timestamps();
+            $table->increments('id');
+            $table->string('name');
+            $table->string('email');
+            $table->string('department');
+            $table->string('title');
+            $table->string('description');
+            $table->timestamps();
         });
     }
 

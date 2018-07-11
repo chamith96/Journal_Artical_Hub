@@ -33,65 +33,40 @@ class NewsletterController extends Controller
   {
     $request->validate([
       'name' => 'required|string|min:5|max:50',
-      'regno' => 'required|string|max:15',
-      'faculty' => 'required',
-      'deparment' => 'required',
+      'email' => 'required|string|email|max:100',
+      'department' => 'required|string',
       'title' => 'required|string|max:30',
-      'body' => 'required|string|max:50',
-      'image1.*' => 'required|image|max:1999',
-      'image2.*' => 'required|image|max:1999',
+      'description' => 'required|string|max:50',
+      'images' => 'required',
+      'images.*' => 'image|max:1999',
     ]);
 
-    //handle file1 upload
-    $file1 = $request->file('image1');
-
-    //If the array is not empty
-    if ($file1[0] != '') {
-      foreach($file1 as $files) {
-        //get file name with extension
-        $takeFile = $files->getClientOriginalName();
-        //get just file name
-        $filename = pathinfo($takeFile, PATHINFO_FILENAME);
-        //get just extension
-        $extension = $files->getClientOriginalExtension();
-        //file name to store
-        $fileNameToStore1 = $filename.'_'.time().'.'.$extension;
-        //upload images
-        $path = $files->storeAs("public/".$request->input('regno'), $fileNameToStore1);
-      }
-    }
-
-    //handle file2 upload
-    $file2 = $request->file('image2');
-
-    //If the array is not empty
-    if ($file2[1] != '') {
-      foreach($file2 as $files) {
-        //get file name with extension
-        $takeFile = $files->getClientOriginalName();
-        //get just file name
-        $filename = pathinfo($takeFile, PATHINFO_FILENAME);
-        //get just extension
-        $extension = $files->getClientOriginalExtension();
-        //file name to store
-        $fileNameToStore2 = $filename.'_'.time().'.'.$extension;
-        //upload images
-        $path = $files->storeAs("public/".$request->input('regno'), $fileNameToStore2);
+    //handle file upload
+    if ($request->hasFile('images')) {
+      $files = $request->file('images');
+        foreach($files as $file) {
+          //get file name with extension
+          $takeFile = $file->getClientOriginalName();
+          //get just file name
+          $filename = pathinfo($takeFile, PATHINFO_FILENAME);
+          //get just extension
+          $extension = $file->getClientOriginalExtension();
+          //file name to store
+          $fileNameToStore = $filename.'_'.date('D M Y').'.'.$extension;
+          //upload images
+          $path = $file->storeAs("public/".$request->input('name').'_'.date('Y-m-d, h-i-s'), $fileNameToStore);
       }
     }
 
     //save data to database
     $newsletter = new Newsletter;
     $newsletter->name = $request->input('name');
-    $newsletter->register_num = $request->input('regno');
-    $newsletter->faculty = $request->input('faculty');
-    $newsletter->department  = $request->input('deparment');
+    $newsletter->email = $request->input('email');
+    $newsletter->department = $request->input('department');
     $newsletter->title = $request->input('title');
-    $newsletter->body = $request->input('body');
-    $newsletter->image1  = $fileNameToStore1;
-    $newsletter->image2  = $fileNameToStore2;
+    $newsletter->description = $request->input('description');
     $newsletter->save();
-    return redirect('/newsletters')->with('success', 'Newsletter is submitted.');
+    return redirect('/newsletters/create')->with('success', 'Newsletter is submitted.');
     }
 
     public function show($id)
