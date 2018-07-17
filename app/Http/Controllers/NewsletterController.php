@@ -79,7 +79,7 @@ class NewsletterController extends Controller
     public function downloadPDF($id)
     {
       $newsletter = Newsletter::find($id);
-      $pdf = PDF::loadView('newsletter.pdf', compact('newsletter'));
+      $pdf = PDF::loadView('newsletter.pdf', compact('newsletter')); //path to user view pdf
       $newsletterName = $newsletter->title;
       return $pdf->download("$newsletterName.pdf");
     }

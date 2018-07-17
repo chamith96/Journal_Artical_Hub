@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('layouts.admin')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -17,7 +18,6 @@
                     You are logged in as Admin!
                 </div>
             </div>
-                <a href="newsletters">Newsletters</a>
         </div>
     </div>
 </div>

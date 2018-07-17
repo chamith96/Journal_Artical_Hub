@@ -3,7 +3,7 @@
       <div class="container">
         <h1>Newsletter</h1> <br>
         @include('layouts.messages')
-      <form action="{{url('newsletters')}}" method="POST" enctype="multipart/form-data" id="demoForm" class="demoForm">
+      <form action="{{url('newsletters')}}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
       <div class="form-group">
         <label for="exampleFormControlInput1">Full Name</label>
@@ -48,7 +48,7 @@
       </div>
 
       <div class="form-group">
-        <label>Insert images</label>
+        <label for="exampleFormControlInput1">Insert images <i>(max number : 3)</i></label>
         <input type="file" name="images[]" multiple/>
       </div>
 
