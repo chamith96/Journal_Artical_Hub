@@ -20,7 +20,7 @@ class NewsletterController extends Controller
 
   public function index()
   {
-    $newsletter = Newsletter::all();
+    $newsletter = Newsletter::orderBy('created_at', 'desc')->paginate(2);
     return view('newsletter.newsletter')->with('newsletter',$newsletter);
   }
 
