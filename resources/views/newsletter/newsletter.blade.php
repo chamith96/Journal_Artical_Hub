@@ -1,6 +1,14 @@
 @extends('layouts.app')
   @section('content')
-    @include('layouts.admin')
+
+<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+  <div id="sidebar-collapse" class="col-sm-2 col-lg-2 sidebar">
+      <ul class="nav menu">
+        <li><a href="{{route('admin.dashboard')}}"> Dashboard</a></li>
+        <li class="active"><a href="{{url('newsletters')}}"> Newsletters</a></li>
+    </ul>
+  </div>
+
       <h1 align="center">Newsletters</h1>
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
