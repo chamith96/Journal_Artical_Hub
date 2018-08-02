@@ -20,5 +20,4 @@
       </ul>
         <a class="btn btn-default" href="{{route('pdfShow', [$newsletter->id])}}">Download pdf file</a>
     </div>
-    </div>
 @endsection

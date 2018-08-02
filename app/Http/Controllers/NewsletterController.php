@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Newsletter;
 use PDF;
+use Illuminate\Support\Facades\Mail;
+//use App\Mail\newslettersSubmission;
 
 class NewsletterController extends Controller
 {
@@ -20,7 +22,7 @@ class NewsletterController extends Controller
 
   public function index()
   {
-    $newsletter = Newsletter::orderBy('created_at', 'desc')->paginate(2);
+    $newsletter = Newsletter::orderBy('created_at', 'desc')->paginate(5);
     return view('newsletter.newsletter')->with('newsletter',$newsletter);
   }
 
@@ -66,7 +68,23 @@ class NewsletterController extends Controller
     $newsletter->title = $request->input('title');
     $newsletter->description = $request->input('description');
     $newsletter->save();
-    return redirect('/newsletters/create')->with('success', 'Newsletter is submitted.');
+
+    //email to Sumbission
+    $name = $request->input('name');
+    $email = $request->input('email');
+    $department = $request->input('department');
+    $title = $request->input('title');
+    $description = $request->input('description');
+
+    $data = array('name'=>$name, 'email'=>$email, 'description'=>$description, 'title'=>$title, 'department'=>$department);
+
+    Mail::send('emails.Submit_Newsletters', $data, function($message) use($data) {
+    $message->to($data['email']);
+    $message->subject($data['description'],$data['title'], $data['department']);
+    $message->from('aa@aa.com');
+    });
+
+    return redirect('/newsletters/create')->with('success', 'Newsletter is submitted. Please check your email.');
     }
 
     public function show($id)
@@ -84,4 +102,13 @@ class NewsletterController extends Controller
       return $pdf->download("$newsletterName.pdf");
     }
 
+    //zip download
+    /*public function downloadZip()
+    {
+      $files = glob(public_path("input('name').'_'.date('Y-m-d, h-i-s')/*"));
+      Zipper::make(public_path('test.zip'))->add($files)->close();
+
+      return response()->download(public_path('test.zip'));
+    }
+    */
 }
