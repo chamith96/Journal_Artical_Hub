@@ -1,8 +1,14 @@
-
-  <ul>
-    <li><b>Full Name:</b> {{$newsletter->name}}</li>
-    <li><b>Email:</b> {{$newsletter->email}}</li>
-    <li><b>Department:</b> {{$newsletter->department}}</li>
-    <li><b>Title:</b> {{$newsletter->title}}</li>
-    <li><b>Description:</b> {{$newsletter->description}}</li>
-  </ul>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Faculty/Center</th>
+  </tr>
+  <tr>
+    <th>{{$newsletter->id}}</th>
+    <th>{{$newsletter->title}}</th>
+    <th>{{$newsletter->description}}</th>
+    <th>{{$newsletter->department}}</th>
+  </tr>
+</table>

@@ -13,6 +13,7 @@
       <div class="col-md-8 col-md-offset-2">
       <ul class="list-group">
         <li class="list-group-item active"><h1>{{$newsletter->title}}</h1></li>
+        <li class="list-group-item"><b>ID:</b> {{$newsletter->id}}</li>
         <li class="list-group-item"><b>Full Name:</b> {{$newsletter->name}}</li>
         <li class="list-group-item"><b>Email:</b> {{$newsletter->email}}</li>
         <li class="list-group-item"><b>Department:</b> {{$newsletter->department}}</li>

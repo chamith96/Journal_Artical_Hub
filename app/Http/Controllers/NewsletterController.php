@@ -70,6 +70,7 @@ class NewsletterController extends Controller
     $newsletter->save();
 
     //email to Sumbission
+    /*
     $name = $request->input('name');
     $email = $request->input('email');
     $department = $request->input('department');
@@ -83,6 +84,7 @@ class NewsletterController extends Controller
     $message->subject($data['description'],$data['title'], $data['department']);
     $message->from('aa@aa.com');
     });
+    */
 
     return redirect('/newsletters/create')->with('success', 'Newsletter is submitted. Please check your email.');
     }
