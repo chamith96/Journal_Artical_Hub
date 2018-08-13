@@ -24,6 +24,8 @@ Route::post('/newsletters', 'NewsletterController@store');
 //pdf genarate
 Route::get('/downloadPDF/{id}','NewsletterController@downloadPDF')->name('pdfShow');
 
+Route::get('/downloadFiles/{id}','NewsletterController@downloadZip')->name('downloadFiles');
+
 //zip download
 //Route::get('downloadZip', 'NewsletterController@downloadZip')->name('zipDownload');
 

@@ -48,8 +48,23 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlInput1">Insert images <i>(max number : 3)</i></label>
-        <input type="file" name="images[]" multiple/>
+        <label for="exampleFormControlInput1">Insert images 1</label>
+        <input type="file" name="image1">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Insert images 2</label>
+        <input type="file" name="image2">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Insert images 3</label>
+        <input type="file" name="image3">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Insert images 4</label>
+        <input type="file" name="image4">
       </div>
 
       <input type="submit" value="Submit" class="btn btn-primary">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Newsletter;
 use PDF;
+use Zipper;
 use Illuminate\Support\Facades\Mail;
 //use App\Mail\newslettersSubmission;
 
@@ -39,25 +40,70 @@ class NewsletterController extends Controller
       'department' => 'required|string',
       'title' => 'required|string|max:30',
       'description' => 'required|string|max:50',
-      'images' => 'required',
-      'images.*' => 'image|max:1999',
+      'image1' => 'image|max:1999',
+      'image2' => 'image|max:1999',
+      'image3' => 'image|max:1999',
+      'image4' => 'image|max:1999',
     ]);
 
-    //handle file upload
-    if ($request->hasFile('images')) {
-      $files = $request->file('images');
-        foreach($files as $file) {
+    //handle file 1 upload
+    if ($request->hasFile('image1')) {
+      $file1 = $request->file('image1');
           //get file name with extension
-          $takeFile = $file->getClientOriginalName();
+          $takeFile = $file1->getClientOriginalName();
           //get just file name
           $filename = pathinfo($takeFile, PATHINFO_FILENAME);
           //get just extension
-          $extension = $file->getClientOriginalExtension();
+          $extension = $file1->getClientOriginalExtension();
           //file name to store
-          $fileNameToStore = $filename.'_'.date('D M Y').'.'.$extension;
+          $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $file->storeAs("public/".$request->input('name').'_'.date('Y-m-d, h-i-s'), $fileNameToStore);
-      }
+          $path = $file1->storeAs("public/".$request->input('name'), $fileNameToStore);
+    }
+
+    //handle file 2 upload
+    if ($request->hasFile('image2')) {
+      $file2 = $request->file('image2');
+          //get file name with extension
+          $takeFile = $file2->getClientOriginalName();
+          //get just file name
+          $filename = pathinfo($takeFile, PATHINFO_FILENAME);
+          //get just extension
+          $extension = $file2->getClientOriginalExtension();
+          //file name to store
+          $fileNameToStore = $filename.'.'.$extension;
+          //upload images
+          $path = $file2->storeAs("public/".$request->input('name'), $fileNameToStore);
+    }
+
+    //handle file 3 upload
+    if ($request->hasFile('image3')) {
+      $file3 = $request->file('image3');
+          //get file name with extension
+          $takeFile = $file3->getClientOriginalName();
+          //get just file name
+          $filename = pathinfo($takeFile, PATHINFO_FILENAME);
+          //get just extension
+          $extension = $file3->getClientOriginalExtension();
+          //file name to store
+          $fileNameToStore = $filename.'.'.$extension;
+          //upload images
+          $path = $file3->storeAs("public/".$request->input('name'), $fileNameToStore);
+    }
+
+    //handle file 4 upload
+    if ($request->hasFile('image4')) {
+      $file4 = $request->file('image4');
+          //get file name with extension
+          $takeFile = $file4->getClientOriginalName();
+          //get just file name
+          $filename = pathinfo($takeFile, PATHINFO_FILENAME);
+          //get just extension
+          $extension = $file4->getClientOriginalExtension();
+          //file name to store
+          $fileNameToStore = $filename.'.'.$extension;
+          //upload images
+          $path = $file4->storeAs("public/".$request->input('name'), $fileNameToStore);
     }
 
     //save data to database
@@ -105,12 +151,13 @@ class NewsletterController extends Controller
     }
 
     //zip download
-    /*public function downloadZip()
+    public function downloadZip($id)
     {
-      $files = glob(public_path("input('name').'_'.date('Y-m-d, h-i-s')/*"));
-      Zipper::make(public_path('test.zip'))->add($files)->close();
+      $newsletter = Newsletter::find($id);
+      $files = glob(public_path("storage/*"."$newsletter->name"."/*"));
+      Zipper::make(public_path("$newsletter->name".".zip"))->add($files)->close();
 
-      return response()->download(public_path('test.zip'));
+      return response()->download(public_path("$newsletter->name".".zip"));
     }
-    */
+
 }

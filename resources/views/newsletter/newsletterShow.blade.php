@@ -20,5 +20,6 @@
         <li class="list-group-item"><b>Description:</b> {{$newsletter->description}}</li>
       </ul>
         <a class="btn btn-default" href="{{route('pdfShow', [$newsletter->id])}}">Download pdf file</a>
+          <a class="btn btn-default" href="{{route('downloadFiles', [$newsletter->id])}}">Download Zip</a>
     </div>
 @endsection
