@@ -53,6 +53,8 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+                                    <li><a href="/journals/create">Create a Journal</a></li>
+                                    <li> <a href="/dashboard">View Journals</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

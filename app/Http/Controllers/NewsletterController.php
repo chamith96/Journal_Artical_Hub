@@ -7,7 +7,6 @@ use App\Newsletter;
 use PDF;
 use Zipper;
 use Illuminate\Support\Facades\Mail;
-//use App\Mail\newslettersSubmission;
 
 class NewsletterController extends Controller
 {
@@ -24,7 +23,13 @@ class NewsletterController extends Controller
   public function index()
   {
     $newsletter = Newsletter::orderBy('created_at', 'desc')->paginate(5);
-    return view('newsletter.newsletter')->with('newsletter',$newsletter);
+    return view('admin.newsletter')->with('newsletter',$newsletter);
+  }
+
+  public function show($id)
+  {
+  $newsletter = Newsletter::find($id);
+  return view('admin.newsletterShow')->with('newsletter', $newsletter);
   }
 
   public function create()
@@ -37,15 +42,14 @@ class NewsletterController extends Controller
     $request->validate([
       'name' => 'required|string|min:5|max:50',
       'email' => 'required|string|email|max:100',
-      'department' => 'required|string',
       'title' => 'required|string|max:30',
       'description' => 'required|string|max:50',
-      'image1' => 'image|max:1999',
+      'newsletter_date' => 'required',
+      'image1' => 'required|image|max:1999',
       'image2' => 'image|max:1999',
       'image3' => 'image|max:1999',
       'image4' => 'image|max:1999',
     ]);
-
     //handle file 1 upload
     if ($request->hasFile('image1')) {
       $file1 = $request->file('image1');
@@ -58,9 +62,8 @@ class NewsletterController extends Controller
           //file name to store
           $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $file1->storeAs("public/".$request->input('name'), $fileNameToStore);
+          $path = $file1->storeAs("public/newsletters/".$request->input('name'), $fileNameToStore);
     }
-
     //handle file 2 upload
     if ($request->hasFile('image2')) {
       $file2 = $request->file('image2');
@@ -73,9 +76,8 @@ class NewsletterController extends Controller
           //file name to store
           $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $file2->storeAs("public/".$request->input('name'), $fileNameToStore);
+          $path = $file2->storeAs("public/newsletters/".$request->input('name'), $fileNameToStore);
     }
-
     //handle file 3 upload
     if ($request->hasFile('image3')) {
       $file3 = $request->file('image3');
@@ -88,9 +90,8 @@ class NewsletterController extends Controller
           //file name to store
           $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $file3->storeAs("public/".$request->input('name'), $fileNameToStore);
+          $path = $file3->storeAs("public/newsletters/".$request->input('name'), $fileNameToStore);
     }
-
     //handle file 4 upload
     if ($request->hasFile('image4')) {
       $file4 = $request->file('image4');
@@ -103,42 +104,41 @@ class NewsletterController extends Controller
           //file name to store
           $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $file4->storeAs("public/".$request->input('name'), $fileNameToStore);
+          $path = $file4->storeAs("public/newsletters/".$request->input('name'), $fileNameToStore);
     }
-
     //save data to database
     $newsletter = new Newsletter;
     $newsletter->name = $request->input('name');
     $newsletter->email = $request->input('email');
+    $newsletter->administration = $request->input('administration');
     $newsletter->department = $request->input('department');
     $newsletter->title = $request->input('title');
     $newsletter->description = $request->input('description');
+    $newsletter->newsletter_date = $request->input('newsletter_date');
     $newsletter->save();
 
     //email to Sumbission
-    /*
-    $name = $request->input('name');
-    $email = $request->input('email');
-    $department = $request->input('department');
-    $title = $request->input('title');
-    $description = $request->input('description');
-
-    $data = array('name'=>$name, 'email'=>$email, 'description'=>$description, 'title'=>$title, 'department'=>$department);
-
+    $data = array('name' => $newsletter->name,
+                  'email' => $newsletter->email,
+                  'administration' => $newsletter->administration,
+                  'department' => $newsletter->department ,
+                  'title' => $newsletter->title,
+                  'description' => $newsletter->description,
+                  'newsletter_date' => $newsletter->newsletter_date
+                  );
     Mail::send('emails.Submit_Newsletters', $data, function($message) use($data) {
     $message->to($data['email']);
-    $message->subject($data['description'],$data['title'], $data['department']);
+    $message->subject($data['name'],
+                      $data['administration'],
+                      $data['department'],
+                      $data['title'],
+                      $data['description'],
+                      $data['newsletter_date']
+                      );
     $message->from('aa@aa.com');
     });
-    */
 
     return redirect('/newsletters/create')->with('success', 'Newsletter is submitted. Please check your email.');
-    }
-
-    public function show($id)
-    {
-    $newsletter = Newsletter::find($id);
-    return view('newsletter.newsletterShow')->with('newsletter', $newsletter);
     }
 
     //download note pdf file
@@ -154,7 +154,7 @@ class NewsletterController extends Controller
     public function downloadZip($id)
     {
       $newsletter = Newsletter::find($id);
-      $files = glob(public_path("storage/*"."$newsletter->name"."/*"));
+      $files = glob(public_path("storage/newsletters*"."$newsletter->name"."/*"));
       Zipper::make(public_path("$newsletter->name".".zip"))->add($files)->close();
 
       return response()->download(public_path("$newsletter->name".".zip"));

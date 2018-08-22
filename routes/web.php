@@ -16,27 +16,31 @@ Route::get('/', function () {
 });
 
 //newsletters route
-Route::get('/newsletters', 'NewsletterController@index');
-Route::get('/newsletters/create', 'NewsletterController@create');
-Route::get('/newsletters/{id}', 'NewsletterController@show');
-Route::post('/newsletters', 'NewsletterController@store');
+Route::get('admin/newsletters', 'NewsletterController@index');
+Route::get('newsletters/create', 'NewsletterController@create');
+Route::get('admin/newsletters/{id}', 'NewsletterController@show');
+Route::post('newsletters','NewsletterController@store');
 
 //pdf genarate
 Route::get('/downloadPDF/{id}','NewsletterController@downloadPDF')->name('pdfShow');
 
+//download newsletters zip
 Route::get('/downloadFiles/{id}','NewsletterController@downloadZip')->name('downloadFiles');
-
-//zip download
-//Route::get('downloadZip', 'NewsletterController@downloadZip')->name('zipDownload');
 
 //send email to newsletters submission
 //Route::post('/newsletters','NewsletterController@sendEmail');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//journals routes
+Route::get('/dashboard', 'AuthorJournalController@index');
+Route::get('/journals/create', 'AuthorJournalController@create');
+Route::get('/journals/{id}', 'AuthorJournalController@show');
+Route::post('/journals','AuthorJournalController@store');
 
 //admin routes
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginPage')->name('admin.login');
 Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
+Route::get('/admin/journals', 'JournalController@index');
+Route::get('/admin/journals/{id}', 'JournalController@show');
