@@ -7,10 +7,11 @@
         <li><a href="{{route('admin.dashboard')}}"> Dashboard</a></li>
         <li><a href="{{url('admin/newsletters')}}"> Newsletters</a></li>
         <li class="active"><a href="{{url('admin/journals')}}"> Journals</a></li>
+        <li><a href="{{url('admin/reviewers')}}"> Reviewers</a></li>
     </ul>
   </div>
 
-<h1 align="center">Newsletters</h1>
+<h1 align="center">Journals</h1>
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
     @if(count($journal) > 0)

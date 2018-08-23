@@ -21,11 +21,21 @@ Route::get('newsletters/create', 'NewsletterController@create');
 Route::get('admin/newsletters/{id}', 'NewsletterController@show');
 Route::post('newsletters','NewsletterController@store');
 
+//reviewers route
+Route::get('admin/reviewers', 'ReviewerController@index');
+Route::get('admin/reviewers/create', 'ReviewerController@create');
+Route::get('admin/reviewers/{id}', 'ReviewerController@show');
+Route::post('admin/reviewers','ReviewerController@store');
+Route::get('admin/reviewers/{id}/edit', 'ReviewerController@edit');
+Route::delete('admin/reviewers/{id}', 'ReviewerController@destroy');
+Route::post('admin/reviewers/{id}', 'ReviewerController@update');
+
 //pdf genarate
-Route::get('/downloadPDF/{id}','NewsletterController@downloadPDF')->name('pdfShow');
+Route::get('/downloadPDFNewsletter/{id}','NewsletterController@downloadPDF')->name('pdfShowNewsletter');
+Route::get('/downloadPDFJournal/{id}','JournalController@downloadPDF')->name('pdfShowJournal');
 
 //download newsletters zip
-Route::get('/downloadFiles/{id}','NewsletterController@downloadZip')->name('downloadFiles');
+Route::get('/downloadFilesNewsletter/{id}','NewsletterController@downloadZip')->name('downloadFilesNewsletter');
 
 //send email to newsletters submission
 //Route::post('/newsletters','NewsletterController@sendEmail');

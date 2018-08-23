@@ -7,6 +7,7 @@
             <li><a href="{{route('admin.dashboard')}}"> Dashboard</a></li>
             <li class="active"><a href="{{url('admin/newsletters')}}"> Newsletters</a></li>
             <li><a href="{{url('admin/journals')}}"> Journals</a></li>
+            <li><a href="{{url('admin/reviewers')}}"> Reviewers</a></li>
         </ul>
       </div>
 
@@ -19,8 +20,9 @@
         <li class="list-group-item"><b>Email:</b> {{$newsletter->email}}</li>
         <li class="list-group-item"><b>Department:</b> {{$newsletter->department}}</li>
         <li class="list-group-item"><b>Description:</b> {{$newsletter->description}}</li>
+        <li class="list-group-item"><b>Created at:</b> {{$newsletter->created_at}}</li>
       </ul>
-        <a class="btn btn-default" href="{{route('pdfShow', [$newsletter->id])}}">Download pdf file</a>
-          <a class="btn btn-default" href="{{route('downloadFiles', [$newsletter->id])}}">Download Zip</a>
+        <a class="btn btn-default" href="{{route('pdfShowNewsletter', [$newsletter->id])}}">Download pdf file</a>
+        <a class="btn btn-default" href="{{route('downloadFilesNewsletter', [$newsletter->id])}}">Download Zip</a>
     </div>
 @endsection

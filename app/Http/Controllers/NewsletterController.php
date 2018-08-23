@@ -141,11 +141,11 @@ class NewsletterController extends Controller
     return redirect('/newsletters/create')->with('success', 'Newsletter is submitted. Please check your email.');
     }
 
-    //download note pdf file
+    //download newsletters pdf file
     public function downloadPDF($id)
     {
       $newsletter = Newsletter::find($id);
-      $pdf = PDF::loadView('newsletter.pdf', compact('newsletter')); //path to user view pdf
+      $pdf = PDF::loadView('newsletter.newsletterPDF', compact('newsletter')); //path to user view pdf
       $newsletterName = $newsletter->title;
       return $pdf->download("$newsletterName.pdf");
     }
@@ -154,7 +154,7 @@ class NewsletterController extends Controller
     public function downloadZip($id)
     {
       $newsletter = Newsletter::find($id);
-      $files = glob(public_path("storage/newsletters*"."$newsletter->name"."/*"));
+      $files = glob(public_path("storage/newsletters/"."$newsletter->name"."/*"));
       Zipper::make(public_path("$newsletter->name".".zip"))->add($files)->close();
 
       return response()->download(public_path("$newsletter->name".".zip"));

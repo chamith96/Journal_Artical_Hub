@@ -22,11 +22,6 @@ class CreateJournalsTable extends Migration
           $table->string('title');
           $table->string('description');
           $table->date('journal_date');
-          $table->string('image1');
-          $table->string('image2');
-          $table->string('image3');
-          $table->string('pdf');
-          $table->string('doc');
           $table->int('user_id');
           $table->timestamps();
         });

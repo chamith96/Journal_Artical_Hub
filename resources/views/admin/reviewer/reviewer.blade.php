@@ -5,29 +5,30 @@
   <div id="sidebar-collapse" class="col-sm-2 col-lg-2 sidebar">
       <ul class="nav menu">
         <li><a href="{{route('admin.dashboard')}}"> Dashboard</a></li>
-        <li class="active"><a href="{{url('admin/newsletters')}}"> Newsletters</a></li>
+        <li><a href="{{url('admin/newsletters')}}"> Newsletters</a></li>
         <li><a href="{{url('admin/journals')}}"> Journals</a></li>
-        <li><a href="{{url('admin/reviewers')}}"> Reviewers</a></li>
+        <li class="active"><a href="{{url('admin/reviewers')}}"> Reviewers</a></li>
     </ul>
   </div>
 
-<h1 align="center">Newsletters</h1>
+<h1 align="center">Reviewers</h1>
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
-    @if(count($newsletter) > 0)
+    <a href="reviewers/create" class="btn btn-primary">Add Reviewers</a> <hr>
+    @include('layouts.messages')
+    @if(count($reviewer) > 0)
 
-      @foreach ($newsletter as $newsletters)
+      @foreach ($reviewer as $reviewers)
         <div class="well">
-        <h1><a href="/admin/newsletters/{{$newsletters->id}}">{{$newsletters->title}} {{$newsletters->id}}</a></h1>
-        written on {{$newsletters->created_at}}
-              </div>
+          <h1><a href="reviewers/{{$reviewers->id}}">{{$reviewers->name}}</a></h1>
+        </div>
       @endforeach
-      {{$newsletter->links()}}
+      {{$reviewer->links()}}
 </div>
 </div>
       @else
         <div class="col-md-8 col-md-offset-2">
-          <div class="panel-heading"><h3>Don't have any Newsletters yet.</h3>
+          <div class="panel-heading"><h3>Don't have registered any Reviewer yet.</h3>
           </div>
         </div>
     @endif

@@ -30,7 +30,11 @@ class AuthorJournalController extends Controller
   public function show($id)
 {
     $journal = Journal::find($id);
-    return view('journal.Journalshow')->with('journal', $journal);
+    if(auth()->user()->id == $journal->user_id){
+      return view('journal.Journalshow')->with('journal', $journal);
+    } else {
+      return redirect('dashboard')->with('$error', 'Unauthorized access');
+    }
 }
 
 //create journal

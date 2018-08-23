@@ -1,0 +1,46 @@
+@extends('layouts.app')
+    @section('content')
+
+      <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+        <div id="sidebar-collapse" class="col-sm-2 col-lg-2 sidebar">
+            <ul class="nav menu">
+              <li><a href="{{route('admin.dashboard')}}"> Dashboard</a></li>
+              <li><a href="{{url('admin/newsletters')}}"> Newsletters</a></li>
+              <li><a href="{{url('admin/journals')}}"> Journals</a></li>
+              <li class="active"><a href="{{url('admin/reviewers')}}"> Reviewers</a></li>
+          </ul>
+        </div>
+
+        <div class="container">
+        <div class="col-md-8 col-md-offset-2">
+        <h1>Edit Reviewers</h1> <br>
+        @include('layouts.messages')
+      <form action="{{url('admin/reviewers', [$reviewer->id])}}" method="POST">
+        {{ csrf_field() }}
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Full Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name="name" value="{{$reviewer->name}}">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Email</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name="email" value="{{$reviewer->email}}">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Organization</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name="organization" value="{{$reviewer->organization}}">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Position</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name="position" value="{{$reviewer->position}}">
+      </div>
+
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+    </div>
+  </div>
+
+    <br>
+  @endsection

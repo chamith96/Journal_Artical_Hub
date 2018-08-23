@@ -25,4 +25,13 @@ class JournalController extends Controller
     $journal = Journal::find($id);
     return view('admin.Journalshow')->with('journal', $journal);
 }
+
+//download journal pdf file
+public function downloadPDF($id)
+{
+  $journal = Journal::find($id);
+  $pdf = PDF::loadView('journal.journalPDF', compact('journal')); //path to user view pdf
+  $journalName = $journal->title;
+  return $pdf->download("$journalName.pdf");
+}
 }
