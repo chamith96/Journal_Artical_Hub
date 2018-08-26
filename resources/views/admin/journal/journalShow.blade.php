@@ -15,6 +15,7 @@
       <div class="col-md-8 col-md-offset-2">
       <ul class="list-group">
         <li class="list-group-item active"><h1>{{$journal->title}}</h1></li>
+        <li class="list-group-item"><p>Journsl Id: {{$journal->id}}</p></li>
         <li class="list-group-item"><p>Author name: {{$journal->name}}</p></li>
         <li class="list-group-item"><p>Administration: {{$journal->administration}}</p></li>
         <li class="list-group-item"><p>Department: {{$journal->department}}</p></li>
@@ -22,9 +23,10 @@
         <li class="list-group-item"><p>Journal Description: {{$journal->description}}</p></li>
         <li class="list-group-item"><p>Journal release date: {{$journal->journal_date}}</p></li>
         <li class="list-group-item"><p>Journal Created date: {{$journal->created_at}}</p></li>
-        <li class="list-group-item"><p>Journal updated date: {{$journal->updated_at}}</p></li>
       </ul>
-        <a class="btn btn-default" href="{{route('pdfShowJournal', [$journal->id])}}">Download pdf file</a>
-
+        <a class="btn btn-default" href="{{route('pdfShowJournal', [$journal->id])}}">Download details pdf</a>
+        <a class="btn btn-default" href="{{route('PDFJournal', [$journal->id])}}">Download pdf file</a>
+        <a class="btn btn-default" href="{{route('DOCJournal', [$journal->id])}}">Download doc file</a>
     </div>
+
 @endsection

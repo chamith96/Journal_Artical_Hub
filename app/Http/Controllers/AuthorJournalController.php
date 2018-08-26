@@ -48,19 +48,30 @@ class AuthorJournalController extends Controller
   {
     $request->validate([
       'name' => 'required|string|min:5|max:50',
-      'email' => 'required|string|email|max:100',
       'title' => 'required|string|max:30',
       'description' => 'required|string|max:50',
       'journal_date' => 'required',
-      'image1' => 'image|max:1999',
-      'image2' => 'image|max:1999',
-      'image3' => 'image|max:1999',
       'pdf' => 'required|mimes:pdf|max:1999',
       'doc' => 'required|mimes:doc,docx|max:1999'
     ]);
 
+    //save data to database
+    $journal = new Journal;
+    $journal->name = $request->input('name');
+    $journal->email = auth()->user()->email;
+    $journal->administration = $request->input('administration');
+    $journal->department = $request->input('department');
+    $journal->title = $request->input('title');
+    $journal->description = $request->input('description');
+    $journal->journal_date = $request->input('journal_date');
+    $journal->user_id = auth()->user()->id;
+    $journal->save();
+
+    //get journalId
+    $journalId = $journal->id;
+
     //handle image 1 upload
-    if ($request->hasFile('image1')) {
+    /*if ($request->hasFile('image1')) {
       $file1 = $request->file('image1');
           //get file name with extension
           $takeFile = $file1->getClientOriginalName();
@@ -71,7 +82,7 @@ class AuthorJournalController extends Controller
           //file name to store
           $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $file1->storeAs("public/journals/".$request->input('name'), $fileNameToStore);
+          $path = $file1->storeAs("public/journals/".$journalId."/img", $fileNameToStore);
     }
     //handle image 2 upload
     if ($request->hasFile('image2')) {
@@ -85,7 +96,7 @@ class AuthorJournalController extends Controller
           //file name to store
           $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $file2->storeAs("public/journals/".$request->input('name'), $fileNameToStore);
+          $path = $file2->storeAs("public/journals/".$journalId."/img", $fileNameToStore);
     }
     //handle image 3 upload
     if ($request->hasFile('image3')) {
@@ -99,8 +110,8 @@ class AuthorJournalController extends Controller
           //file name to store
           $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $file3->storeAs("public/journals/".$request->input('name'), $fileNameToStore);
-    }
+          $path = $file3->storeAs("public/journals/".$journalId."/img", $fileNameToStore);
+    }*/
     //handle pdf upload
     if ($request->hasFile('pdf')) {
       $pdf = $request->file('pdf');
@@ -113,7 +124,7 @@ class AuthorJournalController extends Controller
           //file name to store
           $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $pdf->storeAs("public/journals/".$request->input('name'), $fileNameToStore);
+          $path = $pdf->storeAs("public/journals/".$journalId."/pdf", $fileNameToStore);
     }
     //handle doc upload
     if ($request->hasFile('doc')) {
@@ -127,25 +138,9 @@ class AuthorJournalController extends Controller
           //file name to store
           $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $doc->storeAs("public/journals/".$request->input('name'), $fileNameToStore);
+          $path = $doc->storeAs("public/journals/".$journalId."/doc", $fileNameToStore);
     }
 
-    //save data to database
-    $journal = new Journal;
-    $journal->name = $request->input('name');
-    $journal->email = $request->input('email');
-    $journal->administration = $request->input('administration');
-    $journal->department = $request->input('department');
-    $journal->title = $request->input('title');
-    $journal->description = $request->input('description');
-    $journal->journal_date = $request->input('journal_date');
-    $journal->image1 = $path;
-    $journal->image2 = $path;
-    $journal->image3 = $path;
-    $journal->pdf = $path;
-    $journal->doc = $path;
-    $journal->user_id = auth()->user()->id;
-    $journal->save();
 
     //email to Sumbission
     /*

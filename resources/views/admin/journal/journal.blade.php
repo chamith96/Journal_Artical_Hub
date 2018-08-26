@@ -18,7 +18,7 @@
 
       @foreach ($journal as $journals)
         <div class="well">
-        <h1><a href="journals/{{$journals->id}}">{{$journals->title}}</a></h1>
+        <h1><a href="journals/{{$journals->id}}">{{$journals->id}}. {{$journals->title}}</a></h1>
         written on {{$journals->created_at}}
               </div>
       @endforeach

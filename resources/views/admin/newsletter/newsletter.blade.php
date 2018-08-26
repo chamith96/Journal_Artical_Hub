@@ -18,7 +18,7 @@
 
       @foreach ($newsletter as $newsletters)
         <div class="well">
-        <h1><a href="/admin/newsletters/{{$newsletters->id}}">{{$newsletters->title}} {{$newsletters->id}}</a></h1>
+        <h1><a href="/admin/newsletters/{{$newsletters->id}}">{{$newsletters->id}}. {{$newsletters->title}}</a></h1>
         written on {{$newsletters->created_at}}
               </div>
       @endforeach

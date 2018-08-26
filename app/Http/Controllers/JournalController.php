@@ -17,16 +17,16 @@ class JournalController extends Controller
     public function index()
   {
     $journal = Journal::orderBy('created_at', 'desc')->paginate(5);
-    return view('admin.journal')->with('journal',$journal);
+    return view('admin.journal.journal')->with('journal',$journal);
   }
 
   public function show($id)
 {
     $journal = Journal::find($id);
-    return view('admin.Journalshow')->with('journal', $journal);
+    return view('admin.journal.Journalshow')->with('journal', $journal);
 }
 
-//download journal pdf file
+//download journal details pdf file
 public function downloadPDF($id)
 {
   $journal = Journal::find($id);
@@ -34,4 +34,19 @@ public function downloadPDF($id)
   $journalName = $journal->title;
   return $pdf->download("$journalName.pdf");
 }
+
+//pdf download
+public function PdfDownload($id)
+{
+  $journal = Journal::find($id);
+  return response()->download(public_path("storage/journals/pdf/*"));
+}
+
+//zip download
+public function DocDownload($id)
+{
+  $journal = Journal::find($id);
+  return response()->download(public_path("storage/journals/doc/*"));
+}
+
 }

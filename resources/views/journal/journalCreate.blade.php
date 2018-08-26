@@ -11,11 +11,6 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlInput1">Email</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" name="email">
-      </div>
-
-      <div class="form-group">
         <label for="exampleFormControlSelect1">Faculty/Center</label>
         <select class="form-control" id="exampleFormControlSelect1" name="administration">
           <optgroup label="Faculty">
@@ -90,21 +85,6 @@
       <div class="form-group">
         <label for="exampleFormControlInput1">Journal Date</label>
         <input type="date" class="form-control" id="exampleFormControlInput1" name="journal_date">
-      </div>
-
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Insert image 1</label>
-        <input type="file" name="image1">
-      </div>
-
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Insert images 2</label>
-        <input type="file" name="image1">
-      </div>
-
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Insert images 3</label>
-        <input type="file" name="image1">
       </div>
 
       <div class="form-group">

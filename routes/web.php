@@ -34,6 +34,10 @@ Route::post('admin/reviewers/{id}', 'ReviewerController@update');
 Route::get('/downloadPDFNewsletter/{id}','NewsletterController@downloadPDF')->name('pdfShowNewsletter');
 Route::get('/downloadPDFJournal/{id}','JournalController@downloadPDF')->name('pdfShowJournal');
 
+//download Doc and Pdf file
+Route::get('/PDFJournal/{id}','JournalController@PdfDownload')->name('PDFJournal');
+Route::get('/DOCJournal/{id}','JournalController@DocDownload')->name('DOCJournal');
+
 //download newsletters zip
 Route::get('/downloadFilesNewsletter/{id}','NewsletterController@downloadZip')->name('downloadFilesNewsletter');
 
