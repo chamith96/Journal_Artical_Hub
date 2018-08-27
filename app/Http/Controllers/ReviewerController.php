@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Reviewer;
+use App\EmailReviewer;
 
 class ReviewerController extends Controller
 {
@@ -79,6 +81,43 @@ class ReviewerController extends Controller
       $reviewer = Reviewer::find($id);
       $reviewer->delete();
       return redirect('/admin/reviewers')->with('success', 'Reviewer deleted');
+  }
+
+  public function showEmail($id)
+{
+  $reviewers = Reviewer::find($id);
+  return view('admin.reviewer.reviewerEmail')->with('reviewers', $reviewers);
+}
+
+  public function sendEmail(Request $request)
+{
+  $request->validate([
+    'reviewer' => 'required|email',
+    'subject' => 'required|string',
+    'body' => 'required|string',
+  ]);
+
+  //save data to database
+  $emailReviewer = new EmailReviewer;
+  $emailReviewer->reviewer_email  = $request->input('reviewer');
+  $emailReviewer->subject = $request->input('subject');
+  $emailReviewer->body = $request->input('body');
+  $emailReviewer->save();
+
+  //email to Sumbission
+  $data = array('reviewer_email' => $emailReviewer->reviewer_email,
+                'subject' => $emailReviewer->subject,
+                'body' => $emailReviewer->body
+                );
+  Mail::send('emails.reviewer_email', $data, function($message) use($data) {
+  $message->to($data['reviewer_email']);
+  $message->subject($data['subject'],
+                    $data['body']
+                    );
+  $message->from('admin@abc.com');
+});
+
+  return redirect('/admin/reviewers')->with('success', 'Email sent.');
   }
 
 }

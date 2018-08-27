@@ -1,15 +1,5 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,15 +10,6 @@ Route::get('admin/newsletters', 'NewsletterController@index');
 Route::get('newsletters/create', 'NewsletterController@create');
 Route::get('admin/newsletters/{id}', 'NewsletterController@show');
 Route::post('newsletters','NewsletterController@store');
-
-//reviewers route
-Route::get('admin/reviewers', 'ReviewerController@index');
-Route::get('admin/reviewers/create', 'ReviewerController@create');
-Route::get('admin/reviewers/{id}', 'ReviewerController@show');
-Route::post('admin/reviewers','ReviewerController@store');
-Route::get('admin/reviewers/{id}/edit', 'ReviewerController@edit');
-Route::delete('admin/reviewers/{id}', 'ReviewerController@destroy');
-Route::post('admin/reviewers/{id}', 'ReviewerController@update');
 
 //pdf genarate
 Route::get('/downloadPDFNewsletter/{id}','NewsletterController@downloadPDF')->name('pdfShowNewsletter');
@@ -41,20 +22,27 @@ Route::get('/DOCJournal/{id}','JournalController@DocDownload')->name('DOCJournal
 //download newsletters zip
 Route::get('/downloadFilesNewsletter/{id}','NewsletterController@downloadZip')->name('downloadFilesNewsletter');
 
-//send email to newsletters submission
-//Route::post('/newsletters','NewsletterController@sendEmail');
-
-Auth::routes();
-
 //journals routes
 Route::get('/dashboard', 'AuthorJournalController@index');
 Route::get('/journals/create', 'AuthorJournalController@create');
 Route::get('/journals/{id}', 'AuthorJournalController@show');
 Route::post('/journals','AuthorJournalController@store');
 
+//reviewers route
+Route::get('admin/reviewers', 'ReviewerController@index');
+Route::get('admin/reviewers/create', 'ReviewerController@create');
+Route::get('admin/reviewers/{id}', 'ReviewerController@show');
+Route::post('admin/reviewers','ReviewerController@store');
+Route::get('admin/reviewers/{id}/edit', 'ReviewerController@edit');
+Route::delete('admin/reviewers/{id}', 'ReviewerController@destroy');
+Route::post('admin/reviewers/{id}', 'ReviewerController@update');
+Route::get('/admin/reviewers/email/{id}', 'ReviewerController@showEmail');
+Route::post('/admin/email/reviewers', 'ReviewerController@sendEmail');
+
 //user routes
 Route::get('/admin/users', 'UserController@index');
 Route::get('/admin/users/email/{id}', 'UserController@showEmail');
+Route::post('admin/email/users', 'UserController@sendEmail');
 
 //admin routes
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginPage')->name('admin.login');

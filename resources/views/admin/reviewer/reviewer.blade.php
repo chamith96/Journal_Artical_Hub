@@ -22,6 +22,7 @@
       @foreach ($reviewer as $reviewers)
         <div class="well">
           <h1><a href="reviewers/{{$reviewers->id}}">{{$reviewers->name}}</a></h1>
+          <a href="/admin/reviewers/email/{{$reviewers->id}}" class="btn btn-primary">send email</a>
         </div>
       @endforeach
       {{$reviewer->links()}}
