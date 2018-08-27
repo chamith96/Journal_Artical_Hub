@@ -47,7 +47,6 @@ class AuthorJournalController extends Controller
   public function store(Request $request)
   {
     $request->validate([
-      'name' => 'required|string|min:5|max:50',
       'title' => 'required|string|max:30',
       'description' => 'required|string|max:50',
       'journal_date' => 'required',
@@ -57,7 +56,7 @@ class AuthorJournalController extends Controller
 
     //save data to database
     $journal = new Journal;
-    $journal->name = $request->input('name');
+    $journal->name = auth()->user()->name;
     $journal->email = auth()->user()->email;
     $journal->administration = $request->input('administration');
     $journal->department = $request->input('department');

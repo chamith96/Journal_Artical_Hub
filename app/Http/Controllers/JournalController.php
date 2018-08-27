@@ -39,14 +39,16 @@ public function downloadPDF($id)
 public function PdfDownload($id)
 {
   $journal = Journal::find($id);
-  return response()->download(public_path("storage/journals/pdf/*"));
+  return response()->download(public_path("storage/journals/".$journal->id."/pdf/"."$newsletter->id".".pdf"));
 }
 
 //zip download
 public function DocDownload($id)
 {
   $journal = Journal::find($id);
-  return response()->download(public_path("storage/journals/doc/*"));
+  $file4 = file('doc');
+  $takeFile = $file4->getClientOriginalName();
+  return response()->download(public_path("storage/journals/".$journal->id."/doc/"."$newsletter->id".".docx"));
 }
 
 }

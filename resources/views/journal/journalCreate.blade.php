@@ -5,10 +5,6 @@
         @include('layouts.messages')
       <form action="{{url('journals')}}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Full Name</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" name="name">
-      </div>
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">Faculty/Center</label>

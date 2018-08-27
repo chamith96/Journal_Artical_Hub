@@ -52,6 +52,10 @@ Route::get('/journals/create', 'AuthorJournalController@create');
 Route::get('/journals/{id}', 'AuthorJournalController@show');
 Route::post('/journals','AuthorJournalController@store');
 
+//user routes
+Route::get('/admin/users', 'UserController@index');
+Route::get('/admin/users/email/{id}', 'UserController@showEmail');
+
 //admin routes
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginPage')->name('admin.login');
 Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');

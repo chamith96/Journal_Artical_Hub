@@ -8,13 +8,13 @@
             <li><a href="{{url('admin/newsletters')}}"> Newsletters</a></li>
             <li class="active"><a href="{{url('admin/journals')}}"> Journals</a></li>
             <li><a href="{{url('admin/reviewers')}}"> Reviewers</a></li>
+            <li><a href="{{url('admin/users')}}"> Users</a></li>
         </ul>
       </div>
 
     <div class="container">
       <div class="col-md-8 col-md-offset-2">
       <ul class="list-group">
-        <li class="list-group-item active"><h1>{{$journal->title}}</h1></li>
         <li class="list-group-item"><p>Journsl Id: {{$journal->id}}</p></li>
         <li class="list-group-item"><p>Author name: {{$journal->name}}</p></li>
         <li class="list-group-item"><p>Administration: {{$journal->administration}}</p></li>

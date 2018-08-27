@@ -164,6 +164,7 @@ class NewsletterController extends Controller
       $files = glob(public_path("storage/newsletters/"."$newsletter->id"."/*"));
       Zipper::make(public_path("storage/newsletters/"."$newsletter->id"."/Newsletter "."$newsletter->id".".zip"))->add($files)->close();
 
+      //return response()->download(public_path("storage/newsletters/"."$newsletter->id"."/Newsletter "."$newsletter->id".".zip"))->deleteFileAfterSend(true);
       return response()->download(public_path("storage/newsletters/"."$newsletter->id"."/Newsletter "."$newsletter->id".".zip"));
     }
 
