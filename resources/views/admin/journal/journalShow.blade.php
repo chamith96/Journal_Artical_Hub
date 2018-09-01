@@ -25,8 +25,8 @@
         <li class="list-group-item"><p>Journal Created date: {{$journal->created_at}}</p></li>
       </ul>
         <a class="btn btn-default" href="{{route('pdfShowJournal', [$journal->id])}}">Download details pdf</a>
-        <a class="btn btn-default" href="{{route('PDFJournal', [$journal->id])}}">Download pdf file</a>
-        <a class="btn btn-default" href="{{route('DOCJournal', [$journal->id])}}">Download doc file</a>
+        <a class="btn btn-default" href="{{route('downloadFilesJournal', [$journal->id])}}">Download Zip</a>
+        <a class="btn btn-default" href="{{url('admin/journals/email')}}">Email to Reviewer</a>
     </div>
 
 @endsection

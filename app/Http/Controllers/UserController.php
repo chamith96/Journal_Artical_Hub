@@ -49,9 +49,7 @@ class UserController extends Controller
                   );
     Mail::send('emails.User_email', $data, function($message) use($data) {
     $message->to($data['user_email']);
-    $message->subject($data['subject'],
-                      $data['body']
-                      );
+    $message->subject($data['subject']);
     $message->from('admin@abc.com');
   });
 

@@ -12,19 +12,36 @@
     </ul>
   </div>
 
-<h1 align="center">Reviewers</h1>
+<div align="center">
+<h1>Reviewers</h1>
+<a href="reviewers/create" class="btn btn-default">Add Reviewers</a>
+  </div>
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
-    <a href="reviewers/create" class="btn btn-primary">Add Reviewers</a> <hr>
     @include('layouts.messages')
     @if(count($reviewer) > 0)
-
-      @foreach ($reviewer as $reviewers)
-        <div class="well">
-          <h1><a href="reviewers/{{$reviewers->id}}">{{$reviewers->name}}</a></h1>
-          <a href="/admin/reviewers/email/{{$reviewers->id}}" class="btn btn-primary">send email</a>
-        </div>
-      @endforeach
+      <br>
+      <table class="table table-striped">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+        @foreach ($reviewer as $reviewers)
+        <tr>
+            <td>
+              <h3><b><a href="reviewers/{{$reviewers->id}}">{{$reviewers->name}}</a></b></h3>
+            </td>
+            <td>
+              <h3><b><a href="reviewers/{{$reviewers->id}}">{{$reviewers->email}}</a></b></h3>
+            </td>
+            <td>
+              <a href="/admin/reviewers/email/{{$reviewers->id}}" class="btn btn-info btn-lg">
+                <span class="glyphicon glyphicon-envelope"></span>
+              </a>
+            </td>
+          @endforeach
+        </tr>
+      </table>
       {{$reviewer->links()}}
 </div>
 </div>

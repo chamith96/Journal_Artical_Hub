@@ -17,13 +17,29 @@
   <div class="col-md-8 col-md-offset-2">
     @if(count($user) > 0)
 
-      @foreach ($user as $users)
-        <div class="well">
-        <p><b>Name: {{$users->name}}</b></p>
-        <p><b>Email: {{$users->email}}</b></p>
-        <a href="{{url('/admin/users/email', [$users->id])}}" class="btn btn-primary">send email</a>
-        </div>
-      @endforeach
+      <table class="table table-striped">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+        @foreach ($user as $users)
+        <tr>
+
+            <td>
+              <h3>{{$users->name}}</h3>
+            </td>
+            <td>
+              <h3>{{$users->email}}</h3>
+            </td>
+            <td>
+              <a href="{{url('/admin/users/email', [$users->id])}}" class="btn btn-info btn-lg">
+                <span class="glyphicon glyphicon-envelope"></span>
+              </a>
+            </td>
+          @endforeach
+        </tr>
+      </table>
       {{$user->links()}}
 </div>
 </div>

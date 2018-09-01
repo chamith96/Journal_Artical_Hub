@@ -15,18 +15,18 @@ Route::post('newsletters','NewsletterController@store');
 Route::get('/downloadPDFNewsletter/{id}','NewsletterController@downloadPDF')->name('pdfShowNewsletter');
 Route::get('/downloadPDFJournal/{id}','JournalController@downloadPDF')->name('pdfShowJournal');
 
-//download Doc and Pdf file
-Route::get('/PDFJournal/{id}','JournalController@PdfDownload')->name('PDFJournal');
-Route::get('/DOCJournal/{id}','JournalController@DocDownload')->name('DOCJournal');
-
-//download newsletters zip
+//download newsletters and journal zip
 Route::get('/downloadFilesNewsletter/{id}','NewsletterController@downloadZip')->name('downloadFilesNewsletter');
+Route::get('/downloadFilesJournal/{id}','JournalController@downloadZip')->name('downloadFilesJournal');
 
 //journals routes
 Route::get('/dashboard', 'AuthorJournalController@index');
 Route::get('/journals/create', 'AuthorJournalController@create');
 Route::get('/journals/{id}', 'AuthorJournalController@show');
 Route::post('/journals','AuthorJournalController@store');
+Route::get('/admin/journals/email', 'JournalController@emailPage');
+Route::get('/admin/journals/email', 'JournalController@showReviewers');
+Route::post('/admin/journals/email', 'JournalController@sendEmail');
 
 //reviewers route
 Route::get('admin/reviewers', 'ReviewerController@index');

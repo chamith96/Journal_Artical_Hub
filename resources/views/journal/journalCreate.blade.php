@@ -84,13 +84,28 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlInput1">Insert pdf files</label>
+        <label for="exampleFormControlInput1">Insert pdf file</label>
         <input type="file" name="pdf">
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlInput1">Insert doc files</label>
+        <label for="exampleFormControlInput1">Insert doc file</label>
         <input type="file" name="doc">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Insert image 1</label>
+        <input type="file" name="image1">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Insert image 2</label>
+        <input type="file" name="image2">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Insert image 3</label>
+        <input type="file" name="image3">
       </div>
 
       <input type="submit" value="Submit" class="btn btn-primary">

@@ -16,27 +16,37 @@
   <div class="col-md-8 col-md-offset-2">
   <h1>Send email to reviewers</h1> <br>
   @include('layouts.messages')
-<form action="" method="POST">
-  {{ csrf_field() }}
-<div class="form-group">
-  <label for="exampleFormControlInput1">Reviewers</label>
-  <input type="text" class="form-control" id="exampleFormControlInput1" name="author">
-</div>
+    <form action="{{url('admin/journals/email')}}" method="POST"  enctype="multipart/form-data">
+      {{ csrf_field() }}
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Reviewers</label>
+          @if(count($reviewer) > 0)
+            <select class="form-control" name="reviewer">
+            @foreach ($reviewer as $reviewers)
+              <option>{{$reviewers->email}}</option>
+            @endforeach
+            </select>
+          @endif
+    </div>
 
-<div class="form-group">
-  <label for="exampleFormControlInput1">Subject</label>
-  <input type="text" class="form-control" id="exampleFormControlInput1" name="subject">
-</div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Subject</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" name="subject">
+    </div>
 
-<div class="form-group">
-  <label for="exampleFormControlTextarea1">Body</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="body"></textarea>
-</div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Body</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="body"></textarea>
+    </div>
 
-<input type="submit" value="Send" class="btn btn-primary">
-</form>
-</div>
-</div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">File to send</label>
+      <input type="file" name="file">
+    </div>
 
+    <input type="submit" value="Send" class="btn btn-primary">
+    </form>
+    </div>
+    </div>
 
   @endsection

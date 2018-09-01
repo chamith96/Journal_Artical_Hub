@@ -17,8 +17,8 @@ class ReviewerController extends Controller
 
   public function index()
   {
-    $reviewer = Reviewer::orderBy('created_at', 'desc')->paginate(5);
-    return view('admin.reviewer.reviewer')->with('reviewer',$reviewer);;
+    $reviewer = Reviewer::orderBy('created_at', 'desc')->paginate(10);
+    return view('admin.reviewer.reviewer')->with('reviewer',$reviewer);
   }
 
   public function create()
@@ -76,6 +76,7 @@ class ReviewerController extends Controller
       return redirect('/admin/reviewers')->with('success','Reviewer Updated');
   }
 
+//delete reviewers
   public function destroy($id)
   {
       $reviewer = Reviewer::find($id);
@@ -111,9 +112,7 @@ class ReviewerController extends Controller
                 );
   Mail::send('emails.reviewer_email', $data, function($message) use($data) {
   $message->to($data['reviewer_email']);
-  $message->subject($data['subject'],
-                    $data['body']
-                    );
+  $message->subject($data['subject']);
   $message->from('admin@abc.com');
 });
 

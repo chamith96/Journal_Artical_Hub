@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Journal;
 use App\User;
+use Illuminate\Support\Facades\Mail;
 
 class AuthorJournalController extends Controller
 {
@@ -23,7 +24,7 @@ class AuthorJournalController extends Controller
 {
   $user_id = auth()->user()->id;
   $user = User::find($user_id);
-  return view('journal.journal')->with('journal', $user->journals); //$user->notes ;notes is User model function, not database field
+  return view('journal.journal')->with('journal', $user->journals); //$user->journals ;journals is User model function, not database field
 }
 
 //show journal details to user
@@ -70,7 +71,7 @@ class AuthorJournalController extends Controller
     $journalId = $journal->id;
 
     //handle image 1 upload
-    /*if ($request->hasFile('image1')) {
+    if ($request->hasFile('image1')) {
       $file1 = $request->file('image1');
           //get file name with extension
           $takeFile = $file1->getClientOriginalName();
@@ -81,7 +82,7 @@ class AuthorJournalController extends Controller
           //file name to store
           $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $file1->storeAs("public/journals/".$journalId."/img", $fileNameToStore);
+          $path = $file1->storeAs("public/journals/".$journalId, $fileNameToStore);
     }
     //handle image 2 upload
     if ($request->hasFile('image2')) {
@@ -95,7 +96,7 @@ class AuthorJournalController extends Controller
           //file name to store
           $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $file2->storeAs("public/journals/".$journalId."/img", $fileNameToStore);
+          $path = $file2->storeAs("public/journals/".$journalId, $fileNameToStore);
     }
     //handle image 3 upload
     if ($request->hasFile('image3')) {
@@ -109,8 +110,8 @@ class AuthorJournalController extends Controller
           //file name to store
           $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $file3->storeAs("public/journals/".$journalId."/img", $fileNameToStore);
-    }*/
+          $path = $file3->storeAs("public/journals/".$journalId, $fileNameToStore);
+    }
     //handle pdf upload
     if ($request->hasFile('pdf')) {
       $pdf = $request->file('pdf');
@@ -123,7 +124,7 @@ class AuthorJournalController extends Controller
           //file name to store
           $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $pdf->storeAs("public/journals/".$journalId."/pdf", $fileNameToStore);
+          $path = $pdf->storeAs("public/journals/".$journalId, $fileNameToStore);
     }
     //handle doc upload
     if ($request->hasFile('doc')) {
@@ -137,31 +138,24 @@ class AuthorJournalController extends Controller
           //file name to store
           $fileNameToStore = $filename.'.'.$extension;
           //upload images
-          $path = $doc->storeAs("public/journals/".$journalId."/doc", $fileNameToStore);
+          $path = $doc->storeAs("public/journals/".$journalId, $fileNameToStore);
     }
 
-
     //email to Sumbission
-    /*
-    $data = array('name' => $newsletter->name,
-                  'email' => $newsletter->email,
-                  'administration' => $newsletter->administration,
-                  'department' => $newsletter->department ,
-                  'title' => $newsletter->title,
-                  'description' => $newsletter->description,
-                  'newsletter_date' => $newsletter->newsletter_date
+    $data = array('email_title' => "Journal has been submitted",
+                  'name' => $journal->name,
+                  'email' => $journal->email,
+                  'administration' => $journal->administration,
+                  'department' => $journal->department ,
+                  'title' => $journal->title,
+                  'description' => $journal->description,
+                  'journal_date' => $journal->journal_date
                   );
-    Mail::send('emails.Submit_Newsletters', $data, function($message) use($data) {
+    Mail::send('emails.Submit_Journals', $data, function($message) use($data) {
     $message->to($data['email']);
-    $message->subject($data['name'],
-                      $data['administration'],
-                      $data['department'],
-                      $data['title'],
-                      $data['description'],
-                      $data['newsletter_date']
-                      );
-    $message->from('aa@aa.com');
-  }); */
+    $message->subject($data['email_title']);
+    $message->from('admin@abc.com');
+  });
 
-    return redirect('/journals/create')->with('success', 'Journal is submitted. Please check your email.');
+    return redirect('/journals/create')->with('success', 'Journal is submitted. We will let you know if reviewer response.');
 }}

@@ -123,7 +123,8 @@ class NewsletterController extends Controller
     }
 
     //email to Sumbission
-    /*$data = array('id' => $newsletter->id,
+    $data = array('email_title' => "Newsletter has been submitted",
+                  'id' => $newsletter->id,
                   'name' => $newsletter->name,
                   'email' => $newsletter->email,
                   'administration' => $newsletter->administration,
@@ -134,16 +135,9 @@ class NewsletterController extends Controller
                   );
     Mail::send('emails.Submit_Newsletters', $data, function($message) use($data) {
     $message->to($data['email']);
-    $message->subject($data['id'],
-                      $data['name'],
-                      $data['administration'],
-                      $data['department'],
-                      $data['title'],
-                      $data['description'],
-                      $data['newsletter_date']
-                      );
-    $message->from('aa@aa.com');
-  }); */
+    $message->subject($data['email_title']);
+    $message->from('admin@abc.com');
+  });
 
     return redirect('/newsletters/create')->with('success', 'Newsletter is submitted. Please check your email.');
     }
@@ -164,8 +158,8 @@ class NewsletterController extends Controller
       $files = glob(public_path("storage/newsletters/"."$newsletter->id"."/*"));
       Zipper::make(public_path("storage/newsletters/"."$newsletter->id"."/Newsletter "."$newsletter->id".".zip"))->add($files)->close();
 
-      //return response()->download(public_path("storage/newsletters/"."$newsletter->id"."/Newsletter "."$newsletter->id".".zip"))->deleteFileAfterSend(true);
-      return response()->download(public_path("storage/newsletters/"."$newsletter->id"."/Newsletter "."$newsletter->id".".zip"));
+      return response()->download(public_path("storage/newsletters/"."$newsletter->id"."/Newsletter "."$newsletter->id".".zip"))->deleteFileAfterSend(true);
+      //return response()->download(public_path("storage/newsletters/"."$newsletter->id"."/Newsletter "."$newsletter->id".".zip"));
     }
 
 }

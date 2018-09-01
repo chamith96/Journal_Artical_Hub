@@ -18,21 +18,13 @@
       <table border="0" width="600" cellpadding="0" cellspacing="0" class="container">
         <tr>
           <td class="container-padding header" align="left">
-            Newsletter has been submitted.
+            <h1>{{$subject}}</h1>
+            <p>{{$body}}</p>
           </td>
         </tr>
         <tr>
           <td class="container-padding content" align="left">
-<div class="body-text">
-  <h3>Newsletter Id: {{$id}}</h3>
-  <h3>Full Name: {{$name}}</h3>
-  <h3>Faculty/Center: {{$administration}}</h3>
-  <h3>Department: {{$department}}</h3>
-  <h3>Title: {{$title}}</h3>
-  <h3>Description: {{$description}}</h3>
-  <h3>Newsletter Date: {{$newsletter_date}}</h3>
-
-</div>
+          <div class="body-text">
 
           </td>
         </tr>
