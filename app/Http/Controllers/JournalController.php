@@ -91,7 +91,7 @@ public function sendEmail(Request $request)
   $message->subject($data['title']);
   $message->from('admin@abc.com');
   $message->attach($data['file']->getRealPath(), array(
-                  'as' => 'file'.$data['file']->getClientOriginalExtension(),
+                  'as' => $data['file']->getClientOriginalName(),
                   'mime' => $data['file']->getMimeType())
                   );
   });

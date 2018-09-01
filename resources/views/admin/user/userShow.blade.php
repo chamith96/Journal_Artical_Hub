@@ -15,6 +15,7 @@
 <h1 align="center">Users</h1>
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
+      @include('layouts.messages')
     @if(count($user) > 0)
 
       <table class="table table-striped">

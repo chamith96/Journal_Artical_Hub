@@ -1,78 +1,204 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-</head>
-<body style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; background-color: #f5f8fa; color: #74787E; height: 100%; hyphens: auto; line-height: 1.4; margin: 0; -moz-hyphens: auto; -ms-word-break: break-all; width: 100% !important; -webkit-hyphens: auto; -webkit-text-size-adjust: none; word-break: break-word;">
-    <style>
-        @media  only screen and (max-width: 600px) {
-            .inner-body {
-                width: 100% !important;
-            }
+<!DOCTYPE html>
+<htm>
+<body style="margin:0; padding:0;" bgcolor="#F0F0F0" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 
-            .footer {
-                width: 100% !important;
-            }
-        }
+<!-- 100% background wrapper (grey background) -->
+<table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0">
+  <tr>
+    <td align="center" valign="top" bgcolor="#F0F0F0" style="background-color: #F0F0F0;">
 
-        @media  only screen and (max-width: 500px) {
-            .button {
-                width: 100% !important;
-            }
-        }
-    </style>
-<table class="wrapper" width="100%" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; background-color: #f5f8fa; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;"><tr>
-<td align="center" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
-                <table class="content" width="100%" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
-                  <td align="center" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
-                                  <table class="content" width="100%" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
-                  <tr>
-                  <td class="header" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 25px 0; text-align: center;">
-                      </td>
-                  </tr>
-<!-- Email Body --><tr>
-<td class="body" width="100%" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; background-color: #FFFFFF; border-bottom: 1px solid #EDEFF2; border-top: 1px solid #EDEFF2; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
-                            <table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; background-color: #FFFFFF; margin: 0 auto; padding: 0; width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px;">
-<!-- Body content --><tr>
-<td class="content-cell" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 35px;">
-                                        <h1 style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #2F3133; font-size: 19px; font-weight: bold; margin-top: 0; text-align: left;">Your News letters has been submitted.</h1>
+      <br>
 
-<h1 style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">{{$body}}</h1>
+      <!-- 600px container (white background) -->
+      <table border="0" width="600" cellpadding="0" cellspacing="0" class="container">
+        <tr>
+          <td class="container-padding header" align="left">
+            {{$subject}}
+          </td>
+        </tr>
+        <tr>
+          <td class="container-padding content" align="left">
+          <div class="body-text">
+            <p>{{$body}}</p>
+          </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="container-padding footer-text" align="left">
+            <br><br>
+            Sample Footer text: &copy; 2015 Acme, Inc.
+            <br><br>
 
-<table class="action" align="center" width="100%" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 30px auto; padding: 0; text-align: center; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;"><tr>
-<td align="center" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;"><tr>
-<td align="center" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
-                        <table border="0" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;"><tr>
-<td style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
+            <strong>Acme, Inc.</strong><br>
+            <span class="ios-footer">
+              123 Main St.<br>
+              Springfield, MA 12345<br>
+            </span>
+            <a href="http://www.acme-inc.com">www.acme-inc.com</a><br>
 
-                                </td>
-                            </tr></table>
-</td>
-                </tr></table>
-</td>
-    </tr></table>
-<p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; color: #74787E; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">
-Best Regards.</p>
+            <br><br>
+          </td>
+        </tr>
+      </table><!--/600px container -->
 
 
-                                    </td>
-                                </tr>
-</table>
-</td>
-                    </tr>
-<tr>
-<td style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box;">
-        <table class="footer" align="center" width="570" cellpadding="0" cellspacing="0" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; margin: 0 auto; padding: 0; text-align: center; width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px;"><tr>
-<td class="content-cell" align="center" style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; padding: 35px;">
-                    <p style="font-family: Avenir, Helvetica, sans-serif; box-sizing: border-box; line-height: 1.5em; margin-top: 0; color: #AEAEAE; font-size: 12px; text-align: center;">© 2018 All rights reserved.</p>
-                </td>
-            </tr></table>
-</td>
-</tr>
-</table>
-</td>
-        </tr></table>
+    </td>
+  </tr>
+</table><!--/100% background wrapper-->
+<style>
+body {
+margin: 0;
+padding: 0;
+-ms-text-size-adjust: 100%;
+-webkit-text-size-adjust: 100%;
+}
+
+table {
+border-spacing: 0;
+}
+
+table td {
+border-collapse: collapse;
+}
+
+.ExternalClass {
+width: 100%;
+}
+
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {
+line-height: 100%;
+}
+
+.ReadMsgBody {
+width: 100%;
+background-color: #ebebeb;
+}
+
+table {
+mso-table-lspace: 0pt;
+mso-table-rspace: 0pt;
+}
+
+img {
+-ms-interpolation-mode: bicubic;
+}
+
+.yshortcuts a {
+border-bottom: none !important;
+}
+
+@media screen and (max-width: 599px) {
+.force-row,
+.container {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+}
+@media screen and (max-width: 400px) {
+.container-padding {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+}
+.ios-footer a {
+color: #aaaaaa !important;
+text-decoration: underline;
+}
+
+.header,
+.title,
+.subtitle,
+.footer-text {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.header {
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 12px;
+  color: #DF4726;
+}
+
+.footer-text {
+  font-size: 12px;
+  line-height: 16px;
+  color: #aaaaaa;
+}
+.footer-text a {
+  color: #aaaaaa;
+}
+
+.container {
+  width: 600px;
+  max-width: 600px;
+}
+
+.container-padding {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.content {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #ffffff;
+}
+
+code {
+  background-color: #eee;
+  padding: 0 4px;
+  font-family: Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px solid #cccccc;
+}
+
+.hr {
+  height: 1px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #374550;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2469A0;
+}
+.subtitle span {
+  font-weight: 400;
+  color: #999999;
+}
+
+.body-text {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+  color: #333333;
+}
+
+a[href^="x-apple-data-detectors:"],
+a[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+}
+</style>
 </body>
 </html>

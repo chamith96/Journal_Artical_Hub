@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <htm>
-<head>
-  <title>Single Column</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <link rel="stylesheet" type="text/css" href="responsive.css">
-</head>
 <body style="margin:0; padding:0;" bgcolor="#F0F0F0" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 
 <!-- 100% background wrapper (grey background) -->
