@@ -8,43 +8,43 @@
         <li><a href="{{url('admin/newsletters')}}"> Newsletters</a></li>
         <li><a href="{{url('admin/journals')}}"> Journals</a></li>
         <li><a href="{{url('admin/reviewers')}}"> Reviewers</a></li>
-        <li class="active"><a href="{{url('admin/users')}}"> Users</a></li>
-        <li><a href="{{url('admin/emails')}}">Emsils</a></li>
+        <li><a href="{{url('admin/users')}}">Users</a></li>
+        <li class="active"><a href="{{url('admin/emails')}}">Emails</a></li>
     </ul>
   </div>
 
-<h1 align="center">Users</h1>
+<h1 align="center">User Emails</h1>
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
       @include('layouts.messages')
-    @if(count($user) > 0)
+    @if(count($emailUser) > 0)
 
       <table class="table table-striped">
         <tr>
-          <th>Name</th>
+          <th>Id</th>
           <th>Email</th>
-          <th></th>
+          <th>Subject</th>
+          <th>Body</th>
         </tr>
-        @foreach ($user as $users)
+        @foreach ($emailUser as $emailUsers)
         <tr>
-
             <td>
-              <h3>{{$users->name}}</h3>
+              <h3>{{$emailUsers->id}}</h3>
             </td>
             <td>
-              <h3>{{$users->email}}</h3>
+              <h3>{{$emailUsers->user_email}}</h3>
             </td>
             <td>
-              <a href="{{url('/admin/users/email', [$users->id])}}" class="btn btn-info btn-lg">
-                <span class="glyphicon glyphicon-envelope"></span>
-              </a>
+              <h3>{{$emailUsers->subject}}</h3>
+            </td>
+            <td>
+              <h4><i><a href="/admin/emails/user/{{$emailUsers->id}}">See content</a></i></h4>
             </td>
           @endforeach
         </tr>
       </table>
-      {{$user->links()}}
+{{$emailUser->links()}}
 </div>
 </div>
     @endif
-
   @endsection

@@ -44,6 +44,15 @@ Route::get('/admin/users', 'UserController@index');
 Route::get('/admin/users/email/{id}', 'UserController@showEmail');
 Route::post('admin/email/users', 'UserController@sendEmail');
 
+//email route
+Route::get('/admin/emails', 'EmailController@index');
+Route::get('/admin/emails/user', 'EmailController@indexUser');
+Route::get('/admin/emails/reviewer', 'EmailController@indexReviewer');
+Route::get('/admin/emails/user', 'EmailController@showUser');
+Route::get('/admin/emails/reviewer', 'EmailController@showReviewer');
+Route::get('/admin/emails/user/{id}', 'EmailController@userContent');
+Route::get('/admin/emails/reviewer/{id}', 'EmailController@reviewerContent');
+
 //admin routes
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginPage')->name('admin.login');
 Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
