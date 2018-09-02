@@ -27,7 +27,7 @@
       </ul>
         <a class="btn btn-default" href="{{route('pdfShowJournal', [$journal->id])}}">Download details pdf</a>
         <a class="btn btn-default" href="{{route('downloadFilesJournal', [$journal->id])}}">Download Zip</a>
-        <a class="btn btn-default" href="{{url('admin/journals/email')}}">Email to Reviewer</a>
+        <a class="btn btn-default" href="{{$journal->id}}/assigns">Assign to Reviewer</a>
     </div>
 
 @endsection

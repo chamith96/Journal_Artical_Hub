@@ -25,6 +25,7 @@
           <th>Email</th>
           <th>Subject</th>
           <th>Body</th>
+          <th>Date</th>
         </tr>
         @foreach ($emailUser as $emailUsers)
         <tr>
@@ -39,6 +40,9 @@
             </td>
             <td>
               <h4><i><a href="/admin/emails/user/{{$emailUsers->id}}">See content</a></i></h4>
+            </td>
+            <td>
+              {{$emailUsers->created_at }}
             </td>
           @endforeach
         </tr>

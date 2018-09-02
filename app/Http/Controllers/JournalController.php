@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Journal;
 use App\Reviewer;
 use App\EmailReviewer;
+use App\Assign;
 use PDF;
 use Zipper;
 
@@ -53,14 +54,8 @@ public function downloadZip($id)
 //journal send to reviewer email
   public function emailPage()
 {
-  return view('admin.journal.journalEmail');
-}
-
-//show all reviewers
-public function showReviewers()
-{
   $reviewer = Reviewer::all();
-  return view('admin.journal.journalEmail')->with('reviewer',$reviewer);
+  return view('admin.journal.journalEmail', compact('reviewer'));
 }
 
 public function sendEmail(Request $request)
@@ -97,6 +92,27 @@ public function sendEmail(Request $request)
   });
 
   return redirect('/admin/journals')->with('success', 'Email sent.');
+  }
+
+  //show assign page and reviewers
+  public function indexAssign($id)
+  {
+    $reviewer = Reviewer::all();
+    $journal = Journal::find($id);
+    return view('admin.journal.journalAssign', compact('journal', 'reviewer'));
+  }
+
+//store reviewer assign
+  public function storeAssign(Request $request)
+{
+
+  //save data to database
+  $assign = new Assign;
+  $assign->journal_id  = $request->input('jid');
+  $assign->reviewer_id  = $request->input('rid');
+  $assign->save();
+
+  return redirect('/admin/journals/email')->with('success', 'Reviewer is assigned. Send assign email to reviewer.');
   }
 
 }

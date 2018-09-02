@@ -13,42 +13,29 @@
     </ul>
   </div>
 
+<h1 align="center">Assign {{$journal->id}} journal to Reviewer</h1> <br><br>
+<div class="container">
   <div class="container">
-  <div class="col-md-8 col-md-offset-2">
-  <h1>Send email to reviewers</h1> <br>
+    <div class="col-md-8 col-md-offset-2">
   @include('layouts.messages')
-    <form action="{{url('admin/journals/email')}}" method="POST"  enctype="multipart/form-data">
+    <form action="assigns" method="POST">
       {{ csrf_field() }}
+
+    <input type="hidden" class="form-control" value="{{$journal->id}}" name="jid" hidden>
+
     <div class="form-group">
       <label for="exampleFormControlInput1">Reviewers</label>
           @if(count($reviewer) > 0)
-            <select class="form-control" name="reviewer">
+            <select class="form-control" name="rid">
             @foreach ($reviewer as $reviewers)
-              <option value="{{$reviewers->email}}">{{$reviewers->name}}</option>
+              <option value="{{$reviewers->id}}">{{$reviewers->email}}</option>
             @endforeach
             </select>
           @endif
     </div>
 
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Subject</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" name="subject">
-    </div>
-
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">Body</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="body"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="exampleFormControlInput1">File to send</label>
-      <input type="file" name="file">
-    </div>
-
-    <input type="submit" value="Send" class="btn btn-primary">
+    <input type="submit" value="Assign" class="btn btn-primary">
     </form>
-    <br>
-    </div>
-    </div>
-
+</div>
+</div>
   @endsection
