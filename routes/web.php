@@ -60,3 +60,7 @@ Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.logi
 Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 Route::get('/admin/journals', 'JournalController@index');
 Route::get('/admin/journals/{id}', 'JournalController@show');
+
+//assign route
+Route::get('/admin/assigns', 'AssignController@index');
+Route::get('/admin/assigns', 'AssignController@show');

@@ -7,6 +7,7 @@
         <li><a href="{{route('admin.dashboard')}}"> Dashboard</a></li>
         <li><a href="{{url('admin/newsletters')}}"> Newsletters</a></li>
         <li><a href="{{url('admin/journals')}}"> Journals</a></li>
+        <li><a href="{{url('admin/assigns')}}">Assigns</a></li>
         <li><a href="{{url('admin/reviewers')}}"> Reviewers</a></li>
         <li><a href="{{url('admin/users')}}">Users</a></li>
         <li class="active"><a href="{{url('admin/emails')}}">Emails</a></li>

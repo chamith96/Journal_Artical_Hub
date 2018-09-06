@@ -7,6 +7,7 @@
         <li><a href="{{route('admin.dashboard')}}"> Dashboard</a></li>
         <li><a href="{{url('admin/newsletters')}}"> Newsletters</a></li>
         <li class="active"><a href="{{url('admin/journals')}}"> Journals</a></li>
+        <li><a href="{{url('admin/assigns')}}">Assigns</a></li>
         <li><a href="{{url('admin/reviewers')}}"> Reviewers</a></li>
         <li><a href="{{url('admin/users')}}"> Users</a></li>
         <li><a href="{{url('admin/emails')}}">Emsils</a></li>
@@ -21,7 +22,7 @@
     <form action="assigns" method="POST">
       {{ csrf_field() }}
 
-    <input type="hidden" class="form-control" value="{{$journal->id}}" name="jid" hidden>
+    <input type="hidden" class="form-control" value="{{$journal->id}}" name="jid" hidden>>
 
     <div class="form-group">
       <label for="exampleFormControlInput1">Reviewers</label>

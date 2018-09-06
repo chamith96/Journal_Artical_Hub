@@ -16,4 +16,9 @@ class Journal extends Model
   public function reviewers(){
     return $this->hasMany('App\Reviewer');
   }
+
+  //make relationship with Assign model
+  public function assigns(){
+    return $this->hasMany('App\Assign');
+  }
 }
