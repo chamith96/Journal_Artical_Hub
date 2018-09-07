@@ -47,8 +47,8 @@
            <span>Emails</span>
          </a>
          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-           <a class="dropdown-item" href="#">User Emails</a>
-           <a class="dropdown-item" href="#">Reviewers Emails</a>
+           <a class="dropdown-item" href="emails/user">User Emails</a>
+           <a class="dropdown-item" href="emails/reviewer">Reviewers Emails</a>
          </div>
        </li>
      </ul>
@@ -66,32 +66,30 @@
          </ol>
 
          <!-- Content goes here -->
-         <h1 align="center">Assigns</h1>
 
              @if(count($assign) > 0)
-
-              <div class="card mb-3">
-              <div class="card-header">Data Table Example</div>
-              <div class="card-body">
+              <div class="card-header" align="center"><b>Assigns</b></div>
               <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
                  <tr>
                    <th>Reviewer Name</th>
                    <th>User Name</th>
                    <th>Journal Name</th>
                    <th>Assign Date</th>
                  </tr>
+               </thead>
                  @foreach ($assign as $assigns)
+                <tbody>
                  <tr>
-                   <td>  <h3>{{$assigns->rname}}</h3>  </td>
-                   <td>  <h3>{{$assigns->uname}}</h3>  </td>
-                   <td>  <h3>{{$assigns ->jname}}</h3> </td>
-                   <td>  <h3>{{$assigns ->createdAt}}</h3> </td>
+                   <td>{{$assigns->rname}}</td>
+                   <td>{{$assigns->uname}}</td>
+                   <td>{{$assigns ->jname}}</td>
+                   <td>{{$assigns ->createdAt}}</td>
                    @endforeach
                  </tr>
+               </tbody>
                </table>
-               </div>
-               </div>
                </div>
                </div>
              @endif

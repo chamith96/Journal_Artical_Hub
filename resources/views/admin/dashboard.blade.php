@@ -47,8 +47,8 @@
             <span>Emails</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="#">User Emails</a>
-            <a class="dropdown-item" href="#">Reviewers Emails</a>
+            <a class="dropdown-item" href="emails/user">User Emails</a>
+            <a class="dropdown-item" href="emails/reviewer">Reviewers Emails</a>
           </div>
         </li>
       </ul>
