@@ -23,7 +23,7 @@ class AssignController extends Controller
                   ->join('assigns','reviewers.id','=','assigns.reviewer_id')
                   ->join('journals','journals.id','=','assigns.journal_id')
                   ->join('users','journals.user_id','=','users.id')
-                  ->select('reviewers.name as rname','journals.name as jname','users.name as uname')
+                  ->select('reviewers.name as rname','journals.name as jname','users.name as uname', 'assigns.created_at  as createdAt')
                   ->get();
     //$assign = DB::select('SELECT * from reviewers,journals,assigns,users where reviewers.id=assigns.reviewer_id and journals.id=assigns.journal_id and journals.user_id=users.id');
 
