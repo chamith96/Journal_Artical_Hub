@@ -71,6 +71,9 @@
          <!-- Content goes here -->
 
          @include('layouts.messages')
+      <div class="card mb-3">
+      <div class="card-body">
+
        <form action="{{url('admin/reviewers')}}" method="POST">
          {{ csrf_field() }}
        <div class="form-group">
@@ -95,8 +98,8 @@
 
        <input type="submit" value="Submit" class="btn btn-primary">
      </form>
-
-
+     </div>
+     </div>
 
 
        </div>

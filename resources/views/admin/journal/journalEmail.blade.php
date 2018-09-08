@@ -1,55 +1,119 @@
 @extends('layouts.appAdmin')
-  @section('content')
+@section('content')
+<div id="wrapper">
 
-<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-  <div id="sidebar-collapse" class="col-sm-2 col-lg-2 sidebar">
-      <ul class="nav menu">
-        <li><a href="{{route('admin.dashboard')}}"> Dashboard</a></li>
-        <li><a href="{{url('admin/newsletters')}}"> Newsletters</a></li>
-        <li class="active"><a href="{{url('admin/journals')}}"> Journals</a></li>
-        <li><a href="{{url('admin/assigns')}}">Assigns</a></li>
-        <li><a href="{{url('admin/reviewers')}}"> Reviewers</a></li>
-        <li><a href="{{url('admin/users')}}"> Users</a></li>
-        <li><a href="{{url('admin/emails')}}">Emsils</a></li>
-    </ul>
-  </div>
+     <!-- Sidebar -->
+     <ul class="sidebar navbar-nav">
+       <li class="nav-item">
+         <a class="nav-link" href="{{route('admin.dashboard')}}">
+           <i class="fas fa-fw fa-tachometer-alt"></i>
+           <span>Dashboard</span>
+         </a>
+       </li>
 
-  <div class="container">
-  <div class="col-md-8 col-md-offset-2">
-  <h1>Send email to reviewers</h1> <br>
-  @include('layouts.messages')
-    <form action="{{url('admin/journals/email')}}" method="POST"  enctype="multipart/form-data">
-      {{ csrf_field() }}
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Reviewers</label>
-          @if(count($reviewer) > 0)
-            <select class="form-control" name="reviewer">
-            @foreach ($reviewer as $reviewers)
-              <option value="{{$reviewers->email}}">{{$reviewers->name}}</option>
-            @endforeach
-            </select>
-          @endif
-    </div>
+       <li class="nav-item">
+         <a class="nav-link" href="{{url('admin/newsletters')}}">
+           <i class="fas fa-fw fa-newspaper"></i>
+           <span>Newsletters</span></a>
+       </li>
 
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Subject</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" name="subject">
-    </div>
+       <li class="nav-item active">
+         <a class="nav-link" href="{{url('admin/journals')}}">
+           <i class="fas fa-fw fa-newspaper"></i>
+           <span>Journals</span></a>
+       </li>
 
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">Body</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="body"></textarea>
-    </div>
+       <li class="nav-item">
+         <a class="nav-link" href="{{url('admin/assigns')}}">
+           <i class="fas fa-fw fa-tasks"></i>
+           <span>Assigns</span></a>
+       </li>
 
-    <div class="form-group">
-      <label for="exampleFormControlInput1">File to send</label>
-      <input type="file" name="file">
-    </div>
+       <li class="nav-item">
+         <a class="nav-link" href="{{url('admin/reviewers')}}">
+           <i class="fas fa-fw fa-user"></i>
+           <span>Reviewers</span></a>
+       </li>
 
-    <input type="submit" value="Send" class="btn btn-primary">
-    </form>
-    <br>
-    </div>
-    </div>
+       <li class="nav-item">
+         <a class="nav-link" href="{{url('admin/users')}}">
+           <i class="fas fa-fw fa-user"></i>
+           <span>Users</span></a>
+       </li>
 
-  @endsection
+       <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="{{url('admin/emails')}}" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <i class="fas fa-fw fa-envelope"></i>
+           <span>Emails</span>
+         </a>
+         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+           <a class="dropdown-item" href="emails/user">User Emails</a>
+           <a class="dropdown-item" href="emails/reviewer">Reviewers Emails</a>
+         </div>
+       </li>
+     </ul>
+
+     <div id="content-wrapper">
+
+       <div class="container-fluid">
+
+         <!-- Breadcrumbs-->
+         <ol class="breadcrumb">
+           <li class="breadcrumb-item">
+             <a href="{{route('admin.dashboard')}}">Dashboard</a>
+           </li>
+           <li class="breadcrumb-item">
+             <a href="{{url('admin/journals')}}">Journal</a>
+           </li>
+           <li class="breadcrumb-item active">Send Email to reviewer</li>
+         </ol>
+
+         <!-- Content goes here -->
+
+         @include('layouts.messages')
+         <div class="card mb-3">
+         <div class="card-body">
+           <form action="{{url('admin/journals/email')}}" method="POST"  enctype="multipart/form-data">
+             {{ csrf_field() }}
+           <div class="form-group">
+             <label for="exampleFormControlInput1">Reviewers</label>
+                 @if(count($reviewer) > 0)
+                   <select class="form-control" name="reviewer">
+                   @foreach ($reviewer as $reviewers)
+                     <option value="{{$reviewers->email}}">{{$reviewers->name}}</option>
+                   @endforeach
+                   </select>
+                 @endif
+           </div>
+
+           <div class="form-group">
+             <label for="exampleFormControlInput1">Subject</label>
+             <input type="text" class="form-control" id="exampleFormControlInput1" name="subject">
+           </div>
+
+           <div class="form-group">
+             <label for="exampleFormControlTextarea1">Body</label>
+             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="body"></textarea>
+           </div>
+
+           <div class="form-group">
+             <label for="exampleFormControlInput1">File to send</label> <br>
+             <input type="file" name="file">
+           </div>
+
+           <input type="submit" value="Send" class="btn btn-primary">
+           </form>
+
+           </div>
+           </div>
+
+       </div>
+       <!-- /.container-fluid -->
+
+     </div>
+     <!-- /.content-wrapper -->
+
+   </div>
+   <!-- /#wrapper -->
+
+ @endsection

@@ -12,7 +12,7 @@ class EmailController extends Controller
   {
       $this->middleware('auth:admin');
   }
-  
+
 //show email index
   function index()
   {
@@ -34,14 +34,14 @@ class EmailController extends Controller
 // show user Emails
 function showUser()
 {
-  $emailUser = EmailUser::orderBy('created_at', 'desc')->paginate(5);
+  $emailUser = EmailUser::orderBy('created_at', 'desc')->paginate(10);
   return view('admin.email.emailUser')->with('emailUser',$emailUser);
 }
 
 // show reviewer Emails
 function showReviewer()
 {
-  $emailReviewer= EmailReviewer::orderBy('created_at', 'desc')->paginate(5);
+  $emailReviewer= EmailReviewer::orderBy('created_at', 'desc')->paginate(10);
   return view('admin.email.emailReviewer')->with('emailReviewer',$emailReviewer);
 }
 

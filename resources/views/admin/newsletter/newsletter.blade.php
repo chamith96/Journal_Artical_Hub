@@ -62,23 +62,21 @@
            <li class="breadcrumb-item">
              <a href="{{route('admin.dashboard')}}">Dashboard</a>
            </li>
-           <li class="breadcrumb-item active">Reviewer</li>
+           <li class="breadcrumb-item active">Newsletters</li>
          </ol>
 
          <!-- Content goes here -->
-         <h1 align="center">Newsletters</h1>
-         <div class="container">
-           <div class="col-md-8 col-md-offset-2">
              @if(count($newsletter) > 0)
 
+              <ul class="list-group">
                @foreach ($newsletter as $newsletters)
-                 <div class="well">
-                 <h1><a href="/admin/newsletters/{{$newsletters->id}}">{{$newsletters->id}}. {{$newsletters->title}}</a></h1>
-                 written on {{$newsletters->created_at}}
-                       </div>
+                   <li class="list-group-item">
+                    <h4><a href="/admin/newsletters/{{$newsletters->id}}">{{$newsletters->id}}. {{$newsletters->title}}</a></h4>
+                    written on {{$newsletters->created_at}}
+                   </li>
                @endforeach
+               </ul>
                {{$newsletter->links()}}
-
                @else
                    <div class="panel-heading"><h3>Don't have any Newsletters yet.</h3>
                    </div>

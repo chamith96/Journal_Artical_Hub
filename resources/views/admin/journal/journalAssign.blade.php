@@ -1,42 +1,107 @@
 @extends('layouts.appAdmin')
-  @section('content')
+@section('content')
+<div id="wrapper">
 
-<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-  <div id="sidebar-collapse" class="col-sm-2 col-lg-2 sidebar">
-      <ul class="nav menu">
-        <li><a href="{{route('admin.dashboard')}}"> Dashboard</a></li>
-        <li><a href="{{url('admin/newsletters')}}"> Newsletters</a></li>
-        <li class="active"><a href="{{url('admin/journals')}}"> Journals</a></li>
-        <li><a href="{{url('admin/assigns')}}">Assigns</a></li>
-        <li><a href="{{url('admin/reviewers')}}"> Reviewers</a></li>
-        <li><a href="{{url('admin/users')}}"> Users</a></li>
-        <li><a href="{{url('admin/emails')}}">Emsils</a></li>
-    </ul>
-  </div>
+     <!-- Sidebar -->
+     <ul class="sidebar navbar-nav">
+       <li class="nav-item">
+         <a class="nav-link" href="{{route('admin.dashboard')}}">
+           <i class="fas fa-fw fa-tachometer-alt"></i>
+           <span>Dashboard</span>
+         </a>
+       </li>
 
-<h1 align="center">Assign {{$journal->id}} journal to Reviewer</h1> <br><br>
-<div class="container">
-  <div class="container">
-    <div class="col-md-8 col-md-offset-2">
-  @include('layouts.messages')
-    <form action="assigns" method="POST">
-      {{ csrf_field() }}
+       <li class="nav-item">
+         <a class="nav-link" href="{{url('admin/newsletters')}}">
+           <i class="fas fa-fw fa-newspaper"></i>
+           <span>Newsletters</span></a>
+       </li>
 
-    <input type="hidden" class="form-control" value="{{$journal->id}}" name="jid" hidden>>
+       <li class="nav-item active">
+         <a class="nav-link" href="{{url('admin/journals')}}">
+           <i class="fas fa-fw fa-newspaper"></i>
+           <span>Journals</span></a>
+       </li>
 
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Reviewers</label>
-          @if(count($reviewer) > 0)
-            <select class="form-control" name="rid">
-            @foreach ($reviewer as $reviewers)
-              <option value="{{$reviewers->id}}">{{$reviewers->email}}</option>
-            @endforeach
-            </select>
-          @endif
-    </div>
+       <li class="nav-item">
+         <a class="nav-link" href="{{url('admin/assigns')}}">
+           <i class="fas fa-fw fa-tasks"></i>
+           <span>Assigns</span></a>
+       </li>
 
-    <input type="submit" value="Assign" class="btn btn-primary">
-    </form>
-</div>
-</div>
-  @endsection
+       <li class="nav-item">
+         <a class="nav-link" href="{{url('admin/reviewers')}}">
+           <i class="fas fa-fw fa-user"></i>
+           <span>Reviewers</span></a>
+       </li>
+
+       <li class="nav-item">
+         <a class="nav-link" href="{{url('admin/users')}}">
+           <i class="fas fa-fw fa-user"></i>
+           <span>Users</span></a>
+       </li>
+
+       <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="{{url('admin/emails')}}" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <i class="fas fa-fw fa-envelope"></i>
+           <span>Emails</span>
+         </a>
+         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+           <a class="dropdown-item" href="emails/user">User Emails</a>
+           <a class="dropdown-item" href="emails/reviewer">Reviewers Emails</a>
+         </div>
+       </li>
+     </ul>
+
+     <div id="content-wrapper">
+
+       <div class="container-fluid">
+
+         <!-- Breadcrumbs-->
+         <ol class="breadcrumb">
+           <li class="breadcrumb-item">
+             <a href="{{route('admin.dashboard')}}">Dashboard</a>
+           </li>
+           <li class="breadcrumb-item">
+             <a href="{{url('admin/journals')}}">Journal</a>
+           </li>
+           <li class="breadcrumb-item active">Assign {{$journal->id}} journal to Reviewer</li>
+         </ol>
+
+         <!-- Content goes here -->
+
+           @include('layouts.messages')
+           <div class="card mb-3">
+           <div class="card-body">
+             <form action="assigns" method="POST">
+               {{ csrf_field() }}
+
+             <input type="hidden" class="form-control" value="{{$journal->id}}" name="jid" hidden>
+
+             <div class="form-group">
+               <label for="exampleFormControlInput1">Reviewer</label>
+                   @if(count($reviewer) > 0)
+                     <select class="form-control" name="rid">
+                     @foreach ($reviewer as $reviewers)
+                       <option value="{{$reviewers->id}}">{{$reviewers->email}}</option>
+                     @endforeach
+                     </select>
+                   @endif
+             </div>
+
+             <input type="submit" value="Assign" class="btn btn-primary">
+             </form>
+             
+            </div>
+            </div>
+
+       </div>
+       <!-- /.container-fluid -->
+
+     </div>
+     <!-- /.content-wrapper -->
+
+   </div>
+   <!-- /#wrapper -->
+
+ @endsection

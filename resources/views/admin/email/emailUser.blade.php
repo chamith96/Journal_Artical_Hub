@@ -1,55 +1,116 @@
 @extends('layouts.appAdmin')
-  @section('content')
+@section('content')
+<div id="wrapper">
 
-<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-  <div id="sidebar-collapse" class="col-sm-2 col-lg-2 sidebar">
-      <ul class="nav menu">
-        <li><a href="{{route('admin.dashboard')}}"> Dashboard</a></li>
-        <li><a href="{{url('admin/newsletters')}}"> Newsletters</a></li>
-        <li><a href="{{url('admin/journals')}}"> Journals</a></li>
-        <li><a href="{{url('admin/assigns')}}">Assigns</a></li>
-        <li><a href="{{url('admin/reviewers')}}"> Reviewers</a></li>
-        <li><a href="{{url('admin/users')}}">Users</a></li>
-        <li class="active"><a href="{{url('admin/emails')}}">Emails</a></li>
-    </ul>
-  </div>
+     <!-- Sidebar -->
+     <ul class="sidebar navbar-nav">
+       <li class="nav-item">
+         <a class="nav-link" href="{{route('admin.dashboard')}}">
+           <i class="fas fa-fw fa-tachometer-alt"></i>
+           <span>Dashboard</span>
+         </a>
+       </li>
 
-<h1 align="center">User Emails</h1>
-<div class="container">
-  <div class="col-md-8 col-md-offset-2">
-      @include('layouts.messages')
-    @if(count($emailUser) > 0)
+       <li class="nav-item">
+         <a class="nav-link" href="{{url('admin/newsletters')}}">
+           <i class="fas fa-fw fa-newspaper"></i>
+           <span>Newsletters</span></a>
+       </li>
 
-      <table class="table table-striped">
-        <tr>
-          <th>Id</th>
-          <th>Email</th>
-          <th>Subject</th>
-          <th>Body</th>
-          <th>Date</th>
-        </tr>
-        @foreach ($emailUser as $emailUsers)
-        <tr>
-            <td>
-              <h3>{{$emailUsers->id}}</h3>
-            </td>
-            <td>
-              <h3>{{$emailUsers->user_email}}</h3>
-            </td>
-            <td>
-              <h3>{{$emailUsers->subject}}</h3>
-            </td>
-            <td>
-              <h4><i><a href="/admin/emails/user/{{$emailUsers->id}}">See content</a></i></h4>
-            </td>
-            <td>
-              {{$emailUsers->created_at }}
-            </td>
-          @endforeach
-        </tr>
-      </table>
-{{$emailUser->links()}}
-</div>
-</div>
-    @endif
-  @endsection
+       <li class="nav-item">
+         <a class="nav-link" href="{{url('admin/journals')}}">
+           <i class="fas fa-fw fa-newspaper"></i>
+           <span>Journals</span></a>
+       </li>
+
+       <li class="nav-item">
+         <a class="nav-link" href="{{url('admin/assigns')}}">
+           <i class="fas fa-fw fa-tasks"></i>
+           <span>Assigns</span></a>
+       </li>
+
+       <li class="nav-item">
+         <a class="nav-link" href="{{url('admin/reviewers')}}">
+           <i class="fas fa-fw fa-user"></i>
+           <span>Reviewers</span></a>
+       </li>
+
+       <li class="nav-item">
+         <a class="nav-link" href="{{url('admin/users')}}">
+           <i class="fas fa-fw fa-user"></i>
+           <span>Users</span></a>
+       </li>
+
+       <li class="nav-item dropdown active">
+         <a class="nav-link dropdown-toggle" href="{{url('admin/emails')}}" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <i class="fas fa-fw fa-envelope"></i>
+           <span>Emails</span>
+         </a>
+         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+           <a class="dropdown-item" href="{{url('admin/emails/user')}}">User Emails</a>
+           <a class="dropdown-item" href="{{url('admin/emails/reviewer')}}">Reviewers Emails</a>
+         </div>
+       </li>
+     </ul>
+
+     <div id="content-wrapper">
+
+       <div class="container-fluid">
+
+         <!-- Breadcrumbs-->
+         <ol class="breadcrumb">
+           <li class="breadcrumb-item">
+             <a href="{{route('admin.dashboard')}}">Dashboard</a>
+           </li>
+           <li class="breadcrumb-item active">Users emails</li>
+         </ol>
+
+         <!-- Content goes here -->
+         @include('layouts.messages')
+           @if(count($emailUser) > 0)
+             <div class="card-header" align="center"><b>Users Email</b></div>
+             <div class="table-responsive">
+             <table class="table table-bordered" width="100%" cellspacing="0">
+               <tr>
+                 <th>Id</th>
+                 <th>Email</th>
+                 <th>Subject</th>
+                 <th>Body</th>
+                 <th>Date</th>
+               </tr>
+               @foreach ($emailUser as $emailUsers)
+               <tr>
+                   <td>
+                     {{$emailUsers->id}}
+                   </td>
+                   <td>
+                     {{$emailUsers->user_email}}
+                   </td>
+                   <td>
+                     {{$emailUsers->subject}}
+                   </td>
+                   <td>
+                     <i><a href="/admin/emails/user/{{$emailUsers->id}}">See content</a></i>
+                   </td>
+                   <td>
+                     {{$emailUsers->created_at }}
+                   </td>
+                 @endforeach
+               </tr>
+             </table>
+           </div>
+           @endif
+       {{$emailUser->links()}}
+
+
+
+       </div>
+       <!-- /.container-fluid -->
+
+     </div>
+     <!-- /.content-wrapper -->
+
+   </div>
+   <!-- /#wrapper -->
+
+ @endsection

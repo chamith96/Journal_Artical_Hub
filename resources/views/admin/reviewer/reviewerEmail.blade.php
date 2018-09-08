@@ -65,12 +65,14 @@
            <li class="breadcrumb-item">
              <a href="{{url('admin/reviewers')}}">Reviewers</a>
            </li>
-           <li class="breadcrumb-item active">Send Email to Reviewers</li>
+           <li class="breadcrumb-item active">Send Email to {{$reviewers->name}}</li>
          </ol>
 
          <!-- Content goes here -->
 
          @include('layouts.messages')
+         <div class="card mb-3">
+         <div class="card-body">
            <form action="{{url('admin/email/reviewers')}}" method="POST">
              {{ csrf_field() }}
            <div class="form-group">
@@ -90,6 +92,8 @@
 
            <input type="submit" value="Send" class="btn btn-primary">
            </form>
+           </div>
+           </div>
 
        </div>
        <!-- /.container-fluid -->
