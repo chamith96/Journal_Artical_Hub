@@ -99,7 +99,9 @@
                  </tr>
                </table>
              </div>
-         {{$emailReviewer->links()}}
+         <ul class="pagination">
+           {{$emailReviewer->links()}}
+         </ul>
 
              @endif
 
