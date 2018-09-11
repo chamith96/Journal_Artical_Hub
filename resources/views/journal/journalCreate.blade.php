@@ -1,115 +1,150 @@
 @extends('layouts.app')
     @section('content')
       <div class="container">
-        <h1>Journal</h1> <br>
         @include('layouts.messages')
-      <form action="{{url('journals')}}" method="POST" enctype="multipart/form-data">
+      <form action="{{url('journals')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" id="journal_form">
         {{ csrf_field() }}
 
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Faculty/Center</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="administration">
-          <optgroup label="Faculty">
-            <option>Faculty of Agricultural Sciences</option>
-            <option>Faculty of Applied Sciences</option>
-            <option>Faculty of Geomatics</option>
-            <option>Faculty of Management Studies</option>
-            <option>Faculty of Social Sciences and Languages</option>
-            <option>Faculty of Medicine</option>
-            <option>Faculty of Technology</option>
-            <option>Faculty of Graduate Studies</option>
-          <optgroup label="Center">
-            <option>Centre for Computer Studies</option>
-            <option>Staff Development Centre</option>
-            <option>Center for Research and Knowledge Dissemination</option>
-            <option>The Career Guidance Unit</option>
-            <option>Centre for Open and Distance Learning</option>
-            <option>Centre for Indigenous Knowledge and Community Studies (CIKCS)</option>
-            <option>Center for GEE</option>
-            <option>Internal Quality Assurance Unit</option>
-        </select>
-      </div>
+        <!-- Text input-->
+          <div class="form-group">
+          <label class="col-md-4 control-label">Faculty/Center</label>
+          <div class="col-md-4 inputGroupContainer">
+          <select class="form-control" name="administration">
+            <optgroup label="Faculty">
+              <option>Faculty of Agricultural Sciences</option>
+              <option>Faculty of Applied Sciences</option>
+              <option>Faculty of Geomatics</option>
+              <option>Faculty of Management Studies</option>
+              <option>Faculty of Social Sciences and Languages</option>
+              <option>Faculty of Medicine</option>
+              <option>Faculty of Technology</option>
+              <option>Faculty of Graduate Studies</option>
+            <optgroup label="Center">
+              <option>Centre for Computer Studies</option>
+              <option>Staff Development Centre</option>
+              <option>Center for Research and Knowledge Dissemination</option>
+              <option>The Career Guidance Unit</option>
+              <option>Centre for Open and Distance Learning</option>
+              <option>Centre for Indigenous Knowledge and Community Studies (CIKCS)</option>
+              <option>Center for GEE</option>
+              <option>Internal Quality Assurance Unit</option>
+          </select>
+        </div>
+        </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Select Department</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="department">
-          <option>Not from faculty</option>
-          <optgroup label="Faculty of Agricultural Sciences">
-            <option>Department of Export Agriculture</option>
-            <option>Department of Livestock Production</option>
-            <option>Deparment of Agribusiness Management</option>
-          <optgroup label="Faculty of Applied Sciences">
-            <option>Department of Computing and Information Systems</option>
-            <option>Department of Food Science and Technology</option>
-            <option>Department of Natural Resources</option>
-            <option>Department of Physical Sciences and Technologies</option>
-            <option>Department of Sport Sciences and Physical Education</option>
-          <optgroup label="Faculty of Geomatics">
-            <option>Department of Remote Sensing and GIS</option>
-            <option>Department of Surveying and Geodesy</option>
-          <optgroup label="Faculty of Management Studies">
-            <option>Department of Tourism Managemen</option>
-            <option>Department of Accountancy and Finance</option>
-            <option>Department of Business Management</option>
-            <option>Department of Marketing Management</option>
-          <optgroup label="Faculty of Social Sciences and Languages">
-            <option>Department ofsocial sciences</option>
-            <option>Department of languages</option>
-            <option>Department of Geography & Environmental Management</option>
-            <option>Department of Economics & Statistics</option>
-            <option>Department of English Language Teaching</option>
-          <optgroup label="Faculty of Medicine">
-            <option>Department of Anatomy</option>
-            <option>Department of Physiology</option>
-            <option>Department of Biochemistry</option>
-          <optgroup label="Faculty of Technology">
-            <option>Department of Biosystems Technology</option>
-            <option>Department of Engineering Technology</option>
-        </select>
-      </div>
+    <!-- Text input-->
+        <div class="form-group">
+        <label class="col-md-4 control-label">Select Deparment</label>
+        <div class="col-md-4 inputGroupContainer">
+          <select class="form-control" id="exampleFormControlSelect1" name="department">
+            <option>Not from faculty</option>
+            <optgroup label="Faculty of Agricultural Sciences">
+              <option>Department of Export Agriculture</option>
+              <option>Department of Livestock Production</option>
+              <option>Deparment of Agribusiness Management</option>
+            <optgroup label="Faculty of Applied Sciences">
+              <option>Department of Computing and Information Systems</option>
+              <option>Department of Food Science and Technology</option>
+              <option>Department of Natural Resources</option>
+              <option>Department of Physical Sciences and Technologies</option>
+              <option>Department of Sport Sciences and Physical Education</option>
+            <optgroup label="Faculty of Geomatics">
+              <option>Department of Remote Sensing and GIS</option>
+              <option>Department of Surveying and Geodesy</option>
+            <optgroup label="Faculty of Management Studies">
+              <option>Department of Tourism Managemen</option>
+              <option>Department of Accountancy and Finance</option>
+              <option>Department of Business Management</option>
+              <option>Department of Marketing Management</option>
+            <optgroup label="Faculty of Social Sciences and Languages">
+              <option>Department ofsocial sciences</option>
+              <option>Department of languages</option>
+              <option>Department of Geography & Environmental Management</option>
+              <option>Department of Economics & Statistics</option>
+              <option>Department of English Language Teaching</option>
+            <optgroup label="Faculty of Medicine">
+              <option>Department of Anatomy</option>
+              <option>Department of Physiology</option>
+              <option>Department of Biochemistry</option>
+            <optgroup label="Faculty of Technology">
+              <option>Department of Biosystems Technology</option>
+              <option>Department of Engineering Technology</option>
+          </select>
+        </div>
+        </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Journal Title</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" name="title">
-      </div>
+  <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" >journal title</label>
+            <div class="col-md-4 inputGroupContainer">
+          <input name="title" placeholder="Newsletter title" class="form-control"  type="text">
+            </div>
+          </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1">Journal Description</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
-      </div>
+    <!-- Text input-->
+        <div class="form-group">
+        <label class="col-md-4 control-label">journal Description</label>
+        <div class="col-md-4 inputGroupContainer">
+         <textarea name="description" rows="6" cols="80" class="form-control" placeholder="Write short description about your project."></textarea>
+        </div>
+        </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Journal Date</label>
-        <input type="date" class="form-control" id="exampleFormControlInput1" name="journal_date">
-      </div>
+  <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" >journal Date</label>
+            <div class="col-md-4 inputGroupContainer">
+          <input name="journal_date" placeholder="Newsletter Date" class="form-control"  type="date">
+            </div>
+          </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Insert pdf file</label>
-        <input type="file" name="pdf">
-      </div>
+          <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Insert pdf file</label>
+            <div class="col-md-4 inputGroupContainer">
+          <input type="file" name="pdf">
+            </div>
+          </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Insert doc file</label>
-        <input type="file" name="doc">
-      </div>
+          <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Insert doc file</label>
+            <div class="col-md-4 inputGroupContainer">
+          <input type="file" name="doc">
+            </div>
+          </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Insert image 1</label>
-        <input type="file" name="image1">
-      </div>
+          <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Insert images 1</label>
+            <div class="col-md-4 inputGroupContainer">
+          <input type="file" name="image1">
+            </div>
+        </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Insert image 2</label>
-        <input type="file" name="image2">
-      </div>
+          <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Insert images 2</label>
+            <div class="col-md-4 inputGroupContainer">
+          <input type="file" name="image2">
+          </div>
+        </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Insert image 3</label>
-        <input type="file" name="image3">
-      </div>
+          <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" >Insert images 3</label>
+            <div class="col-md-4 inputGroupContainer">
+          <input type="file" name="image3">
+          </div>
+        </div>
 
-      <input type="submit" value="Submit" class="btn btn-primary">
-    </form>
+  <!-- Button -->
+  <div class="form-group">
+    <label class="col-md-4 control-label"></label>
+      <div class="col-md-4 inputGroupContainer">
+  <input type="submit" Value="Submit">
+    </div>
+  </div>
+</form>
     </div>
 
     <br>

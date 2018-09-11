@@ -47,13 +47,6 @@ class AuthorJournalController extends Controller
 //store journal
   public function store(Request $request)
   {
-    $request->validate([
-      'title' => 'required|string|max:30',
-      'description' => 'required|string|max:50',
-      'journal_date' => 'required',
-      'pdf' => 'required|mimes:pdf|max:1999',
-      'doc' => 'required|mimes:doc,docx|max:1999'
-    ]);
 
     //save data to database
     $journal = new Journal;

@@ -39,17 +39,6 @@ class NewsletterController extends Controller
 
   public function store(Request $request)
   {
-    $request->validate([
-      'name' => 'required|string|min:5|max:50',
-      'email' => 'required|string|email|max:100',
-      'title' => 'required|string|max:30',
-      'description' => 'required|string|max:50',
-      'newsletter_date' => 'required',
-      'image1' => 'required|image|max:1999',
-      'image2' => 'image|max:1999',
-      'image3' => 'image|max:1999',
-      'image4' => 'image|max:1999',
-    ]);
 
     //save data to database
     $newsletter = new Newsletter;
