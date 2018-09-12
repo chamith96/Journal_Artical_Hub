@@ -66,7 +66,7 @@
          </ol>
 
          <!-- Content goes here -->
-
+         @include('layouts.messages')
              @if(count($assign) > 0)
               <div class="card-header" align="center"><b>Assigns</b></div>
               <div class="table-responsive">
@@ -75,9 +75,10 @@
                  <tr>
                    <th>Reviewer Name</th>
                    <th>User Name</th>
-                   <th>Journal Name</th>
+                   <th>Journal Title</th>
                    <th>Assign Date</th>
-                   <th>Recieve respond email</th>
+                   <th>Status</th>
+                   <th>Action</th>
                  </tr>
                </thead>
                  @foreach ($assign as $assigns)
@@ -85,11 +86,22 @@
                  <tr>
                    <td>{{$assigns->rname}}</td>
                    <td>{{$assigns->uname}}</td>
-                   <td>{{$assigns ->jname}}</td>
+                   <td>{{$assigns ->jtitle}}</td>
                    <td>{{$assigns ->createdAt}}</td>
                    <td>
-                     <input type="checkbox" id="myCheck"  onclick="myFunction()">
-                    </td>
+                     @if($assigns ->status == 0)
+                       Pending respond email.
+                     @else
+                       Received respond emil.
+                     @endif
+                   </td>
+                   <th>
+                     <form action="{{url('admin/assigns', [$assigns->assignid])}}" method="POST">
+                        {{ csrf_field() }}
+                       <input type="hideen" name="status" value="1" hidden>
+                      <input type="submit" value="update" class="btn btn-link">
+                     </form>
+                   </th>
                    @endforeach
                  </tr>
                </tbody>

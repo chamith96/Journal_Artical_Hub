@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Journal;
+use App\Assign;
 use App\User;
+use DB;
 use Illuminate\Support\Facades\Mail;
 
 class AuthorJournalController extends Controller
@@ -30,9 +32,10 @@ class AuthorJournalController extends Controller
 //show journal details to user
   public function show($id)
 {
+    $status = DB::select("select assigns.status from journals,assigns where assigns.journal_id=journals.id;");
     $journal = Journal::find($id);
     if(auth()->user()->id == $journal->user_id){
-      return view('journal.Journalshow')->with('journal', $journal);
+      return view('journal.Journalshow', compact('status', 'journal'));
     } else {
       return redirect('dashboard')->with('$error', 'Unauthorized access');
     }

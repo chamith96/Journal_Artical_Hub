@@ -64,3 +64,4 @@ Route::get('/admin/journals/{id}', 'JournalController@show');
 //assign route
 Route::get('/admin/assigns', 'AssignController@index');
 Route::get('/admin/assigns', 'AssignController@show');
+Route::post('/admin/assigns/{id}', 'AssignController@updateStatus');

@@ -77,6 +77,7 @@
                {{ csrf_field() }}
 
              <input type="hidden" class="form-control" value="{{$journal->id}}" name="jid" hidden>
+             <input type="hidden" class="form-control" value="0" name="status" hidden>
 
              <div class="form-group">
                <label for="exampleFormControlInput1">Reviewer</label>
@@ -91,7 +92,7 @@
 
              <input type="submit" value="Assign" class="btn btn-primary">
              </form>
-             
+
             </div>
             </div>
 

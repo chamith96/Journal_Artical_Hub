@@ -16,6 +16,7 @@ class CreateAssignsTable extends Migration
         Schema::create('assigns', function (Blueprint $table) {
           $table->Integer('journal_id');
           $table->Integer('reviewer_id');
+          $table->tinyInteger('stattus');
           $table->timestamps();
         });
     }

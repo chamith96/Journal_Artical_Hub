@@ -111,6 +111,7 @@ public function sendEmail(Request $request)
   $assign = new Assign;
   $assign->journal_id  = $request->input('jid');
   $assign->reviewer_id  = $request->input('rid');
+  $assign->status  = $request->input('status');
   $assign->save();
 
   return redirect('/admin/journals/'.$assign->journal_id.'/email')->with('success', 'Reviewer is assigned. Send assign email to reviewer.');
