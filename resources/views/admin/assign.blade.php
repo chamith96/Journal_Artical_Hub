@@ -77,6 +77,7 @@
                    <th>User Name</th>
                    <th>Journal Name</th>
                    <th>Assign Date</th>
+                   <th>Recieve respond email</th>
                  </tr>
                </thead>
                  @foreach ($assign as $assigns)
@@ -86,6 +87,9 @@
                    <td>{{$assigns->uname}}</td>
                    <td>{{$assigns ->jname}}</td>
                    <td>{{$assigns ->createdAt}}</td>
+                   <td>
+                     <input type="checkbox" id="myCheck"  onclick="myFunction()">
+                    </td>
                    @endforeach
                  </tr>
                </tbody>

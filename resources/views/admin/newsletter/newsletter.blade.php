@@ -67,15 +67,41 @@
 
          <!-- Content goes here -->
              @if(count($newsletter) > 0)
-
-              <ul class="list-group">
+               <div class="card-header" align="center"><b>Newsletters</b></div>
+               <div class="table-responsive">
+               <table class="table table-bordered" width="100%" cellspacing="0">
+                 <tr>
+                   <th>Id</th>
+                   <th>Title</th>
+                   <th>details</th>
+                   <th>Date</th>
+                   <th>Download zip</th>
+                   <th>Download Pdf</th>
+                 </tr>
                @foreach ($newsletter as $newsletters)
-                   <li class="list-group-item">
-                    <h4><a href="/admin/newsletters/{{$newsletters->id}}">{{$newsletters->id}}. {{$newsletters->title}}</a></h4>
-                    written on {{$newsletters->created_at}}
-                   </li>
+                 <tr>
+                   <td>
+                     {{$newsletters->id}}
+                   </td>
+                   <td>
+                     {{$newsletters->title}}
+                   </td>
+                   <td>
+                     <a href="/admin/newsletters/{{$newsletters->id}}">content</a>
+                   </td>
+                   <td>
+                     {{$newsletters->created_at}}
+                   </td>
+                   <td>
+                   <a href="{{route('downloadFilesNewsletter', [$newsletters->id])}}"><span class="far fa-file-archive"></span> Download</a>
+                   </td>
+                   <td>
+                   <a href="{{route('pdfShowNewsletter', [$newsletters->id])}}"><span class="far fa-file-pdf"></span> Download</a>
+                   </td>
                @endforeach
-               </ul>
+             </tr>
+           </table>
+           </div>
                {{$newsletter->links()}}
                @else
                    <div class="panel-heading"><h3>Don't have any Newsletters yet.</h3>

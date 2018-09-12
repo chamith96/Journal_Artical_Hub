@@ -86,7 +86,7 @@
 
            <div class="form-group">
              <label for="exampleFormControlTextarea1">Body</label>
-             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="body"></textarea>
+             <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="body"></textarea>
            </div>
 
            <input type="submit" value="Send" class="btn btn-primary">

@@ -52,10 +52,11 @@ public function downloadZip($id)
 }
 
 //journal send to reviewer email
-  public function emailPage()
+  public function emailPage($id)
 {
+  $journal = Journal::find($id);
   $reviewer = Reviewer::all();
-  return view('admin.journal.journalEmail', compact('reviewer'));
+  return view('admin.journal.journalEmail', compact('reviewer', 'journal'));
 }
 
 public function sendEmail(Request $request)
@@ -112,7 +113,7 @@ public function sendEmail(Request $request)
   $assign->reviewer_id  = $request->input('rid');
   $assign->save();
 
-  return redirect('/admin/journals/email')->with('success', 'Reviewer is assigned. Send assign email to reviewer.');
+  return redirect('/admin/journals/'.$assign->journal_id.'/email')->with('success', 'Reviewer is assigned. Send assign email to reviewer.');
   }
 
 }

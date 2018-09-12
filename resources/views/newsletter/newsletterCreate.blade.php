@@ -158,7 +158,7 @@
         <label class="col-md-4 control-label"></label>
           <div class="col-md-4 inputGroupContainer">
 
-      <input type="submit" Value="Submit">
+      <input type="submit" Value="Submit" class="btn btn-primary">
         </div>
       </div>
 

@@ -88,12 +88,29 @@
 
            <div class="form-group">
              <label for="exampleFormControlInput1">Subject</label>
-             <input type="text" class="form-control" id="exampleFormControlInput1" name="subject">
+             <input type="text" class="form-control" id="exampleFormControlInput1" name="subject" value="Submission review request.">
            </div>
 
            <div class="form-group">
              <label for="exampleFormControlTextarea1">Body</label>
-             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="body"></textarea>
+             <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="body">
+Dear {{$reviewers->name}},
+
+This is Sabaragamuwa University Journal Administration. Could you please erite a review for us on the following paper submission.
+
+---------------------------------------------------
+Journal Id: {{$journal->id}}
+Journal Title: {{$journal->title}}
+Journal Author: {{$journal->name}}
+---------------------------------------------------
+
+The instructions on how to access the submission, accept or decline this review request, and submit your rewiew can be found at <br>the bottom of this paper.
+
+If you cannot review this paper, could you please suggest names, oranizations and email address of possible rewiewers.
+
+Best regards,
+SUSL Journal Administration.
+             </textarea>
            </div>
 
            <div class="form-group">

@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
@@ -78,8 +79,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+    <script  src="{{asset('js/bootstrapvalidator.min.js')}}"></script>
     <script  src="{{asset('js/newsletter.js')}}"></script>
-       <script  src="{{asset('js/journal.js')}}"></script>
+    <script  src="{{asset('js/journal.js')}}"></script>
 </body>
 </html>

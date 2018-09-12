@@ -66,16 +66,48 @@
          </ol>
 
          <!-- Content goes here -->
+            @include('layouts.messages')
              @if(count($journal) > 0)
-
-              <ul class="list-group">
+               <div class="card-header" align="center"><b>journals</b></div>
+               <div class="table-responsive">
+               <table class="table table-bordered" width="100%" cellspacing="0">
+                 <tr>
+                   <th>Id</th>
+                   <th>Title</th>
+                   <th>details</th>
+                   <th>Date</th>
+                   <th>Assign to reviewer</th>
+                   <th>Download zip</th>
+                   <th>Download Pdf</th>
+                 </tr>
                @foreach ($journal as $journals)
-                   <li class="list-group-item">
-                    <h4><a href="/admin/journals/{{$journals->id}}">{{$journals->id}}. {{$journals->title}}</a></h4>
-                    written on {{$journals->created_at}}
-                   </li>
+                  <tr>
+                    <td>
+                      {{$journals->id}}
+                    </td>
+                    <td>
+                      {{$journals->title}}
+                    </td>
+                    <td>
+                      <a href="/admin/journals/{{$journals->id}}">content</a>
+                    </td>
+                    <td>
+                      {{$journals->created_at}}
+                    </td>
+                    <td>
+                    <a href="journals/{{$journals->id}}/assigns"><span class="fas fa-tasks"></span> Assign</a>
+                    </td>
+                    <td>
+                    <a href="{{route('downloadFilesJournal', [$journals->id])}}"><span class="far fa-file-archive"></span> Download</a>
+                    </td>
+                    <td>
+                    <a href="{{route('pdfShowJournal', [$journals->id])}}"><span class="far fa-file-pdf"></span> Download</a>
+                    </td>
+
                @endforeach
-               </ul>
+             </tr>
+           </table>
+           </div>
                {{$journal->links()}}
                @else
                    <div class="panel-heading"><h3>Don't have any journal yet.</h3>

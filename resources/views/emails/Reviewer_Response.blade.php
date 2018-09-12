@@ -14,13 +14,13 @@
         <tr>
           <td class="container-padding header" align="left">
             <h1>{{$subject}}</h1>
-            <p>{{$body}}</p>
           </td>
         </tr>
         <tr>
           <td class="container-padding content" align="left">
           <div class="body-text">
-
+            {{$body}}
+          </div>
           </td>
         </tr>
         <tr>

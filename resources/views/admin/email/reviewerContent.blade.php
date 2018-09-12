@@ -71,7 +71,7 @@
          <!-- Content goes here -->
          <ul class="list-group">
            <li class="list-group-item active"><h1>{{$reviewer->subject}}</h1></li>
-           <li class="list-group-item"><p>{{$reviewer->body}}</p></li>
+           <li class="list-group-item">{{$reviewer->body}}</li>
          </ul>
 
        </div>

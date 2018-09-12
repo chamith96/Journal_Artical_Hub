@@ -66,11 +66,11 @@
           </ol>
 
           <!-- Content goes here -->
-          @if (session('status'))
-            <div class="alert alert-success">
-              {{ session('status') }}
-            </div>
-          @endif
+          <div class="card mb-3">
+          <div class="card-body">
+            
+          </div>
+          </div>
 
         </div>
         <!-- /.container-fluid -->

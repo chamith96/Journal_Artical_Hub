@@ -24,7 +24,7 @@ Route::get('/dashboard', 'AuthorJournalController@index');
 Route::get('/journals/create', 'AuthorJournalController@create');
 Route::get('/journals/{id}', 'AuthorJournalController@show');
 Route::post('/journals','AuthorJournalController@store');
-Route::get('/admin/journals/email', 'JournalController@emailPage');
+Route::get('/admin/journals/{id}/email', 'JournalController@emailPage');
 Route::post('/admin/journals/email', 'JournalController@sendEmail');
 Route::get('admin/journals/{id}/assigns', 'JournalController@indexAssign');
 Route::post('/admin/journals/{id}/assigns', 'JournalController@storeAssign');
