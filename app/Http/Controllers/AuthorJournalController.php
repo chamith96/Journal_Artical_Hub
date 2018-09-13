@@ -32,8 +32,18 @@ class AuthorJournalController extends Controller
 //show journal details to user
   public function show($id)
 {
-    $status = DB::select("select assigns.status from journals,assigns where assigns.journal_id=journals.id;");
     $journal = Journal::find($id);
+    $user_id = auth()->user()->id;
+
+    $status = DB::table('assigns')
+                  ->join('reviewers','reviewers.id','=','assigns.reviewer_id')
+                  ->join('journals','journals.id','=','assigns.journal_id')
+                  ->join('users','journals.user_id','=','users.id')
+                  ->where('users.id', '=',$user_id)
+                  ->where('journals.id','=',$journal->id)
+                  ->select('assigns.status as action', 'reviewers.name as reviewer')
+                  ->get();
+    //$status = DB::select("SELECT `assigns.status FROM assigns,journals,users WHERE assigns.journal_id=journals.id AND users.id=journals.user_id AND users.id=$user_id AND journals.id=$journal->id");
     if(auth()->user()->id == $journal->user_id){
       return view('journal.Journalshow', compact('status', 'journal'));
     } else {
