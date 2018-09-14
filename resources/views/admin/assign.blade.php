@@ -90,9 +90,9 @@
                    <td>{{$assigns ->createdAt}}</td>
                    <td>
                      @if($assigns ->status == 0)
-                       Pending respond email.
+                       <div style="color: red;">Pending respond email.</div>
                      @else
-                       Received respond emil.
+                       <div style="color: green">Received respond emil.</div>
                      @endif
                    </td>
                    <th>

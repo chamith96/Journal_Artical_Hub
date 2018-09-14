@@ -77,13 +77,9 @@
              {{ csrf_field() }}
            <div class="form-group">
              <label for="exampleFormControlInput1">Reviewers</label>
-                 @if(count($reviewer) > 0)
-                   <select class="form-control" name="reviewer">
-                   @foreach ($reviewer as $reviewers)
-                     <option value="{{$reviewers->email}}">{{$reviewers->name}}</option>
-                   @endforeach
-                   </select>
-                 @endif
+             @if(count($reviewer) > 0)
+               @foreach ($reviewer as $reviewers)
+             <input type="text" class="form-control" id="exampleFormControlInput1" name="reviewer" value="{{$reviewers->remail}}">
            </div>
 
            <div class="form-group">
@@ -94,7 +90,9 @@
            <div class="form-group">
              <label for="exampleFormControlTextarea1">Body</label>
              <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="body">
-Dear {{$reviewers->name}},
+Dear {{$reviewers->rname}},
+        @endforeach
+        @endif
 
 This is Sabaragamuwa University Journal Administration. Could you please erite a review for us on the following paper submission.
 

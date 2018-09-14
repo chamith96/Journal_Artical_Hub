@@ -61,7 +61,7 @@
           </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="{{ route('logout') }}"
+            <a class="btn btn-danger" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Logout</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

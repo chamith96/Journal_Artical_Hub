@@ -10,6 +10,7 @@ use App\EmailReviewer;
 use App\Assign;
 use PDF;
 use Zipper;
+use DB;
 
 class JournalController extends Controller
 {
@@ -55,7 +56,12 @@ public function downloadZip($id)
   public function emailPage($id)
 {
   $journal = Journal::find($id);
-  $reviewer = Reviewer::all();
+  //$reviewer = Reviewer::all();
+  $reviewer = DB::table('assigns')
+                ->join('reviewers','reviewers.id','=','assigns.reviewer_id')
+                ->where('assigns.journal_id', '=',$journal->id)
+                ->select('reviewers.name as rname', 'reviewers.email as remail')
+                ->get();
   return view('admin.journal.journalEmail', compact('reviewer', 'journal'));
 }
 
