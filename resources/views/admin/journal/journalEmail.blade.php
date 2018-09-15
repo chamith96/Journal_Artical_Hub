@@ -77,9 +77,7 @@
              {{ csrf_field() }}
            <div class="form-group">
              <label for="exampleFormControlInput1">Reviewers</label>
-             @if(count($reviewer) > 0)
-               @foreach ($reviewer as $reviewers)
-             <input type="text" class="form-control" id="exampleFormControlInput1" name="reviewer" value="{{$reviewers->remail}}">
+             <input type="text" class="form-control" id="exampleFormControlInput1" name="reviewer" value="{{$reviewer->email}}">
            </div>
 
            <div class="form-group">
@@ -90,9 +88,8 @@
            <div class="form-group">
              <label for="exampleFormControlTextarea1">Body</label>
              <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="body">
-Dear {{$reviewers->rname}},
-        @endforeach
-        @endif
+
+Dear {{$reviewer->name}},
 
 This is Sabaragamuwa University Journal Administration. Could you please erite a review for us on the following paper submission.
 
@@ -102,7 +99,8 @@ Journal Title: {{$journal->title}}
 Journal Author: {{$journal->name}}
 ---------------------------------------------------
 
-The instructions on how to access the submission, accept or decline this review request, and submit your rewiew can be found at <br>the bottom of this paper.
+The instructions on how to access the submission, accept or decline this review request, and submit your rewiew can be found at
+the bottom of this paper.
 
 If you cannot review this paper, could you please suggest names, oranizations and email address of possible rewiewers.
 

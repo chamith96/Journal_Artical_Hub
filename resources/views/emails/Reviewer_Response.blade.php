@@ -19,7 +19,7 @@
         <tr>
           <td class="container-padding content" align="left">
           <div class="body-text">
-            {{$body}}
+            <pre>{{$body}}</pre>
           </div>
           </td>
         </tr>

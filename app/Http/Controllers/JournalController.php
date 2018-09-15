@@ -52,26 +52,22 @@ public function downloadZip($id)
   return response()->download(public_path("storage/journals/"."$journal->id"."/Journal "."$journal->id".".zip"))->deleteFileAfterSend(true);
 }
 
-//journal send to reviewer email
-  public function emailPage($id)
+//show journal send email page
+  public function emailPage($id,$rid)
 {
   $journal = Journal::find($id);
-  //$reviewer = Reviewer::all();
-  $reviewer = DB::table('assigns')
-                ->join('reviewers','reviewers.id','=','assigns.reviewer_id')
-                ->where('assigns.journal_id', '=',$journal->id)
-                ->select('reviewers.name as rname', 'reviewers.email as remail')
-                ->get();
+  $reviewer = Reviewer::find($rid);
   return view('admin.journal.journalEmail', compact('reviewer', 'journal'));
 }
 
+//journal send to reviewer email
 public function sendEmail(Request $request)
 {
   $request->validate([
     'reviewer' => 'required|email',
     'subject' => 'required|string',
     'body' => 'required|string',
-    'file' => 'mimes:pdf,zip,doc,docx'
+    'file' => 'required|mimes:pdf,zip,doc,docx'
   ]);
 
   //save data to database
@@ -110,7 +106,7 @@ public function sendEmail(Request $request)
   }
 
 //store reviewer assign
-  public function storeAssign(Request $request)
+  public function storeAssign(Request $request, $id)
 {
 
   //save data to database
@@ -120,7 +116,7 @@ public function sendEmail(Request $request)
   $assign->status  = $request->input('status');
   $assign->save();
 
-  return redirect('/admin/journals/'.$assign->journal_id.'/email')->with('success', 'Reviewer is assigned. Send assign email to reviewer.');
+  return redirect('/admin/journals/'.$assign->journal_id.'/reviewers/'.$assign->reviewer_id.'/email')->with('success', 'Reviewer is assigned. Send assign email to reviewer.');
   }
 
 }

@@ -24,7 +24,9 @@ Route::get('/dashboard', 'AuthorJournalController@index');
 Route::get('/journals/create', 'AuthorJournalController@create');
 Route::get('/journals/{id}', 'AuthorJournalController@show');
 Route::post('/journals','AuthorJournalController@store');
-Route::get('/admin/journals/{id}/email', 'JournalController@emailPage');
+Route::get('/admin/journals', 'JournalController@index');
+Route::get('/admin/journals/{id}', 'JournalController@show');
+Route::get('/admin/journals/{id}/reviewers/{rid}/email', 'JournalController@emailPage');
 Route::post('/admin/journals/email', 'JournalController@sendEmail');
 Route::get('admin/journals/{id}/assigns', 'JournalController@indexAssign');
 Route::post('/admin/journals/{id}/assigns', 'JournalController@storeAssign');
@@ -58,8 +60,6 @@ Route::get('/admin/emails/reviewer/{id}', 'EmailController@reviewerContent');
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginPage')->name('admin.login');
 Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
-Route::get('/admin/journals', 'JournalController@index');
-Route::get('/admin/journals/{id}', 'JournalController@show');
 
 //assign route
 Route::get('/admin/assigns', 'AssignController@index');

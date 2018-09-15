@@ -71,7 +71,7 @@
          <!-- Content goes here -->
          <ul class="list-group">
            <li class="list-group-item active"><h1>{{$user->subject}}</h1></li>
-           <li class="list-group-item"><p>{{$user->body}}</p></li>
+           <li class="list-group-item"><pre>{{$user->body}}</pre></li>
          </ul>
 
        </div>
