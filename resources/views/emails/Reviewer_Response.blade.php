@@ -118,10 +118,10 @@ text-decoration: underline;
 }
 
 .header {
-  font-size: 24px;
+  font-size: 15px;
   font-weight: bold;
   padding-bottom: 12px;
-  color: #DF4726;
+  color: black;
 }
 
 .footer-text {

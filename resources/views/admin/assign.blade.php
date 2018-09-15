@@ -66,7 +66,6 @@
          </ol>
 
          <!-- Content goes here -->
-         @include('layouts.messages')
              @if(count($assign) > 0)
               <div class="card-header" align="center"><b>Assigns</b></div>
               <div class="table-responsive">

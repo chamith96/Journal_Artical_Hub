@@ -36,6 +36,6 @@ class AssignController extends Controller
     $assign = Assign::find($id);
     $assign->status = $request->input('status');
     $assign->save();
-    return redirect('/admin/assigns')->with('success','Status updated');
+    return redirect('/admin/assigns');
   }
 }
