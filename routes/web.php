@@ -20,7 +20,6 @@ Route::get('/downloadFilesNewsletter/{id}','NewsletterController@downloadZip')->
 Route::get('/downloadFilesJournal/{id}','JournalController@downloadZip')->name('downloadFilesJournal');
 
 //journals routes
-Route::get('/dashboard', 'AuthorJournalController@index');
 Route::get('/journals/create', 'AuthorJournalController@create');
 Route::get('/journals/{id}', 'AuthorJournalController@show');
 Route::post('/journals','AuthorJournalController@store');
@@ -65,3 +64,6 @@ Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
 Route::get('/admin/assigns', 'AssignController@index');
 Route::get('/admin/assigns', 'AssignController@show');
 Route::post('/admin/assigns/{id}', 'AssignController@updateStatus');
+
+//dashboard route
+Route::get('/dashboard', 'AuthorJournalController@index');

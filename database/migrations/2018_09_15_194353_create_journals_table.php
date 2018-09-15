@@ -22,8 +22,9 @@ class CreateJournalsTable extends Migration
           $table->string('title');
           $table->string('description');
           $table->date('journal_date');
-          $table->int('user_id');
+          $table->unsignedInteger('user_id');
           $table->timestamps();
+          $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

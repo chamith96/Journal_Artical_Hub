@@ -66,9 +66,7 @@
           </ol>
 
           <!-- Content goes here -->
-          <div class="card mb-3">
-          <div class="card-body">
-            
+
           </div>
           </div>
 
