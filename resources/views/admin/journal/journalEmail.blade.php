@@ -88,10 +88,9 @@
            <div class="form-group">
              <label for="exampleFormControlTextarea1">Body</label>
              <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="body">
-
 Dear {{$reviewer->name}},
 
-This is Sabaragamuwa University Journal Administration. Could you please erite a review for us on the following paper submission.
+This is Sabaragamuwa University Journal Administration. Could you please write a review for us on the following paper submission.
 
 ---------------------------------------------------
 Journal Id: {{$journal->id}}
@@ -99,7 +98,7 @@ Journal Title: {{$journal->title}}
 Journal Author: {{$journal->name}}
 ---------------------------------------------------
 
-The instructions on how to access the submission, accept or decline this review request, and submit your rewiew can be found at
+The instructions on how to access the submission, accept or decline this review request, and submited rewiew can be found at
 the bottom of this paper.
 
 If you cannot review this paper, could you please suggest names, oranizations and email address of possible rewiewers.

@@ -84,7 +84,7 @@
                    @if(count($reviewer) > 0)
                      <select class="form-control" name="rid">
                      @foreach ($reviewer as $reviewers)
-                       <option value="{{$reviewers->id}}">{{$reviewers->email}}</option>
+                       <option value="{{$reviewers->id}}">{{$reviewers->name}}</option>
                      @endforeach
                      </select>
                    @endif
