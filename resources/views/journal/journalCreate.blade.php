@@ -2,15 +2,16 @@
     @section('content')
       <div class="container">
         @include('layouts.messages')
-      <form action="{{url('journals')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" id="journal_form">
+      <form action="{{url('journals')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" id="journal_form" name="classic">
         {{ csrf_field() }}
 
         <!-- Text input-->
           <div class="form-group">
           <label class="col-md-4 control-label">Faculty/Center</label>
           <div class="col-md-4 inputGroupContainer">
-          <select class="form-control" name="administration">
+          <select class="form-control" name="administration" onChange="updatedepartment(this.selectedIndex)">
             <optgroup label="Faculty">
+              <option>Select</option>
               <option>Faculty of Agricultural Sciences</option>
               <option>Faculty of Applied Sciences</option>
               <option>Faculty of Geomatics</option>
@@ -36,39 +37,7 @@
         <div class="form-group">
         <label class="col-md-4 control-label">Select Deparment</label>
         <div class="col-md-4 inputGroupContainer">
-          <select class="form-control" id="exampleFormControlSelect1" name="department">
-            <option>Not from faculty</option>
-            <optgroup label="Faculty of Agricultural Sciences">
-              <option>Department of Export Agriculture</option>
-              <option>Department of Livestock Production</option>
-              <option>Deparment of Agribusiness Management</option>
-            <optgroup label="Faculty of Applied Sciences">
-              <option>Department of Computing and Information Systems</option>
-              <option>Department of Food Science and Technology</option>
-              <option>Department of Natural Resources</option>
-              <option>Department of Physical Sciences and Technologies</option>
-              <option>Department of Sport Sciences and Physical Education</option>
-            <optgroup label="Faculty of Geomatics">
-              <option>Department of Remote Sensing and GIS</option>
-              <option>Department of Surveying and Geodesy</option>
-            <optgroup label="Faculty of Management Studies">
-              <option>Department of Tourism Managemen</option>
-              <option>Department of Accountancy and Finance</option>
-              <option>Department of Business Management</option>
-              <option>Department of Marketing Management</option>
-            <optgroup label="Faculty of Social Sciences and Languages">
-              <option>Department ofsocial sciences</option>
-              <option>Department of languages</option>
-              <option>Department of Geography & Environmental Management</option>
-              <option>Department of Economics & Statistics</option>
-              <option>Department of English Language Teaching</option>
-            <optgroup label="Faculty of Medicine">
-              <option>Department of Anatomy</option>
-              <option>Department of Physiology</option>
-              <option>Department of Biochemistry</option>
-            <optgroup label="Faculty of Technology">
-              <option>Department of Biosystems Technology</option>
-              <option>Department of Engineering Technology</option>
+          <select class="form-control" id="exampleFormControlSelect1" name="department" onClick="this.options[this.options.selectedIndex].value">
           </select>
         </div>
         </div>
@@ -148,4 +117,39 @@
     </div>
 
     <br>
+
+    <script>
+
+    var administrationlist=document.classic.administration
+    var departmentlist=document.classic.department
+
+    var department=new Array()
+    department[0]=[""]
+    department[1]=["Department of Export Agriculture", "Department of Livestock Production", "Deparment of Agribusiness Management"]
+    department[2]=["Department of Computing and Information Systems" ,"Department of Food Science and Technolog","Department of Natural Resource" ,"Department of Physical Sciences and Technologie" ,"Department of Sport Sciences and Physical Education"]
+    department[3]=["Department of Remote Sensing and GIS", "Department of Surveying and Geodesy"]
+    department[4]=["Department of Tourism Management", "Department of Business Management", "Department of Marketing Management"]
+    department[5]=["Department of Social sciences" ,"Department of languages" ,"Department of Geography & Environmental Management" ,"Department of Economics & Statistics" ,"Department of English Language Teaching"]
+    department[6]=["Department of Anatomy" ,"Department of Physiology" ,"Department of Biochemistry"]
+    department[7]=["Department of Biosystems Technology" ,"Department of Engineering Technology"]
+    department[8]=["Faculty of Graduate Studies"]
+    department[9]=["Not from faculty"]
+    department[10]=["Not from faculty"]
+    department[11]=["Not from faculty"]
+    department[12]=["Not from faculty"]
+    department[13]=["Not from faculty"]
+    department[14]=["Not from faculty"]
+    department[15]=["Not from faculty"]
+    department[16]=["Not from faculty"]
+
+
+    function updatedepartment(selectedcitygroup){
+        departmentlist.options.length=0
+        if (selectedcitygroup>0){
+            for (i=0; i<department[selectedcitygroup].length; i++)
+                departmentlist.options[departmentlist.options.length]=new Option(department[selectedcitygroup][i].split("|")[0], department[selectedcitygroup][i].split("|")[1])
+        }
+    }
+
+    </script>
   @endsection

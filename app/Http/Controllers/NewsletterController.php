@@ -112,7 +112,7 @@ class NewsletterController extends Controller
     }
 
     //email to Sumbission
-    $data = array('email_title' => "Newsletter has been submitted",
+/*    $data = array('email_title' => "Newsletter has been submitted",
                   'id' => $newsletter->id,
                   'name' => $newsletter->name,
                   'email' => $newsletter->email,
@@ -126,7 +126,7 @@ class NewsletterController extends Controller
     $message->to($data['email']);
     $message->subject($data['email_title']);
     $message->from('admin@abc.com');
-  });
+  });  */
 
     return redirect('/newsletters/create')->with('success', 'Newsletter is submitted. Please check your email.');
     }
