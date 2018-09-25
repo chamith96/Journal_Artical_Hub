@@ -67,3 +67,6 @@ Route::post('/admin/assigns/{id}', 'AssignController@updateStatus');
 
 //dashboard route
 Route::get('/dashboard', 'AuthorJournalController@index');
+
+//user verify routes
+Route::get('verify/{email}/{verifyToken}', 'Auth\RegisterController@sendEmailVerify')->name('sendEmailVerify');
