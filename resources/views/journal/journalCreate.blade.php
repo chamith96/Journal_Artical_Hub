@@ -46,7 +46,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" >journal title</label>
             <div class="col-md-4 inputGroupContainer">
-          <input name="title" placeholder="Newsletter title" class="form-control"  type="text">
+          <input name="title" placeholder="Journal title" class="form-control"  type="text">
             </div>
           </div>
 
@@ -54,7 +54,7 @@
         <div class="form-group">
         <label class="col-md-4 control-label">journal Description</label>
         <div class="col-md-4 inputGroupContainer">
-         <textarea name="description" rows="6" cols="80" class="form-control" placeholder="Write short description about your project."></textarea>
+         <textarea name="description" rows="6" cols="80" class="form-control" placeholder="Write short description about your Journal."></textarea>
         </div>
         </div>
 
@@ -110,7 +110,7 @@
   <div class="form-group">
     <label class="col-md-4 control-label"></label>
       <div class="col-md-4 inputGroupContainer">
-  <input type="submit" Value="Submit">
+  <input type="submit" Value="Submit" class="btn btn-primary">
     </div>
   </div>
 </form>
