@@ -11,6 +11,7 @@ use App\Assign;
 use PDF;
 use Zipper;
 use DB;
+//use App\Notifications\assignNotification;
 
 class JournalController extends Controller
 {
@@ -106,7 +107,7 @@ public function sendEmail(Request $request)
   }
 
 //store reviewer assign
-  public function storeAssign(Request $request, $id)
+  public function storeAssign(Request $request)
 {
 
   //save data to database
@@ -115,6 +116,7 @@ public function sendEmail(Request $request)
   $assign->reviewer_id  = $request->input('rid');
   $assign->status  = $request->input('status');
   $assign->save();
+  //auth()->user()->notify(new assignNotification);
 
   return redirect('/admin/journals/'.$assign->journal_id.'/reviewers/'.$assign->reviewer_id.'/email')->with('success', 'Reviewer is assigned. Send assign email to reviewer.');
   }

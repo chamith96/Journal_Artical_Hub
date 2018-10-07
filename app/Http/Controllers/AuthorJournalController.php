@@ -8,6 +8,7 @@ use App\Assign;
 use App\User;
 use DB;
 use Illuminate\Support\Facades\Mail;
+//use App\Notifications\assignNotification;
 
 class AuthorJournalController extends Controller
 {
@@ -35,6 +36,7 @@ class AuthorJournalController extends Controller
     $journal = Journal::find($id);
     $user_id = auth()->user()->id;
 
+  if(auth()->user()->id == $journal->user_id){
     $status = DB::table('assigns')
                   ->join('reviewers','reviewers.id','=','assigns.reviewer_id')
                   ->join('journals','journals.id','=','assigns.journal_id')
@@ -44,7 +46,7 @@ class AuthorJournalController extends Controller
                   ->select('assigns.status as action', 'reviewers.name as reviewer')
                   ->get();
     //$status = DB::select("SELECT `assigns.status FROM assigns,journals,users WHERE assigns.journal_id=journals.id AND users.id=journals.user_id AND users.id=$user_id AND journals.id=$journal->id");
-    if(auth()->user()->id == $journal->user_id){
+
       return view('journal.Journalshow', compact('status', 'journal'));
     } else {
       return redirect('dashboard')->with('$error', 'Unauthorized access');
@@ -147,6 +149,7 @@ class AuthorJournalController extends Controller
           $path = $doc->storeAs("public/journals/".$journalId, $fileNameToStore);
     }
 
+
     //email to Sumbission
     $data = array('email_title' => "Journal has been submitted",
                   'name' => $journal->name,
@@ -162,6 +165,8 @@ class AuthorJournalController extends Controller
     $message->subject($data['email_title']);
     $message->from('admin@abc.com');
   });
+
+  //auth()->user()->notify(new assignNotification);
 
     return redirect('/journals/create')->with('success', 'Journal is submitted. We will let you know if reviewer response.');
 }}

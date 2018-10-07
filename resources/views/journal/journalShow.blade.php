@@ -7,9 +7,9 @@
       @foreach ($status as $statuss)
         <li>
           @if($statuss->action == 0)
-            <p>We sent your journal to reviewer, <i>{{$statuss->reviewer}}</i>. We will emil when reviewer respond.</p>
+            <p>We sent your journal to <i>{{$statuss->reviewer}}</i>. We will emil when reviewer respond.</p>
           @else
-            <p>Reviewer, <i>{{$statuss->reviewer}}</i> reviewed your journal. Please check your emails.</p>
+            <p><i>{{$statuss->reviewer}}</i> reviewed your journal. Please check your emails.</p>
           @endif
         </li>
       @endforeach
@@ -17,6 +17,7 @@
     @else
       <p>Do not assign to reviewer yet.</p>
     @endif
+    
     </li>
     <li class="list-group-item"><p>Author name: {{$journal->name}}</p></li>
     <li class="list-group-item"><p>Administration: {{$journal->administration}}</p></li>
