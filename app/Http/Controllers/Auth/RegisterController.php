@@ -84,6 +84,7 @@ class RegisterController extends Controller
 
     public function sendEmailVerify($email, $verifyToken) {
       $user = User::where(['email'=>$email,'verifyToken'=>$verifyToken])->first();
+
       if ($user) {
       user::where(['email'=>$email,'verifyToken'=>$verifyToken])->update(['status'=>'1','verifyToken'=>NULL]);
       return redirect('/login')->with('success','Account is verifed');

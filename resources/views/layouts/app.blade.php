@@ -75,25 +75,6 @@
                         @endguest
                     </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        @guest
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    Notification <span class="badge">{{ count(auth()->user()->unreadNotifications) }}</span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                      @foreach (auth()->user()->unreadNotifications as $notifications)
-                                      <a href="#">{{$notifications->data['data']}}</a>
-                                      @endforeach
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-
                 </div>
             </div>
         </nav>
