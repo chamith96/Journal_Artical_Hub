@@ -171,7 +171,7 @@
           <!-- Logo -->
           <tr>
             <td class="email-masthead">
-              <a class="email-masthead_name">Canvas</a>
+              <a class="email-masthead_name"> crkd Administration - SUSL </a>
             </td>
           </tr>
           <!-- Email Body -->
@@ -182,7 +182,7 @@
                 <tr>
                   <td class="content-cell">
                     <h1>Verify your email address</h1>
-                    <p>Thanks for signing up Click below button to veify account.</p>
+                    <p>Thanks for signing up. Click below button to veify account.</p>
                     <!-- Action -->
                     <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
                       <tr>
@@ -200,7 +200,7 @@
                         <td>
                           <p class="sub">If you’re having trouble clicking the button, copy and paste the URL below into your web browser.
                           </p>
-                        
+
                         </td>
                       </tr>
                     </table>
@@ -215,8 +215,10 @@
                 <tr>
                   <td class="content-cell">
                     <p class="sub center">
-                      Canvas Labs, Inc.
-                      <br>325 9th St, San Francisco, CA 94103
+                      crkd Administration <br>
+                      Sabaragamuwa University of Sri Lanka, <br>
+                      P.O. Box 02, Belihuloya - 70140 <br>
+                      SRI LANKA
                     </p>
                   </td>
                 </tr>
