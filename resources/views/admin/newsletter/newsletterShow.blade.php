@@ -79,9 +79,33 @@
              <li class="list-group-item"><b>Description:</b> {{$newsletter->description}}</li>
              <li class="list-group-item"><b>Created at:</b> {{$newsletter->created_at}}</li>
            </ul> <br>
-             <a class="btn btn-primary" href="{{route('pdfShowNewsletter', [$newsletter->id])}}">Download pdf file</a>
-             <a class="btn btn-primary" href="{{route('downloadFilesNewsletter', [$newsletter->id])}}">Download Zip</a>
+             <button class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete</button>
 
+
+             <!-- Modal -->
+             <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Delete Warning !!</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Sure to delete {{$newsletter->title}} ?</p>
+                  </div>
+                  <div class="modal-footer">
+                            <form action="{{url('admin/newsletters', [$newsletter->id])}}" method="POST">
+                              {{csrf_field()}}
+                              <input type="hidden" name="_method" value="DELETE">
+                              <input type="submit" class="btn btn-danger" value="Delete" data-toggle="modal" data-target="#myModal">
+                            </form>
+                  </div>
+                </div>
+
+              </div>
+              </div>
 
        </div>
        <!-- /.container-fluid -->

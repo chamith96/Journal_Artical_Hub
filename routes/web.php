@@ -7,8 +7,9 @@ Route::get('/', function () {
 
 //newsletters route
 Route::get('admin/newsletters', 'NewsletterController@index');
-Route::get('newsletters/create', 'NewsletterController@create');
 Route::get('admin/newsletters/{id}', 'NewsletterController@show');
+Route::delete('admin/newsletters/{id}', 'NewsletterController@destroy');
+Route::get('newsletters/create', 'NewsletterController@create');
 Route::post('newsletters','NewsletterController@store');
 
 //pdf genarate
@@ -29,6 +30,7 @@ Route::get('/admin/journals/{id}/reviewers/{rid}/email', 'JournalController@emai
 Route::post('/admin/journals/email', 'JournalController@sendEmail');
 Route::get('admin/journals/{id}/assigns', 'JournalController@indexAssign');
 Route::post('/admin/journals/{id}/assigns', 'JournalController@storeAssign');
+Route::delete('admin/journals/{id}', 'JournalController@destroy');
 
 //reviewers route
 Route::get('admin/reviewers', 'ReviewerController@index');
@@ -58,15 +60,12 @@ Route::get('/admin/emails/reviewer/{id}', 'EmailController@reviewerContent');
 //admin routes
 Route::get('/admin/login', 'Auth\AdminLoginController@showLoginPage')->name('admin.login');
 Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-Route::get('/admin', 'AdminController@index')->name('admin.dashboard');
+Route::get('/admin/dashboard', 'AdminController@index')->name('admin.dashboard');
 
 //assign route
 Route::get('/admin/assigns', 'AssignController@index');
 Route::get('/admin/assigns', 'AssignController@show');
 Route::post('/admin/assigns/{id}', 'AssignController@updateStatus');
-
-//dashboard route
-Route::get('/dashboard', 'AuthorJournalController@index');
 
 //user verify routes
 Route::get('verify/{email}/{verifyToken}', 'Auth\RegisterController@sendEmailVerify')->name('sendEmailVerify');

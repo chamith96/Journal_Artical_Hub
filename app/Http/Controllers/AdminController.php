@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Newsletter;
+use App\Journal;
+use App\Reviewer;
 
 class AdminController extends Controller
 {
@@ -23,6 +27,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin/dashboard');
+        $userShow = User::count();
+        $newsletterShow = Newsletter::count();
+        $journalShow = Journal::count();
+        $reviewerShow = Reviewer::count();
+        
+        return view('admin/dashboard',  compact('userShow', 'newsletterShow', 'journalShow', 'reviewerShow'));
     }
+
 }

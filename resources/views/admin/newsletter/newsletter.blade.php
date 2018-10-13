@@ -66,6 +66,7 @@
          </ol>
 
          <!-- Content goes here -->
+            @include('layouts.messages')
              @if(count($newsletter) > 0)
                <div class="card-header" align="center"><b>Newsletters</b></div>
                <div class="table-responsive">

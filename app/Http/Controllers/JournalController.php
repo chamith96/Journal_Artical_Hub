@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use App\Journal;
 use App\Reviewer;
 use App\EmailReviewer;
@@ -120,5 +121,14 @@ public function sendEmail(Request $request)
 
   return redirect('/admin/journals/'.$assign->journal_id.'/reviewers/'.$assign->reviewer_id.'/email')->with('success', 'Reviewer is assigned. Send assign email to reviewer.');
   }
+
+  //delete journal
+    public function destroy($id)
+    {
+        $journal = Journal::find($id);
+        $journal->delete();
+        Storage::deleteDirectory("public/journals/".$id);
+        return redirect('/admin/journals')->with('success', 'Journal deleted');
+    }
 
 }

@@ -79,9 +79,33 @@
            <li class="list-group-item"><p>Journal release date: {{$journal->journal_date}}</p></li>
            <li class="list-group-item"><p>Journal Created date: {{$journal->created_at}}</p></li>
          </ul> <br>
-           <a class="btn btn-primary" href="{{route('pdfShowJournal', [$journal->id])}}">Download details pdf</a>
-           <a class="btn btn-primary" href="{{route('downloadFilesJournal', [$journal->id])}}">Download Zip</a>
-           <a class="btn btn-primary" href="{{$journal->id}}/assigns">Assign to Reviewer</a>
+         <button class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete</button>
+
+
+         <!-- Modal -->
+         <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Delete Warning !!</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Sure to delete {{$journal->title}} ?</p>
+              </div>
+              <div class="modal-footer">
+                        <form action="{{url('admin/journals', [$journal->id])}}" method="POST">
+                          {{csrf_field()}}
+                          <input type="hidden" name="_method" value="DELETE">
+                          <input type="submit" class="btn btn-danger" value="Delete" data-toggle="modal" data-target="#myModal">
+                        </form>
+              </div>
+            </div>
+
+          </div>
+          </div>
 
 
        </div>

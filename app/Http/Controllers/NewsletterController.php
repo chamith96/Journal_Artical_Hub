@@ -7,6 +7,7 @@ use App\Newsletter;
 use PDF;
 use Zipper;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class NewsletterController extends Controller
 {
@@ -126,7 +127,7 @@ class NewsletterController extends Controller
     $message->to($data['email']);
     $message->subject($data['email_title']);
     $message->from('admin@abc.com');
-  });  
+  });
 
     return redirect('/newsletters/create')->with('success', 'Newsletter is submitted. Please check your email.');
     }
@@ -148,7 +149,15 @@ class NewsletterController extends Controller
       Zipper::make(public_path("storage/newsletters/"."$newsletter->id"."/Newsletter "."$newsletter->id".".zip"))->add($files)->close();
 
       return response()->download(public_path("storage/newsletters/"."$newsletter->id"."/Newsletter "."$newsletter->id".".zip"))->deleteFileAfterSend(true);
-      //return response()->download(public_path("storage/newsletters/"."$newsletter->id"."/Newsletter "."$newsletter->id".".zip"));
     }
+
+    //delete Newsletter
+      public function destroy($id)
+      {
+          $newsletter = Newsletter::find($id);
+          $newsletter->delete();
+          Storage::deleteDirectory("public/newsletters/".$id);
+          return redirect('/admin/newsletters')->with('success', 'Newsletter deleted');
+      }
 
 }
