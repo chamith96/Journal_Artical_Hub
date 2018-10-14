@@ -12,7 +12,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Journal Hub</title>
+    <link rel="shortcut icon" href="{{ asset('images/Logo-SUSL.ico') }}" />
+    <title>SUSL - Journal System</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

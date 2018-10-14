@@ -171,7 +171,7 @@
           <!-- Logo -->
           <tr>
             <td class="email-masthead">
-              <a class="email-masthead_name"> crkd Administration - SUSL </a>
+              <a class="email-masthead_name"> CRKD Administration - SUSL </a>
             </td>
           </tr>
           <!-- Email Body -->
@@ -189,6 +189,10 @@
                     <h5>Title: {{$title}}</h5>
                     <h5>Description: {{$description}}</h5>
                     <h5>Newsletter Date: {{$newsletter_date}}</h5>
+
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
           <tr>

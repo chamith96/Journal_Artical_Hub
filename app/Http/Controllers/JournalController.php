@@ -83,12 +83,11 @@ public function sendEmail(Request $request)
   $data = array('reviewer_email' => $emailReviewer->reviewer_email,
                 'subject' => $emailReviewer->subject,
                 'body' => $emailReviewer->body,
-                'file' => $request->file,
-                'title' => 'New Journal to Review'
+                'file' => $request->file
                 );
   Mail::send('emails.Reviewer_Response', $data, function($message) use($data) {
   $message->to($data['reviewer_email']);
-  $message->subject($data['title']);
+  $message->subject($data['subject']);
   $message->from('admin@abc.com');
   $message->attach($data['file']->getRealPath(), array(
                   'as' => $data['file']->getClientOriginalName(),
