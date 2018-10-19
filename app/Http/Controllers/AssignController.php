@@ -15,20 +15,36 @@ class AssignController extends Controller
 
   public function index()
   {
-    return view('admin/assign');
+    $assign1 = DB::table('reviewers')
+              ->join('assigns','reviewers.id','=','assigns.reviewer_id')
+              ->join('journals','journals.id','=','assigns.journal_id')
+              ->join('users','journals.user_id','=','users.id')
+              ->select('reviewers.name as rname','journals.title as jtitle','users.name as uname', 'assigns.created_at  as createdAt', 'assigns.status  as status', 'assigns.id  as assignid')
+              ->orderBy('assigns.created_at', 'desc')
+              ->get();
+    return view('admin/assign')->with('assign1', $assign1);
   }
 
-  public function show()
+  public function search(Request $request)
   {
-    $assign = DB::table('reviewers')
+      $search = $request->get('search');
+      if ($search !="") {
+        $assign = DB::table('reviewers')
                   ->join('assigns','reviewers.id','=','assigns.reviewer_id')
                   ->join('journals','journals.id','=','assigns.journal_id')
                   ->join('users','journals.user_id','=','users.id')
+                  ->where('users.name', 'LIKE', '%' . $search . '%')
+                  ->orWhere('reviewers.name', 'LIKE', '%' . $search . '%')
+                  ->orWhere('journals.title', 'LIKE', '%' . $search . '%')
                   ->select('reviewers.name as rname','journals.title as jtitle','users.name as uname', 'assigns.created_at  as createdAt', 'assigns.status  as status', 'assigns.id  as assignid')
-                  ->orderBy('assigns.created_at', 'desc')->get();
-    //$assign = DB::select('SELECT * from reviewers,journals,assigns,users where reviewers.id=assigns.reviewer_id and journals.id=assigns.journal_id and journals.user_id=users.id');
+                  ->orderBy('assigns.created_at', 'desc')
+                  ->get();
+        return view('admin/assign')->with('assign', $assign);
 
-    return view('admin/assign')->with('assign', $assign);
+    } else {
+      return redirect('admin/assigns');
+    }
+
   }
 
   public function updateStatus(Request $request, $id)
@@ -38,4 +54,5 @@ class AssignController extends Controller
     $assign->save();
     return redirect('/admin/assigns');
   }
+
 }

@@ -42,6 +42,18 @@
         </div>
         </div>
 
+        <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" >Author</label>
+                  <div class="col-md-4 inputGroupContainer">
+                    <div class="row">
+                      <div class="col-md-4"><input name="author" type="radio" value="Student"> Student</div>
+                      <div class="col-md-4"><input name="author" type="radio" value="Lecturer"> Lecturer</div>
+                      <div class="col-md-4"><input name="author" type="radio" value="Other"> Other</div>
+                    </div>
+                  </div>
+                </div>
+
   <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" >journal title</label>

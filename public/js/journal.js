@@ -82,6 +82,14 @@
                }
            },
 
+           author: {
+               validators: {
+                 notEmpty: {
+                     message: 'Please enter author'
+                 }
+              }
+          },
+
             }
         })
     });

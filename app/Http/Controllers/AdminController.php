@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\User;
 use App\Newsletter;
 use App\Journal;
 use App\Reviewer;
+use DB;
 
 class AdminController extends Controller
 {
@@ -31,7 +33,7 @@ class AdminController extends Controller
         $newsletterShow = Newsletter::count();
         $journalShow = Journal::count();
         $reviewerShow = Reviewer::count();
-        
+
         return view('admin/dashboard',  compact('userShow', 'newsletterShow', 'journalShow', 'reviewerShow'));
     }
 

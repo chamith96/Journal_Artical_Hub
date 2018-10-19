@@ -65,8 +65,8 @@ Route::get('/admin/dashboard', 'AdminController@index')->name('admin.dashboard')
 
 //assign route
 Route::get('/admin/assigns', 'AssignController@index');
-Route::get('/admin/assigns', 'AssignController@show');
 Route::post('/admin/assigns/{id}', 'AssignController@updateStatus');
+Route::post('/admin/assigns', 'AssignController@search');
 
 //user verify routes
 Route::get('verify/{email}/{verifyToken}', 'Auth\RegisterController@sendEmailVerify')->name('sendEmailVerify');

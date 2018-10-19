@@ -29,6 +29,7 @@
     <th>Author name</th>
     <th>Administration</th>
     <th>Department</th>
+    <th>Author</th>
     <th>Journal Title</th>
     <th>Journal Description</th>
     <th>Journal release date</th>
@@ -38,6 +39,7 @@
     <td>{{$journal->name}}</td>
     <td>{{$journal->administration}}</td>
     <td>{{$journal->department}}</td>
+    <td>{{$journal->author}}</td>
     <td>{{$journal->title}}</td>
     <td>{{$journal->description}}</td>
     <td>{{$journal->journal_date}}</td>

@@ -66,48 +66,98 @@
          </ol>
 
          <!-- Content goes here -->
+         <form action="{{ url('/admin/assigns') }}" method="POST">
+           {{ csrf_field() }}
+         <div class="input-group">
+           <input type="text" name="search" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+           <div class="input-group-append">
+             <input class="btn btn-primary" type="submit" value="search">
+           </div>
+         </div>
+         </form>
+         <br>
+
+         @if(isset($assign))
+           <div class="table-responsive">
+           <table class="table table-bordered" width="100%" cellspacing="0">
              @if(count($assign) > 0)
-              <div class="card-header" align="center"><b>Assigns</b></div>
-              <div class="table-responsive">
-              <table class="table table-bordered" width="100%" cellspacing="0">
-                <thead>
-                 <tr>
-                   <th>Reviewer Name</th>
-                   <th>User Name</th>
-                   <th>Journal Title</th>
-                   <th>Assign Date</th>
-                   <th>Status</th>
-                   <th>Action</th>
-                 </tr>
-               </thead>
-                 @foreach ($assign as $assigns)
-                <tbody>
-                 <tr>
-                   <td>{{$assigns->rname}}</td>
-                   <td>{{$assigns->uname}}</td>
-                   <td>{{$assigns ->jtitle}}</td>
-                   <td>{{$assigns ->createdAt}}</td>
-                   <td>
-                     @if($assigns ->status == 0)
-                       <div style="color: red;">Pending respond email.</div>
-                     @else
-                       <div style="color: green">Received respond emil.</div>
-                     @endif
-                   </td>
-                   <th>
-                     <form action="{{url('admin/assigns', [$assigns->assignid])}}" method="POST">
-                        {{ csrf_field() }}
-                       <input type="hideen" name="status" value="1" hidden>
-                      <input type="submit" value="update" class="btn btn-link">
-                     </form>
-                   </th>
-                   @endforeach
-                 </tr>
-               </tbody>
-               </table>
-               </div>
-               </div>
-             @endif
+             <tr>
+               <th>User Name</th>
+               <th>Reviewer Name</th>
+               <th>Journal Title</th>
+               <th>Assign Date</th>
+               <th>Status</th>
+               <th>Action</th>
+             </tr>
+             @foreach ($assign as $assigns)
+             <tr>
+               <td>{{$assigns->uname}}</td>
+               <td>{{$assigns->rname}}</td>
+               <td>{{$assigns ->jtitle}}</td>
+               <td>{{$assigns ->createdAt}}</td>
+               <td>
+                 @if($assigns ->status == 0)
+                   <div style="color: red;">Pending respond email.</div>
+                 @else
+                   <div style="color: green">Received respond emil.</div>
+                 @endif
+               </td>
+               <th>
+                 <form action="{{url('admin/assigns', [$assigns->assignid])}}" method="POST">
+                    {{ csrf_field() }}
+                   <input type="hideen" name="status" value="1" hidden>
+                  <input type="submit" value="update" class="btn btn-link">
+                 </form>
+               </th>
+               @endforeach
+             </tr>
+
+           @else
+             Not found
+           @endif
+           </table>
+           </div>
+
+         @else
+
+           <div class="table-responsive">
+           <table class="table table-bordered" width="100%" cellspacing="0">
+             @if(count($assign1) > 0)
+             <tr>
+               <th>User Name</th>
+               <th>Reviewer Name</th>
+               <th>Journal Title</th>
+               <th>Assign Date</th>
+               <th>Status</th>
+               <th>Action</th>
+             </tr>
+             @foreach ($assign1 as $assigns1)
+             <tr>
+               <td>{{$assigns1->uname}}</td>
+               <td>{{$assigns1->rname}}</td>
+               <td>{{$assigns1 ->jtitle}}</td>
+               <td>{{$assigns1 ->createdAt}}</td>
+               <td>
+                 @if($assigns1 ->status == 0)
+                   <div style="color: red;">Pending respond email.</div>
+                 @else
+                   <div style="color: green">Received respond emil.</div>
+                 @endif
+               </td>
+               <th>
+                 <form action="{{url('admin/assigns', [$assigns1->assignid])}}" method="POST">
+                    {{ csrf_field() }}
+                   <input type="hideen" name="status" value="1" hidden>
+                  <input type="submit" value="update" class="btn btn-link">
+                 </form>
+               </th>
+               @endforeach
+             </tr>
+           @endif
+           </table>
+           </div>
+       @endif
+
 
        </div>
        <!-- /.container-fluid -->

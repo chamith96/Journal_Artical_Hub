@@ -69,6 +69,7 @@ class AuthorJournalController extends Controller
     $journal->email = auth()->user()->email;
     $journal->administration = $request->input('administration');
     $journal->department = $request->input('department');
+    $journal->author = $request->input('author');
     $journal->title = $request->input('title');
     $journal->description = $request->input('description');
     $journal->journal_date = $request->input('journal_date');

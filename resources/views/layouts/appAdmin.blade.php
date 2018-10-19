@@ -7,6 +7,8 @@
     <link rel="shortcut icon" href="{{ asset('images/Logo-SUSL.ico') }}" />
     <title>SUSL - Journal Administration</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
