@@ -69,6 +69,9 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'administration' => $data['administration'],
+            'department' => $data['department'],
+            'author' => $data['author'],
             'verifyToken' => Str::random(40),
         ]);
 
