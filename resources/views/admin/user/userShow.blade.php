@@ -62,39 +62,20 @@
            <li class="breadcrumb-item">
              <a href="{{route('admin.dashboard')}}">Dashboard</a>
            </li>
-           <li class="breadcrumb-item active">Users</li>
+           <li class="breadcrumb-item">
+             <a href="{{url('admin/users')}}">Users</a>
+           </li>
+           <li class="breadcrumb-item active">{{$user->name}}</li>
          </ol>
 
          <!-- Content goes here -->
-         @include('layouts.messages')
-           @if(count($user) > 0)
-             <div class="card-header" align="center"><b>Users</b></div>
-             <div class="table-responsive">
-             <table class="table table-bordered" width="100%" cellspacing="0">
-               <tr>
-                 <th>Name</th>
-                 <th>Email</th>
-                 <th></th>
-               </tr>
-               @foreach ($user as $users)
-               <tr>
-                   <td>
-                     {{$users->name}}
-                   </td>
-                   <td>
-                     {{$users->email}}
-                   </td>
-                   <td>
-                     <a href="{{url('/admin/users/email', [$users->id])}}">
-                       <span class="fas fa-fw fa-envelope"></span> Send mail
-                     </a>
-                   </td>
-                 @endforeach
-               </tr>
-             </table>
-             </div>
-           {{$user->links()}}
-           @endif
+         <ul class="list-group">
+           <li class="list-group-item"><p>User type: {{$user->author}}</p></li>
+           <li class="list-group-item"><p>User name: {{$user->name}}</p></li>
+           <li class="list-group-item"><p>User email: {{$user->email}}</p></li>
+           <li class="list-group-item"><p>User administration: {{$user->administration}}</p></li>
+           <li class="list-group-item"><p>User department: {{$user->department}}</p></li>
+         </ul> <br>
 
        </div>
        <!-- /.container-fluid -->

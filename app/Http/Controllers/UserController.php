@@ -18,7 +18,13 @@ class UserController extends Controller
     public function index()
   {
     $user = User::orderBy('created_at', 'desc')->paginate(10);
-    return view('admin.user.userShow')->with('user',$user);
+    return view('admin.user.user')->with('user',$user);
+  }
+
+  public function show($id)
+  {
+      $user = User::find($id);
+      return view('admin.user.userShow')->with('user', $user);
   }
 
     public function showEmail($id)

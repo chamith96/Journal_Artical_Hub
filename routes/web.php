@@ -46,8 +46,10 @@ Route::post('/admin/email/reviewers', 'ReviewerController@sendEmail');
 
 //user routes
 Route::get('/admin/users', 'UserController@index');
+Route::get('/admin/users/{id}', 'UserController@show');
 Route::get('/admin/users/email/{id}', 'UserController@showEmail');
 Route::post('admin/email/users', 'UserController@sendEmail');
+
 
 //email route
 Route::get('/admin/emails', 'EmailController@index');
