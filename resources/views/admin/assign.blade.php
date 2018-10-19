@@ -155,6 +155,7 @@
              </tr>
            @endif
            </table>
+           {{$assign1->links()}}
            </div>
        @endif
 

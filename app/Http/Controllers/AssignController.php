@@ -21,7 +21,7 @@ class AssignController extends Controller
               ->join('users','journals.user_id','=','users.id')
               ->select('reviewers.name as rname','journals.title as jtitle','users.name as uname', 'assigns.created_at  as createdAt', 'assigns.status  as status', 'assigns.id  as assignid')
               ->orderBy('assigns.created_at', 'desc')
-              ->get();
+              ->paginate(5);
     return view('admin/assign')->with('assign1', $assign1);
   }
 
@@ -39,7 +39,9 @@ class AssignController extends Controller
                   ->select('reviewers.name as rname','journals.title as jtitle','users.name as uname', 'assigns.created_at  as createdAt', 'assigns.status  as status', 'assigns.id  as assignid')
                   ->orderBy('assigns.created_at', 'desc')
                   ->get();
+
         return view('admin/assign')->with('assign', $assign);
+
 
     } else {
       return redirect('admin/assigns');
