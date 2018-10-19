@@ -67,25 +67,27 @@
 
          <!-- Content goes here -->
 
-         <a href="reviewers/create" class="btn btn-default">Add Reviewers</a>
+         <a href="reviewers/create" class="btn btn-info">
+           <i class="fa fa-user-plus"></i> Add Reviewer</a>
 
              @include('layouts.messages')
              @if(count($reviewer) > 0)
+               <br> <br>
                <div class="card-header" align="center"><b>Reviewers</b></div>
                <div class="table-responsive">
                <table class="table table-bordered" width="100%" cellspacing="0">
                  <tr>
                    <th>Name</th>
-                   <th>Email</th>
+                   <th>Details</th>
                    <th>Send Emails</th>
                  </tr>
                  @foreach ($reviewer as $reviewers)
                  <tr>
                      <td>
-                       <a href="reviewers/{{$reviewers->id}}">{{$reviewers->name}}</a>
+                       {{$reviewers->name}}
                      </td>
                      <td>
-                       <a href="reviewers/{{$reviewers->id}}">{{$reviewers->email}}</a>
+                       <a href="reviewers/{{$reviewers->id}}">content</a>
                      </td>
                      <td>
                        <a href="/admin/reviewers/email/{{$reviewers->id}}">

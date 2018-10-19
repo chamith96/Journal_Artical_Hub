@@ -42,11 +42,9 @@ class AssignController extends Controller
 
         return view('admin/assign')->with('assign', $assign);
 
-
     } else {
       return redirect('admin/assigns');
     }
-
   }
 
   public function updateStatus(Request $request, $id)
