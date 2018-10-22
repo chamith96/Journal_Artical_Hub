@@ -79,7 +79,19 @@
            <li class="list-group-item"><p>Journal Description: {{$journal->description}}</p></li>
            <li class="list-group-item"><p>Journal release date: {{$journal->journal_date}}</p></li>
            <li class="list-group-item"><p>Journal Created date: {{$journal->created_at}}</p></li>
-         </ul> 
+         </ul> <br>
+
+         <ul class="list-group">
+           <li class="list-group-item"><b>Assigns</b></li>
+         @if(count($assign) > 0)
+             @foreach ($assign as $assigns)
+               <li class="list-group-item">{{$assigns->rname}}</li>
+             @endforeach
+        @else
+            <li class="list-group-item">Reviewers are not assigned yet</li>
+        @endif
+      </li>
+       </ul>
 
 
        </div>

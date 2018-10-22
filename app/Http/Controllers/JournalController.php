@@ -31,8 +31,17 @@ class JournalController extends Controller
 
   public function show($id)
 {
+    $assign = DB::table('reviewers')
+            ->join('assigns','reviewers.id','=','assigns.reviewer_id')
+            ->join('journals','journals.id','=','assigns.journal_id')
+            ->join('users','journals.user_id','=','users.id')
+            ->where('assigns.journal_id', '=',$id)
+            ->select('reviewers.name as rname')
+            ->orderBy('assigns.created_at', 'desc')
+            ->get();
+
     $journal = Journal::find($id);
-    return view('admin.journal.Journalshow')->with('journal', $journal);
+    return view('admin.journal.Journalshow', compact('journal', 'assign'));
 }
 
 //download journal details pdf file
