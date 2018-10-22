@@ -120,6 +120,7 @@ class NewsletterController extends Controller
                   'email' => $newsletter->email,
                   'administration' => $newsletter->administration,
                   'department' => $newsletter->department ,
+                  'author' => $newsletter->author ,
                   'title' => $newsletter->title,
                   'description' => $newsletter->description,
                   'newsletter_date' => $newsletter->newsletter_date

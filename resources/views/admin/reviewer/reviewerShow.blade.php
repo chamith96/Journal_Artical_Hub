@@ -74,33 +74,7 @@
            <li class="list-group-item"><p>Reviewer email: {{$reviewer->email}}</p></li>
            <li class="list-group-item"><p>Reviewer Organization: {{$reviewer->organization}}</p></li>
            <li class="list-group-item"><p>Reviewer Position: {{$reviewer->position}}</p></li>
-         </ul> <br>
-         <a class="btn btn-primary" href="{{$reviewer->id}}/edit">Edit</a>
-         <button class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">Delete</button>
-       </div>
-
-     <!-- Modal -->
-     <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Delete Warning !!</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-            <p>Sure to delete {{$reviewer->name}} ?</p>
-          </div>
-          <div class="modal-footer">
-                    <form action="{{url('admin/reviewers', [$reviewer->id])}}" method="POST">
-                      {{csrf_field()}}
-                      <input type="hidden" name="_method" value="DELETE">
-                      <input type="submit" class="btn btn-danger" value="Delete" data-toggle="modal" data-target="#myModal">
-                    </form>
-          </div>
-        </div>
-
+         </ul>
 
        </div>
        <!-- /.container-fluid -->

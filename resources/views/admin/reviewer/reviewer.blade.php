@@ -80,6 +80,8 @@
                    <th>Name</th>
                    <th>Details</th>
                    <th>Send Emails</th>
+                   <th>Edit User</th>
+                   <th>Delete User</th>
                  </tr>
                  @foreach ($reviewer as $reviewers)
                  <tr>
@@ -94,6 +96,38 @@
                          <span class="fas fa-fw fa-envelope"></span> email
                        </a>
                      </td>
+                     <td>
+                       <a href="/admin/reviewers/{{$reviewers->id}}/edit">
+                         <span class="fas fa-fw fa-edit"></span> edit
+                       </a>
+                     </td>
+                     <td>
+                       <a href="#" data-toggle="modal" data-target="#myModal">
+                         <span class="fas fa-fw fa-trash"></span> delete
+                       </a>
+
+                       <!-- Modal -->
+                       <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 class="modal-title">Delete Warning !!</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Sure to delete {{$reviewers->name}} ?</p>
+                            </div>
+                            <div class="modal-footer">
+                                      <form action="{{url('admin/reviewers', [$reviewers->id])}}" method="POST">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="submit" class="btn btn-danger" value="Delete" data-toggle="modal" data-target="#myModal">
+                                      </form>
+                            </div>
+                          </div>
+                     </td>
                    @endforeach
                  </tr>
                </table>
@@ -106,6 +140,7 @@
              @endif
 
        </div>
+
        <!-- /.container-fluid -->
 
      </div>

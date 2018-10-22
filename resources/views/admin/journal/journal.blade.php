@@ -79,6 +79,7 @@
                    <th>Assign to reviewer</th>
                    <th>Download zip</th>
                    <th>Download Pdf</th>
+                   <th>Delete Journal</th>
                  </tr>
                @foreach ($journal as $journals)
                   <tr>
@@ -102,6 +103,32 @@
                     </td>
                     <td>
                     <a href="{{route('pdfShowJournal', [$journals->id])}}"><span class="far fa-file-pdf"></span> Download</a>
+                    </td>
+                    <td>
+                    <a href="#" data-toggle="modal" data-target="#myModal">
+                      <span class="fas fa-fw fa-trash"></span> delete
+                    </a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                     <div class="modal-dialog">
+
+                       <!-- Modal content-->
+                       <div class="modal-content">
+                         <div class="modal-header">
+                           <h4 class="modal-title">Delete Warning !!</h4>
+                           <button type="button" class="close" data-dismiss="modal">&times;</button>
+                         </div>
+                         <div class="modal-body">
+                           <p>Sure to delete {{$journals->title}} ?</p>
+                         </div>
+                         <div class="modal-footer">
+                                   <form action="{{url('admin/journals', [$journals->id])}}" method="POST">
+                                     {{csrf_field()}}
+                                     <input type="hidden" name="_method" value="DELETE">
+                                     <input type="submit" class="btn btn-danger" value="Delete" data-toggle="modal" data-target="#myModal">
+                                   </form>
+                         </div>
+                       </div>
                     </td>
 
                @endforeach
