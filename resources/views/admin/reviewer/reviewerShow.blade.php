@@ -74,7 +74,43 @@
            <li class="list-group-item"><p>Reviewer email: {{$reviewer->email}}</p></li>
            <li class="list-group-item"><p>Reviewer Organization: {{$reviewer->organization}}</p></li>
            <li class="list-group-item"><p>Reviewer Position: {{$reviewer->position}}</p></li>
-         </ul>
+           <li class="list-group-item"><a href="#" data-toggle="modal" data-target="#myModal">View Assigns</a></li>
+         </ul> <br>
+
+         <!-- Modal -->
+         <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Assigns</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <ul class="list-group">
+                    @if(count($details) > 0)
+                      @foreach ($details as $detail)
+                        <li class="list-group-item">
+                          <ul>
+                            <li>Journal Name: {{$detail->jtitle}}</li>
+                            <li>Author Name: {{$detail->uname}}</li>
+
+                          @if($detail ->status == 0)
+                            <li>Journal Status: respond email sended to reviewer</li>
+                          @else
+                            <li>Journal Status: respond emil received from reviewer</li>
+                          @endif
+                          </ul>
+                        </li>
+                      @endforeach
+                    @else
+                       <li class="list-group-item">Journals are not assigned yet</li>
+                   @endif
+                 </li>
+               </ul>
+              </div>
+            </div>
 
        </div>
        <!-- /.container-fluid -->

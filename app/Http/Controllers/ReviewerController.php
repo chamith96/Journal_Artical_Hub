@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Reviewer;
 use App\EmailReviewer;
+use DB;
 
 class ReviewerController extends Controller
 {
@@ -47,8 +48,17 @@ class ReviewerController extends Controller
 
   public function show($id)
   {
+    $details = DB::table('assigns')
+                  ->join('reviewers','reviewers.id','=','assigns.reviewer_id')
+                  ->join('journals','journals.id','=','assigns.journal_id')
+                  ->join('users','journals.user_id','=','users.id')
+                  ->where('assigns.reviewer_id', '=',$id)
+                  ->select('users.name as uname', 'journals.title as jtitle', 'assigns.status as status')
+                  ->orderBy('assigns.created_at', 'desc')
+                  ->get();
+
       $reviewer = Reviewer::find($id);
-      return view('admin.reviewer.reviewerShow')->with('reviewer', $reviewer);
+      return view('admin.reviewer.reviewerShow', compact('reviewer', 'details'));
   }
 
   public function edit($id)

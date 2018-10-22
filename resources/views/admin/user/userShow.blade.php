@@ -75,6 +75,7 @@
            <li class="list-group-item"><p>User administration: {{$user->administration}}</p></li>
            <li class="list-group-item"><p>User department: {{$user->department}}</p></li>
          </ul> <br>
+
            <ul class="list-group">
              <li class="list-group-item"><b>Journals</b></li>
            @if(count($journal) > 0)
