@@ -19,6 +19,7 @@ class CreateNewslettersTable extends Migration
           $table->string('email');
           $table->string('administration');
           $table->string('department');
+          $table->string('author');
           $table->string('title');
           $table->string('description');
           $table->date('newsletter_date');

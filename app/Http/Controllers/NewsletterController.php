@@ -47,6 +47,7 @@ class NewsletterController extends Controller
     $newsletter->email = $request->input('email');
     $newsletter->administration = $request->input('administration');
     $newsletter->department = $request->input('department');
+    $newsletter->author = $request->input('author');
     $newsletter->title = $request->input('title');
     $newsletter->description = $request->input('description');
     $newsletter->newsletter_date = $request->input('newsletter_date');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\User;
+use DB;
 use App\EmailUser;
 
 class UserController extends Controller
@@ -23,8 +24,14 @@ class UserController extends Controller
 
   public function show($id)
   {
+    $journal = DB::table('journals')
+              ->join('users','users.id','=','journals.user_id')
+              ->select('journals.title as jtitle', 'journals.id as jid')
+              ->where('journals.user_id', '=',$id)
+              ->orderBy('journals.created_at', 'desc')
+              ->get();
       $user = User::find($id);
-      return view('admin.user.userShow')->with('user', $user);
+      return view('admin.user.userShow', compact('journal', 'user'));
   }
 
     public function showEmail($id)

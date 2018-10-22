@@ -70,11 +70,21 @@
 
          <!-- Content goes here -->
          <ul class="list-group">
-           <li class="list-group-item"><p>User type: {{$user->author}}</p></li>
            <li class="list-group-item"><p>User name: {{$user->name}}</p></li>
            <li class="list-group-item"><p>User email: {{$user->email}}</p></li>
            <li class="list-group-item"><p>User administration: {{$user->administration}}</p></li>
            <li class="list-group-item"><p>User department: {{$user->department}}</p></li>
+           <li class="list-group-item">
+           @if(count($journal) > 0)
+             <ul>
+             @foreach ($journal as $journals)
+               <li class="list-group-item"><a href="{{ url('admin/journals', [$journals->jid]) }}">{{$journals->jtitle}}</a></li>
+             @endforeach
+           </ul>
+          @else
+            Journals are not sub yet
+          @endif
+        </li>
          </ul> <br>
 
        </div>

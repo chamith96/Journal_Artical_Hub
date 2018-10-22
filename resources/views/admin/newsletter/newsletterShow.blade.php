@@ -73,6 +73,7 @@
              <li class="list-group-item"><b>ID:</b> {{$newsletter->id}}</li>
              <li class="list-group-item"><b>Title:</b> {{$newsletter->title}}</li>
              <li class="list-group-item"><b>Full Name:</b> {{$newsletter->name}}</li>
+             <li class="list-group-item"><b>Publisher:</b> {{$newsletter->author}}</li>
              <li class="list-group-item"><b>Email:</b> {{$newsletter->email}}</li>
              <li class="list-group-item"><b>Faculty/Center:</b> {{$newsletter->administration}}</li>
              <li class="list-group-item"><b>Department:</b> {{$newsletter->department}}</li>

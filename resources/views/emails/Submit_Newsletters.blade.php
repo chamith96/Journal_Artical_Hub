@@ -184,6 +184,7 @@
                     <h1>Newsletter has been submitted.</h1>
                     <h5>Newsletter Id: {{$id}}</h5>
                     <h5>Full Name: {{$name}}</h5>
+                    <h5>Publisher: {{$author}}</h5>
                     <h5>Faculty/Center: {{$administration}}</h5>
                     <h5>Department: {{$department}}</h5>
                     <h5>Title: {{$title}}</h5>

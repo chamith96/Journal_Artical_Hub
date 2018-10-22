@@ -73,6 +73,7 @@
              <table class="table table-bordered" width="100%" cellspacing="0">
                <tr>
                  <th>Name</th>
+                 <th>Type</th>
                  <th>details</th>
                  <th>Send Emails</th>
                </tr>
@@ -80,6 +81,9 @@
                <tr>
                    <td>
                      {{$users->name}}
+                   </td>
+                   <td>
+                     {{$users->author}}
                    </td>
                    <td>
                      <a href="{{url('/admin/users', [$users->id])}}">content</a>

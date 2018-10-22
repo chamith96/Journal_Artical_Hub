@@ -66,6 +66,17 @@
             </div>
             </div>
 
+            <div class="form-group">
+              <label class="col-md-4 control-label">Publisher</label>
+                <div class="col-md-4 inputGroupContainer">
+                  <div class="row">
+                    <div class="col-md-4"><input name="author" type="radio" value="Student"> Student</div>
+                    <div class="col-md-4"><input name="author" type="radio" value="Lecturer"> Lecturer</div>
+                    <div class="col-md-4"><input name="author" type="radio" value="Other"> Other</div>
+                  </div>
+                </div>
+              </div>
+
       	<!-- Text input-->
             <div class="form-group">
             <label class="col-md-4 control-label">Newsletter Description</label>
@@ -143,7 +154,7 @@ department[0]=[""]
 department[1]=["Department of Export Agriculture", "Department of Livestock Production", "Deparment of Agribusiness Management"]
 department[2]=["Department of Computing and Information Systems" ,"Department of Food Science and Technolog","Department of Natural Resource" ,"Department of Physical Sciences and Technologie" ,"Department of Sport Sciences and Physical Education"]
 department[3]=["Department of Remote Sensing and GIS", "Department of Surveying and Geodesy"]
-department[4]=["Department of Tourism Management", "Department of Business Management", "Department of Marketing Management"]
+department[4]=["Department of Tourism Management", "Department of Business Management", "Department of Marketing Management","Department of Accountancy and Finance"]
 department[5]=["Department of Social sciences" ,"Department of languages" ,"Department of Geography & Environmental Management" ,"Department of Economics & Statistics" ,"Department of English Language Teaching"]
 department[6]=["Department of Anatomy" ,"Department of Physiology" ,"Department of Biochemistry"]
 department[7]=["Department of Biosystems Technology" ,"Department of Engineering Technology"]

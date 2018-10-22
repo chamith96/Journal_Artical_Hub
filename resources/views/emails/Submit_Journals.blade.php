@@ -184,11 +184,11 @@
                     <h1>Journal has been submitted.</h1>
                     <h3>Full Name: {{$name}}</h3>
                     <h3>Faculty/Center: {{$administration}}</h3>
-                    <h3>Newsletter Date: {{$journal_date}}</h3>
+                    <h3>Journal Date: {{$journal_date}}</h3>
                     <h3>Department: {{$department}}</h3>
                     <h3>Title: {{$title}}</h3>
                     <h3>Description: {{$description}}</h3>
-                    
+
                     <!-- Sub copy -->
                     <table class="body-sub">
                       <tr>
