@@ -1,9 +1,7 @@
 <?php
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 //newsletters route
 Route::get('admin/newsletters', 'NewsletterController@index');

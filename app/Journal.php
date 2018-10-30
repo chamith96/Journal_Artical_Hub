@@ -17,4 +17,9 @@ class Journal extends Model
   {
     return $this->hasMany('App\Reviewer');
   }
+
+  //make relationship with JournalsImage model
+  public function journalsImage(){
+    return $this->belongTo('App\JournalsImage');
+  }
 }

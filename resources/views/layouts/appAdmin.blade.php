@@ -24,7 +24,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1 pull-right" href="/">Home <i class="fas fa-home"></i></a>
+      <a target="_blank" class="navbar-brand mr-1 pull-right" href="/">Home <i class="fas fa-home"></i></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>

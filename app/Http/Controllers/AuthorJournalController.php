@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Journal;
 use App\Assign;
 use App\User;
+use App\JournalsImage;
 use DB;
 use Illuminate\Support\Facades\Mail;
 //use App\Notifications\assignNotification;
@@ -89,9 +90,15 @@ class AuthorJournalController extends Controller
           //get just extension
           $extension = $file1->getClientOriginalExtension();
           //file name to store
-          $fileNameToStore = $filename.'.'.$extension;
+          $fileNameToStore1 = $filename.'.'.$extension;
           //upload images
-          $path = $file1->storeAs("public/journals/".$journalId, $fileNameToStore);
+          $path = $file1->storeAs("public/journals/".$journalId, $fileNameToStore1);
+
+          //save data to database 2
+          $journals = new JournalsImage;
+          $journals->journal_id = $journalId;
+          $journals->image = $fileNameToStore1;
+          $journals->save();
     }
     //handle image 2 upload
     if ($request->hasFile('image2')) {
@@ -103,7 +110,8 @@ class AuthorJournalController extends Controller
           //get just extension
           $extension = $file2->getClientOriginalExtension();
           //file name to store
-          $fileNameToStore = $filename.'.'.$extension;
+          $fileNameToStore =
+           $filename.'.'.$extension;
           //upload images
           $path = $file2->storeAs("public/journals/".$journalId, $fileNameToStore);
     }
@@ -117,9 +125,9 @@ class AuthorJournalController extends Controller
           //get just extension
           $extension = $file3->getClientOriginalExtension();
           //file name to store
-          $fileNameToStore = $filename.'.'.$extension;
+          $fileNameToStore1 = $filename.'.'.$extension;
           //upload images
-          $path = $file3->storeAs("public/journals/".$journalId, $fileNameToStore);
+          $path = $file3->storeAs("public/journals/".$journalId, $fileNameToStore1);
     }
     //handle pdf upload
     if ($request->hasFile('pdf')) {
@@ -152,7 +160,7 @@ class AuthorJournalController extends Controller
 
 
     //email to Sumbission
-    $data = array('email_title' => "Journal has been submitted",
+    /*$data = array('email_title' => "Journal has been submitted",
                   'name' => $journal->name,
                   'email' => $journal->email,
                   'administration' => $journal->administration,
@@ -165,9 +173,7 @@ class AuthorJournalController extends Controller
     $message->to($data['email']);
     $message->subject($data['email_title']);
     $message->from('admin@abc.com');
-  });
-
-  //auth()->user()->notify(new assignNotification);
+  });  */
 
     return redirect('/journals/create')->with('success', 'Journal is submitted. We will let you know if reviewer response.');
 }}

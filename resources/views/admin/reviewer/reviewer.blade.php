@@ -102,7 +102,7 @@
                        </a>
                      </td>
                      <td>
-                       <a href="#" data-toggle="modal" data-target="#myModal">
+                       <a href="#" data-toggle="modal" data-target="#myModal" class="text-danger">
                          <span class="fas fa-fw fa-trash"></span> delete
                        </a>
 

@@ -17,10 +17,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-inverse navbar-static-top">
+        <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -84,8 +86,8 @@
     </div>
 
     <!-- Scripts -->
-    <script  src="{{asset('js/bootstrapvalidator.min.js')}}"></script>
-    <script  src="{{asset('js/newsletter.js')}}"></script>
-    <script  src="{{asset('js/journal.js')}}"></script>
+    <script src="{{asset('js/bootstrapvalidator.min.js')}}"></script>
+    <script src="{{asset('js/newsletter.js')}}"></script>
+    <script src="{{asset('js/journal.js')}}"></script>
 </body>
 </html>
