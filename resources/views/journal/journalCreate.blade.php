@@ -2,6 +2,8 @@
     @section('content')
       <div class="container">
         @include('layouts.messages')
+        <br>
+         <h1 align="center">JOURNAL FORM</h1> <br>
       <form action="{{url('journals')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" id="journal_form">
         {{ csrf_field() }}
 

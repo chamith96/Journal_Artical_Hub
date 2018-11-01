@@ -2,6 +2,8 @@
     @section('content')
     <div class="container">
  @include('layouts.messages')
+<br>
+ <h1 align="center">NEWSLETTERS FORM</h1> <br>
         <form  method="POST" action="{{url('newsletters')}}" enctype="multipart/form-data" class="form-horizontal" id="newsletter_form" name="classic">
           {{ csrf_field() }}
 
@@ -144,6 +146,60 @@
 
       </form>
 </div>
+
+</main>
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12 fbox">
+                <h4>MISSION</h4>
+                <p class="text">Our mission is to search for and disseminate knowledge, promote learning, research and training to produce men and women proficient in their respective disciplines possessing practical skills and positive attitudes enabling them to contribute towards the manpower requirements of the nation. The university will be a centre of excellence for research and development for Sri Lanka in general and the Sabaragamuwa Province in Sri Lanka. </p>
+
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 fbox">
+                <h4>VISION</h4>
+                  <p class="text">To be an internationally acclaimed centre of excellence in higher learning producing dynamic leaders and nation builders to guide the destiny of Sri Lanka.</p>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 fbox">
+                <h4>QUICK LINKS</h4>
+                <ul>
+                    <li><a href="http://www.sab.ac.lk">SUSL - Main Page</a></li>
+                    <li><a href="http://www.sab.ac.lk/agri">Faculty of Agricultural Sciences</a></li>
+                    <li><a href="http://www.sab.ac.lk/app/">Faculty of Applied Sciences</a></li>
+                    <li><a href="http://www.sab.ac.lk/geo/">Faculty of Geomatics</a></li>
+                    <li><a href="http://www.sab.ac.lk/mgmt/">Faculty of Management Studies</a></li>
+                    <li><a href="http://www.sab.ac.lk/med/">Faculty of Medicine</a></li>
+                    <li><a href="http://www.sab.ac.lk/fssl/">Faculty of Social Sciences and Languages</a></li>
+                    <li><a href="http://www.sab.ac.lk/tech/">Faculty of Technology</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 fbox">
+                <h4>CONTACT</h4>
+                <p><a href="#"><i class="fas fa-address-card"></i> Sabaragamuwa University of Sri Lanka,  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; P.O. Box 02, Belihuloya, Sri Lanka.</a></p>
+                <p><a><i class="fas fa-phone"></i> +90 222 222 22 22</a></p>
+                <p><a href="mailto:iletisim@agrisosgb.com"><i class="fas fa-envelope"></i> mail@awebsitename.com</a></p>
+            </div>
+        </div>
+    </div>
+    <div id="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="pull-left">&copy; 2018 SUSL</p>
+                </div>
+                <div class="col-md-8">
+                    <ul class="list-inline navbar-right">
+                        <li><a href="{{url('/')}}">HOME</a></li>
+                        <li><a href="{{url('/login')}}">USER</a></li>
+                        <li><a href="{{url('/admin/login')}}">ADMIN</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+
 <script>
 
 var administrationlist=document.classic.administration

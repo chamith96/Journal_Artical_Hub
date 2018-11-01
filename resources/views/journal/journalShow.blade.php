@@ -1,21 +1,22 @@
 @extends('layouts.app')
     @section('content')
     <div class="container">
+      <br>
   <li class="list-group-item active">
     @if(count($status) > 0)
       <ul>
       @foreach ($status as $statuss)
         <li>
           @if($statuss->action == 0)
-            <p>We sent your journal to <i>{{$statuss->reviewer}}</i>. We will emil when reviewer respond.</p>
+            <p>We sent your journal to <i>{{$statuss->reviewer}}</i>. We will emil when reviewer respond</i></h4>
           @else
-            <p><i>{{$statuss->reviewer}}</i> reviewed your journal. Please check your emails.</p>
+            <h4><i>{{$statuss->reviewer}}</i> reviewed your journal. Please check your emails</i></h4>
           @endif
         </li>
       @endforeach
       </ul>
     @else
-      <p>Do not assign to reviewer yet.</p>
+      <h4><i>Do not assign to reviewer yet</i></h4>
     @endif
 
     </li>
@@ -27,6 +28,7 @@
     <li class="list-group-item"><p>Journal Description: {{$journal->description}}</p></li>
     <li class="list-group-item"><p>Journal release date: {{$journal->journal_date}}</p></li>
   </ul>
+  <br>
     <a href="/dashboard" class="btn btn-default">Back to Dashboard</a>
 </div>
     @endsection

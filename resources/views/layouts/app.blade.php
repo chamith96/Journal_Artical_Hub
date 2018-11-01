@@ -85,6 +85,8 @@
         @yield('content')
     </div>
 
+    
+
     <!-- Scripts -->
     <script src="{{asset('js/bootstrapvalidator.min.js')}}"></script>
     <script src="{{asset('js/newsletter.js')}}"></script>
