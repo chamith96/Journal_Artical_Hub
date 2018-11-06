@@ -45,7 +45,7 @@
                   <div class="row">
                       <div class="col-md-3 col-sm-6 col-xs-12 fbox">
                           <h4>MISSION</h4>
-                          <p class="text">Our mission is to search for and disseminate knowledge, promote learning, research and training to produce men and women proficient in their respective disciplines possessing practical skills and positive attitudes enabling them to contribute towards the manpower requirements of the nation. The university will be a centre of excellence for research and development for Sri Lanka in general and the Sabaragamuwa Province in Sri Lanka. </p>
+                          <p class="text">Our mission is to search for and disseminate knowledge, promote learning, research and training to produce men and women proficient in their respective disciplines possessing practical skills and positive attitudes enabling them to contribute towards the manpower requirements of the nation.</p>
 
                       </div>
                       <div class="col-md-3 col-sm-6 col-xs-12 fbox">
