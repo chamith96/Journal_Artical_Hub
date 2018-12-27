@@ -234,4 +234,6 @@ function updatedepartment(selectedcitygroup){
 }
 
 </script>
+
+    <script src="{{asset('js/newsletter.js')}}"></script>
     @endsection

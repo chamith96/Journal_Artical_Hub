@@ -7,29 +7,145 @@
                         max: 30,
                     },
                         notEmpty: {
-                        message: 'Please Journal title.'
+                        message: 'Please Article title'
                     }
                 }
             },
 
-            description: {
+            abstract: {
                 validators: {
                      stringLength: {
                         max: 50,
                     },
                     notEmpty: {
-                        message: 'Please enter Journal description.'
+                        message: 'Please enter abstract'
                     }
                 }
             },
 
-            journal_date: {
+            a1fname: {
+                validators: {
+                     stringLength: {
+                        max: 50,
+                    },
+                    notEmpty: {
+                        message: 'Please enter author 1 first'
+                    }
+                }
+            },
+
+            a1lname: {
+                validators: {
+                     stringLength: {
+                        max: 50,
+                    },
+                    notEmpty: {
+                        message: 'Please enter author 1 last name'
+                    }
+                }
+            },
+
+            a1affiliation: {
+                validators: {
+                     stringLength: {
+                        max: 50,
+                    },
+                    notEmpty: {
+                        message: 'Please enter author 1 affiliation '
+                    }
+                }
+            },
+
+            a1email: {
+                validators: {
+                     stringLength: {
+                        max: 150,
+                    },
+                    notEmpty: {
+                        message: 'Please enter author 1 email'
+                    }
+                }
+            },
+
+            keywords: {
                validators: {
                    notEmpty: {
-                       message: 'Please enter Journal date.'
+                       message: 'Please enter keywords'
                    }
                }
            },
+
+           a2fname: {
+              validators: {
+                  stringLength: {
+                      max: 100,
+                  }
+              }
+          },
+
+          a2lname: {
+             validators: {
+                 stringLength: {
+                     max: 100,
+                 }
+             }
+         },
+
+         a2affiliation: {
+            validators: {
+                stringLength: {
+                    max: 100,
+                }
+            }
+        },
+
+        a3fname: {
+           validators: {
+               stringLength: {
+                   max: 100,
+               }
+           }
+       },
+
+       a3lname: {
+          validators: {
+              stringLength: {
+                  max: 100,
+              }
+          }
+      },
+
+      a3affiliation: {
+         validators: {
+             stringLength: {
+                 max: 100,
+             }
+         }
+     },
+
+     a4fname: {
+        validators: {
+            stringLength: {
+                max: 100,
+            }
+        }
+    },
+
+    a4lname: {
+       validators: {
+           stringLength: {
+               max: 100,
+           }
+       }
+   },
+
+   a4affiliation: {
+      validators: {
+          stringLength: {
+              max: 100,
+          }
+      }
+  },
 
             pdf: {
                 validators: {
@@ -45,9 +161,6 @@
 
             doc: {
                 validators: {
-                   notEmpty: {
-                       message: 'Please doc file.'
-                   },
                    file: {
                       extension: 'doc,docx',
                       message: 'Please add valid image.'
@@ -57,38 +170,15 @@
 
             image1: {
                 validators: {
+                  notEmpty: {
+                      message: 'Please add an image.'
+                  },
                    file: {
                       extension: 'png,jpeg,jpg',
                       message: 'Please add valid image.'
                    }
                }
            },
-
-            image2: {
-                validators: {
-                   file: {
-                      extension: 'png,jpeg,jpg',
-                      message: 'Please add valid image.'
-                   }
-               }
-           },
-
-            image3: {
-                validators: {
-                   file: {
-                      extension: 'png,jpeg,jpg',
-                      message: 'Please add valid image.'
-                   }
-               }
-           },
-
-           author: {
-               validators: {
-                 notEmpty: {
-                     message: 'Please enter author'
-                 }
-              }
-          },
 
             }
         })

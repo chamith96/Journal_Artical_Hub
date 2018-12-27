@@ -17,28 +17,6 @@
         </div>
     </section>
 
-              <section class="services">
-                  <h2 class="section-title">JOURNALS</h2>
-                  <div class="container">
-<br>
-                        @if(count($journals) > 0)
-                      <div class="row text-center text-lg-left">
-                                       @foreach ($journals as $journal)
-                                 <div class="col-lg-4 col-md-4 col-xs-6">
-                                     <img class="img-fluid img-thumbnail" src="storage/journals/{{$journal->id}}/{{ $journal->image }}" alt="">
-                                   <h4>{{ $journal->jtitle }}</h4>
-                                   <p>{{ $journal->description }}</p>
-                                   <p>{{ $journal->name }}</p>
-                                 </div>
-                                   @endforeach
-                               </div>
-                              {{$journals->links()}}
-                              @endif
-
-                  </div>
-              </section>
-
-
           </main>
           <footer class="site-footer">
               <div class="container">

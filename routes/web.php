@@ -21,6 +21,7 @@ Route::get('/downloadFilesJournal/{id}','JournalController@downloadZip')->name('
 //journals routes
 Route::get('/dashboard','AuthorJournalController@index');
 Route::get('/journals/create', 'AuthorJournalController@create');
+Route::get('/journals/assigns/{id}', 'AuthorJournalController@assign');
 Route::get('/journals/{id}', 'AuthorJournalController@show');
 Route::post('/journals','AuthorJournalController@store');
 Route::get('/admin/journals', 'JournalController@index');

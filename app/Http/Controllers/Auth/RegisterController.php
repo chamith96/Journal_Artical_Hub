@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'institution' => 'required|string|min:6',
         ]);
     }
 
@@ -69,9 +70,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'administration' => $data['administration'],
-            'department' => $data['department'],
-            'author' => $data['author'],
+            'institution' => $data['institution'],
             'verifyToken' => Str::random(40),
         ]);
 
