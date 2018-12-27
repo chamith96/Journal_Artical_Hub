@@ -12,7 +12,6 @@ use App\Assign;
 use PDF;
 use Zipper;
 use DB;
-//use App\Notifications\assignNotification;
 
 class JournalController extends Controller
 {

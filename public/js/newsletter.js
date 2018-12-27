@@ -59,7 +59,7 @@
                     message: 'Please add image'
                 },
                     file: {
-                      extension: 'png,jpeg,jpg',
+                      extension: 'png,jpeg,JPG,jpg,PNG',
                       message: 'Please add valid image.'
                    }
             }
@@ -68,7 +68,7 @@
             image2: {
                 validators: {
                    file: {
-                      extension: 'png,jpeg,jpg',
+                      extension: 'png,jpeg,JPG,jpg,PNG',
                       message: 'Please add valid image.'
                    }
                }
@@ -77,7 +77,7 @@
             image3: {
                 validators: {
                    file: {
-                      extension: 'png,jpeg,jpg',
+                      extension: 'png,jpeg,JPG,jpg,PNG',
                       message: 'Please add valid image.'
                    }
                }
@@ -86,7 +86,7 @@
             image4: {
                 validators: {
                    file: {
-                      extension: 'png,jpeg,jpg',
+                      extension: 'png,jpeg,JPG,jpg,PNG',
                       message: 'Please add valid image.'
                    }
                }

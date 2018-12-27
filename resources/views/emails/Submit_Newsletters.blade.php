@@ -171,7 +171,7 @@
           <!-- Logo -->
           <tr>
             <td class="email-masthead">
-              <a class="email-masthead_name"> CRKD Administration - SUSL </a>
+              <a class="email-masthead_name">SUSL Journal Administration </a>
             </td>
           </tr>
           <!-- Email Body -->
@@ -182,14 +182,14 @@
                 <tr>
                   <td class="content-cell">
                     <h1>Newsletter has been submitted.</h1>
-                    <h5>Newsletter Id: {{$id}}</h5>
-                    <h5>Full Name: {{$name}}</h5>
-                    <h5>Publisher: {{$author}}</h5>
-                    <h5>Faculty/Center: {{$administration}}</h5>
-                    <h5>Department: {{$department}}</h5>
-                    <h5>Title: {{$title}}</h5>
-                    <h5>Description: {{$description}}</h5>
-                    <h5>Newsletter Date: {{$newsletter_date}}</h5>
+                    <h3>Newsletter Id: {{$id}}</h3>
+                    <h3>Full Name: {{$name}}</h3>
+                    <h3>Publisher: {{$author}}</h3>
+                    <h3>Faculty/Center: {{$administration}}</h3>
+                    <h3>Department: {{$department}}</h3>
+                    <h3>Title: {{$title}}</h3>
+                    <h3>Description: {{$description}}</h3>
+                    <h3>Newsletter Date: {{$newsletter_date}}</h3>
 
                   </td>
                 </tr>
@@ -202,7 +202,7 @@
                 <tr>
                   <td class="content-cell">
                     <p class="sub center">
-                      crkd Administration <br>
+                      SUSL Journal Administration  <br>
                       Sabaragamuwa University of Sri Lanka, <br>
                       P.O. Box 02, Belihuloya - 70140 <br>
                       SRI LANKA

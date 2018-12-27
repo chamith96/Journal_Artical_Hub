@@ -95,13 +95,14 @@ This is Sabaragamuwa University Journal Administration. Could you please write a
 ---------------------------------------------------
 Journal Id: {{$journal->id}}
 Journal Title: {{$journal->title}}
-Journal Author: {{$journal->name}}
+Journal Authors: {{$journal->a1fname}} {{$journal->a1lname}}, {{$journal->a2fname}} {{$journal->a2lname}}, {{$journal->a3fname}} {{$journal->a3lname}}, {{$journal->a4fname}} {{$journal->a4lname}}
 ---------------------------------------------------
-
-The instructions on how to access the submission, accept or decline this review request, and submited rewiew can be found at
+The instructions on how to access the submission, accept or decline this review request, and submited paper can be found at
 the bottom of this paper.
 
-If you cannot review this paper, could you please suggest names, oranizations and email address of possible rewiewers.
+We need to receive the review by ........
+
+If you cannot review this paper, could you please suggest names, organizations and email address of possible reviewers.
 
 Best regards,
 SUSL Journal Administration.

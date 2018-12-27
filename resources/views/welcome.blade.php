@@ -16,6 +16,26 @@
             </div>
         </div>
     </section>
+<br>
+<div class="container">
+    <h1 class="my-4 text-center text-lg-left">Journals</h1> <br>
+
+      <div class="row text-center text-lg-left">
+          @if(count($journals) > 0)
+            @foreach ($journals as $journal)
+              <div class="col-lg-4 col-md-4 col-xs-6">
+                <div class="d-block mb-4 h-100">
+                  <img class="img-fluid img-thumbnail" src="storage\journals\{{$journal->id}}\{{$journal->image}}" alt="">
+                  <b>{{$journal->jtitle}}</b><br>
+                  Lead Author: {{$journal->a1fname}} {{$journal->a1lname}}<br>
+                  {{$journal->jcreated_at}}
+                </div>
+              </div>
+            @endforeach
+          @endif
+      </div>
+      {{$journals->links()}}
+      </div>
 
           </main>
           <footer class="site-footer">
@@ -55,7 +75,7 @@
                   <div class="container">
                       <div class="row">
                           <div class="col-md-4">
-                              <p class="pull-left">&copy; 2018 SUSL</p>
+                              <p class="pull-left">&copy; 2019 SUSL</p>
                           </div>
                           <div class="col-md-8">
                               <ul class="list-inline navbar-right">

@@ -171,7 +171,7 @@
           <!-- Logo -->
           <tr>
             <td class="email-masthead">
-              <a class="email-masthead_name"> crkd Administration - SUSL </a>
+              <a class="email-masthead_name">SUSL Journal Administration </a>
             </td>
           </tr>
           <!-- Email Body -->
@@ -182,12 +182,12 @@
                 <tr>
                   <td class="content-cell">
                     <h1>Journal has been submitted.</h1>
-                    <h3>Full Name: {{$name}}</h3>
-                    <h3>Faculty/Center: {{$administration}}</h3>
-                    <h3>Journal Date: {{$journal_date}}</h3>
-                    <h3>Department: {{$department}}</h3>
+                    <h3>Full Name: {{$a1fname}} {{$a1lname}}</h3>
                     <h3>Title: {{$title}}</h3>
-                    <h3>Description: {{$description}}</h3>
+                    <h3>Abstract: {{$abstract}}</h3>
+                    <h3>Keywords: {{$keywords}}</h3>
+                    <h3>1st Author Affiliation: {{$a1affiliation}}</h3>
+                    <h3>1st Author Email: {{$a1email}}</h3>
 
                     <!-- Sub copy -->
                     <table class="body-sub">
@@ -210,7 +210,7 @@
                 <tr>
                   <td class="content-cell">
                     <p class="sub center">
-                      crkd Administration <br>
+                      SUSL Journal Administration <br>
                       Sabaragamuwa University of Sri Lanka, <br>
                       P.O. Box 02, Belihuloya - 70140 <br>
                       SRI LANKA

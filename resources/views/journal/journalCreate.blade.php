@@ -38,7 +38,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" ></label>
                 <div class="col-md-4 inputGroupContainer">
-              <b>Author 1:</b>
+              <b>Lead Author:</b>
                 </div>
               </div>
 
@@ -185,7 +185,7 @@
           <input type="file" name="doc">
             </div>
           </div>
-          
+
           <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" >Insert pdf file</label>
@@ -198,7 +198,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" >Insert image</label>
             <div class="col-md-4 inputGroupContainer">
-          <input type="file" name="image1">
+          <input type="file" name="image">
             </div>
         </div>
 

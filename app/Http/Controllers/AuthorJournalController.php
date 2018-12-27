@@ -9,7 +9,6 @@ use App\User;
 use App\JournalsImage;
 use DB;
 use Illuminate\Support\Facades\Mail;
-//use App\Notifications\assignNotification;
 
 class AuthorJournalController extends Controller
 {
@@ -115,19 +114,18 @@ if(auth()->user()->id == $journal->user_id){
     $journalId = $journal->id;
 
     //handle image upload
-    if ($request->hasFile('image1')) {
-      $file1 = $request->file('image1');
+    if ($request->hasFile('image')) {
+      $file = $request->file('image');
           //get file name with extension
-          $takeFile = $file1->getClientOriginalName();
+          $takeFile = $file->getClientOriginalName();
           //get just file name
           $filename = pathinfo($takeFile, PATHINFO_FILENAME);
           //get just extension
-          $extension = $file1->getClientOriginalExtension();
+          $extension = $file->getClientOriginalExtension();
           //file name to store
           $fileNameToStore1 = $filename.'.'.$extension;
           //upload images
-          $path = $file1->storeAs("public/journals/".$journalId, $fileNameToStore1);
-
+          $path = $file->storeAs("public/journals/".$journalId, $fileNameToStore1);
           //save data to database 2
           $journals = new JournalsImage;
           $journals->journal_id = $journalId;
@@ -166,20 +164,21 @@ if(auth()->user()->id == $journal->user_id){
 
 
     //email to Sumbission
-    /*$data = array('email_title' => "Journal has been submitted",
-                  'name' => $journal->name,
-                  'email' => $journal->email,
-                  'administration' => $journal->administration,
-                  'department' => $journal->department ,
+    $data = array('email_title' => "Journal has been submitted",
                   'title' => $journal->title,
-                  'description' => $journal->description,
-                  'journal_date' => $journal->journal_date
+                  'email' => auth()->user()->email,
+                  'abstract' => $journal->abstract,
+                  'keywords' => $journal->keywords,
+                  'a1fname' => $journal->a1fname,
+                  'a1lname' => $journal->a1lname,
+                  'a1affiliation' => $journal->a1affiliation,
+                  'a1email' => $journal->a1email
                   );
     Mail::send('emails.Submit_Journals', $data, function($message) use($data) {
     $message->to($data['email']);
     $message->subject($data['email_title']);
     $message->from('admin@abc.com');
-  });  */
+  });
 
     return redirect('/journals/create')->with('success', 'Journal is submitted. We will let you know if reviewer response.');
 }}

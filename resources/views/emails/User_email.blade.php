@@ -171,7 +171,7 @@
           <!-- Logo -->
           <tr>
             <td class="email-masthead">
-              <a class="email-masthead_name"> CRKD Administration - SUSL </a>
+              <a class="email-masthead_name"> SUSL Journal Administration  </a>
             </td>
           </tr>
           <!-- Email Body -->
@@ -195,7 +195,7 @@
                 <tr>
                   <td class="content-cell">
                     <p class="sub center">
-                      crkd Administration <br>
+                      SUSL Journal Administration  <br>
                       Sabaragamuwa University of Sri Lanka, <br>
                       P.O. Box 02, Belihuloya - 70140 <br>
                       SRI LANKA

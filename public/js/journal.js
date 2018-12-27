@@ -15,7 +15,7 @@
             abstract: {
                 validators: {
                      stringLength: {
-                        max: 50,
+                        max: 200,
                     },
                     notEmpty: {
                         message: 'Please enter abstract'
@@ -168,13 +168,13 @@
                }
            },
 
-            image1: {
+            image: {
                 validators: {
                   notEmpty: {
                       message: 'Please add an image.'
                   },
                    file: {
-                      extension: 'png,jpeg,jpg',
+                      extension: 'png,jpeg,JPG,jpg,PNG',
                       message: 'Please add valid image.'
                    }
                }
