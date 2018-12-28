@@ -67,7 +67,7 @@
                           <h4>CONTACT</h4>
                           <p><a href="#"><i class="fas fa-address-card"></i> Sabaragamuwa University of Sri Lanka,  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; P.O. Box 02, Belihuloya, Sri Lanka.</a></p>
                           <p><a><i class="fas fa-phone"></i> +90 222 222 22 22</a></p>
-                          <p><a href="mailto:iletisim@agrisosgb.com"><i class="fas fa-envelope"></i> mail@awebsitename.com</a></p>
+                          <p><a href="mailto:admin@abc.com"><i class="fas fa-envelope"></i> mail@awebsitename.com</a></p>
                       </div>
                   </div>
               </div>
