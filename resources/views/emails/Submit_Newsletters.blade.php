@@ -189,7 +189,6 @@
                     <h3>Department: {{$department}}</h3>
                     <h3>Title: {{$title}}</h3>
                     <h3>Description: {{$description}}</h3>
-                    <h3>Newsletter Date: {{$newsletter_date}}</h3>
 
                   </td>
                 </tr>

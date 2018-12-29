@@ -91,6 +91,7 @@ if(auth()->user()->id == $journal->user_id){
     $journal->title = $request->input('title');
     $journal->abstract = $request->input('abstract');
     $journal->keywords = $request->input('keywords');
+    $journal->jdate = $request->input('jdate');
     $journal->a1fname = $request->input('a1fname');
     $journal->a1lname = $request->input('a1lname');
     $journal->a1affiliation = $request->input('a1affiliation');
@@ -169,6 +170,7 @@ if(auth()->user()->id == $journal->user_id){
                   'email' => auth()->user()->email,
                   'abstract' => $journal->abstract,
                   'keywords' => $journal->keywords,
+                  'jdate' => $journal->jdate,
                   'a1fname' => $journal->a1fname,
                   'a1lname' => $journal->a1lname,
                   'a1affiliation' => $journal->a1affiliation,

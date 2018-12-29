@@ -15,6 +15,7 @@
     <li class="list-group-item"><p><b>Article Title:</b> {{$journal->title}}</p></li>
     <li class="list-group-item"><p><b>Abstract:</b> {{$journal->abstract}}</p></li>
     <li class="list-group-item"><p><b>Keywords:</b> {{$journal->keywords}}</p></li>
+    <li class="list-group-item"><p><b>Publish Date:</b> {{$journal->jdate}}</p></li>
     <br>
     <li class="list-group-item"><p><b>Author 1 First Name:</b> {{$journal->a1fname}}</p></li>
     <li class="list-group-item"><p><b>Author 1 Last Name:</b> {{$journal->a1lname}}</p></li>

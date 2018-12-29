@@ -50,7 +50,6 @@ class NewsletterController extends Controller
     $newsletter->author = $request->input('author');
     $newsletter->title = $request->input('title');
     $newsletter->description = $request->input('description');
-    $newsletter->newsletter_date = $request->input('newsletter_date');
     $newsletter->save();
 
     //get newsletterID
@@ -122,8 +121,7 @@ class NewsletterController extends Controller
                   'department' => $newsletter->department ,
                   'author' => $newsletter->author ,
                   'title' => $newsletter->title,
-                  'description' => $newsletter->description,
-                  'newsletter_date' => $newsletter->newsletter_date
+                  'description' => $newsletter->description
                   );
     Mail::send('emails.Submit_Newsletters', $data, function($message) use($data) {
     $message->to($data['email']);

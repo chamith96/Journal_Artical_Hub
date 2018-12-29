@@ -186,6 +186,7 @@
                     <h3>Title: {{$title}}</h3>
                     <h3>Abstract: {{$abstract}}</h3>
                     <h3>Keywords: {{$keywords}}</h3>
+                    <h3>Keywords: {{$jdate}}</h3>
                     <h3>1st Author Affiliation: {{$a1affiliation}}</h3>
                     <h3>1st Author Email: {{$a1email}}</h3>
 

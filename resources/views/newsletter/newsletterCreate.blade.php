@@ -87,14 +87,6 @@
             </div>
             </div>
 
-      <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" >Newsletter Date</label>
-                <div class="col-md-4 inputGroupContainer">
-              <input name="newsletter_date" placeholder="Newsletter Date" class="form-control"  type="date">
-                </div>
-              </div>
-
       	<!-- Text input-->
               <div class="form-group">
               <label class="col-md-4 control-label" >Insert images 1</label>

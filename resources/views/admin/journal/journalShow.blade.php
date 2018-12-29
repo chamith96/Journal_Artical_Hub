@@ -73,6 +73,7 @@
            <li class="list-group-item"><b><p>Article Title:</b> {{$journal->title}}</p></li>
            <li class="list-group-item"><b><p>Abstract:</b> {{$journal->abstract}}</p></li>
            <li class="list-group-item"><b><p>Keywords:</b> {{$journal->keywords}}</p></li>
+                      <li class="list-group-item"><b><p>Publiish Date:</b> {{$journal->jdate}}</p></li>
         </ul>
            <br>
            <b>Author 1</b>

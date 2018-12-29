@@ -31,6 +31,13 @@
           </div>
 
           <div class="form-group">
+            <label class="col-md-4 control-label" >Publish Date</label>
+              <div class="col-md-4 inputGroupContainer">
+            <input name="jdate" class="form-control"  type="date">
+              </div>
+            </div>
+
+          <div class="form-group">
             <label class="col-md-4 control-label" >Authors Details</label>
             </div>
 

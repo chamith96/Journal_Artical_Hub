@@ -44,6 +44,5 @@
     <td>{{$newsletter->administration}}</td>
     <td>{{$newsletter->department}}</td>
     <td>{{$newsletter->description}}</td>
-    <td>{{$newsletter->newsletter_date}}</td>
   </tr>
 </table>

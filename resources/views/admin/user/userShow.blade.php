@@ -72,8 +72,7 @@
          <ul class="list-group">
            <li class="list-group-item"><p>User name: {{$user->name}}</p></li>
            <li class="list-group-item"><p>User email: {{$user->email}}</p></li>
-           <li class="list-group-item"><p>User administration: {{$user->administration}}</p></li>
-           <li class="list-group-item"><p>User department: {{$user->department}}</p></li>
+           <li class="list-group-item"><p>User Institution: {{$user->institution }}</p></li>
          </ul> <br>
 
            <ul class="list-group">

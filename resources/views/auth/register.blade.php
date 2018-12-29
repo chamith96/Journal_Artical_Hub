@@ -56,6 +56,24 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('author') ? ' has-error' : '' }}">
+                            <label for="institution" class="col-md-4 control-label">Author</label>
+
+                            <div class="col-md-6">
+                              <div class="row">
+                                <div class="col-md-4"><input name="author" type="radio" value="Student"> Student</div>
+                                <div class="col-md-4"><input name="author" type="radio" value="Lecturer"> Lecturer</div>
+                                <div class="col-md-4"><input name="author" type="radio" value="Other"> Other</div>
+                              </div>
+
+                                @if ($errors->has('author'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('author') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
 
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
