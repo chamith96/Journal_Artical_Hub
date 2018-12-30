@@ -80,8 +80,8 @@
                    <th>Name</th>
                    <th>Details</th>
                    <th>Send Emails</th>
-                   <th>Edit User</th>
-                   <th>Delete User</th>
+                   <th>Edit Reviewer</th>
+                   <th>Delete Reviewer</th>
                  </tr>
                  @foreach ($reviewer as $reviewers)
                  <tr>
