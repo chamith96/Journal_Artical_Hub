@@ -67,7 +67,13 @@
 
 
           <!-- Content goes here -->
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-info"><h3>You are login as Admin</h3></li>
+            <li class="list-group-item"><b>Welcome to Sabaragamuwa University Journal Administration</b></li>
 
+          </ul>
+          <br>
+          <br> <br>
             <!-- Icon Cards-->
             <div class="row">
               <div class="col-xl-3 col-sm-6 mb-3">

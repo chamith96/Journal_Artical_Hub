@@ -19,7 +19,7 @@ class HomeController extends Controller
                       'journals.a1fname as a1fname',
                       'journals.a1lname as a1lname')
                       ->orderBy('journals.created_at', 'desc')
-                      ->paginate(6);
+                      ->paginate(3);
 
        return view('welcome')->with('journals',$journals);
     }

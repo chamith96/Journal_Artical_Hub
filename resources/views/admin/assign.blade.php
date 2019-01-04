@@ -82,7 +82,7 @@
            <table class="table table-bordered" width="100%" cellspacing="0">
              @if(count($assign) > 0)
              <tr>
-               <th>User Name</th>
+               <th>Lead Author Name</th>
                <th>Reviewer Name</th>
                <th>Journal Title</th>
                <th>Assign Date</th>
@@ -124,7 +124,7 @@
            <table class="table table-bordered" width="100%" cellspacing="0">
              @if(count($assign1) > 0)
              <tr>
-               <th>User Name</th>
+               <th>Lead Author Name</th>
                <th>Reviewer Name</th>
                <th>Journal Title</th>
                <th>Assign Date</th>

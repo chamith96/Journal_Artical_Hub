@@ -8,10 +8,6 @@
         <div class="hero_content">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <h4>Sabaragamuwa University of Sri Lanka</h4>
-                        <p>Donec Elit Non Porta Gravida Eget Metus</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -25,7 +21,7 @@
             @foreach ($journals as $journal)
               <div class="col-lg-4 col-md-4 col-xs-6">
                 <div class="d-block mb-4 h-100">
-                  <img class="img-fluid img-thumbnail" src="storage\journals\{{$journal->id}}\{{$journal->image}}" alt="">
+                  <img height="300" width="428" class="img-fluid img-thumbnail" src="storage\journals\{{$journal->id}}\{{$journal->image}}">
                   <b>{{$journal->jtitle}}</b><br>
                   Lead Author: {{$journal->a1fname}} {{$journal->a1lname}}<br>
                   {{$journal->jcreated_at}}
@@ -34,6 +30,7 @@
             @endforeach
           @endif
       </div>
+      <br>
       {{$journals->links()}}
       </div>
 
